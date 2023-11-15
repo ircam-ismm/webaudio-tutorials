@@ -15,7 +15,7 @@ Here are two of them that are quite popular:
 
 ## Node.js
 
-Second let's install the [Node.js](https://nodejs.org/) environment. Node.js is a cross-platform JavaScript runtime environment that is mostly used to develop servers or command-line tools. We won't make a extensive use of Node.js in these tutorials, but mostly use it to install and run the simple Web server we will need for developping our Web pages.
+Second let's install the [Node.js](https://nodejs.org/) environment. Node.js is a cross-platform JavaScript runtime environment that is mostly used to develop servers or command-line tools. We won't make a extensive use of Node.js in these tutorials, but mostly use it to install and run the simple Web server we will need for developing our Web pages.
 
 1. Open [https://nodejs.org](https://nodejs.org) in your favorite browser (which shall not be Safari).
 2. Download the LTS (Long Term Support) version (at time of writting it is version 20.9.0).
@@ -59,7 +59,7 @@ Note that, depending on when you follow this tutorial, the actual versions you s
 
 An important tool to develop Web pages is a Web server that you can launch locally on your computer. In these tutorials, we will only need the most simple Web server, i.e. one that serves a file when the Web browser requests it.
 
-Multiple options written in multiple language are available to have such server, in this tutorials we will just use [serve](https://www.npmjs.com/package/serve), a web server developped in the [Node.js](https://nodejs.org/) environment.
+Multiple options written in multiple language are available to have such server, in this tutorials we will just use [serve](https://www.npmjs.com/package/serve), a web server developed in the [Node.js](https://nodejs.org/) environment.
 
 Open a new Terminal, then type:
 
@@ -104,4 +104,4 @@ Lastly, we will just configure your browser of choice (which shall _not_ be Safa
 
 ## Conclusion
 
-Your system is now ready to use for development! Let's continue with developping a some simple Web page to have a first hands-on with HTML, CSS and JavaScript.
+Your system is now ready to use for development! Let's continue with developing a some simple Web page to have a first hands-on with HTML, CSS and JavaScript.
