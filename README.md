@@ -12,7 +12,8 @@
     + [x] programming languages
 - [x] Setting up a development environment 
 - [ ] Develop a simple web page using HTML, CSS and JavaScript
-    + [ ] Re-organising the project 
+    + [ ] sharing the styles
+    + [ ] add some interaction e.g. make the div change color on click
 
 ### Web Audio Basics
 

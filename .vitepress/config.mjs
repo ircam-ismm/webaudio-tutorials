@@ -24,6 +24,7 @@ export default defineConfig({
         items: [
           { text: 'General principles', link: '/first-steps/general-principles.md' },
           { text: 'Setting up an environment', link: '/first-steps/setting-up-environment.md' },
+          { text: 'Create a simple website', link: '/first-steps/simple-website.md' },
         ],
       },
       // {
