@@ -32,9 +32,14 @@ A _**client**_ is a program that connects to a server to access its service. For
 
 ![web-technologies](../assets/general-principles/web-technologies.png)
 
-## Programming Languages of the Web
+## Programming Languages
 
-As stated before our access to the Web is mediated by Web browsers, which are responsible for 1. connecting to a server through a Uniform Resource Locator (URL, e.g. [https://www.ircam.fr](https://www.ircam.fr)), 2. downloading the file(s) associated to the resource, 3. and interpreting these files to display the interface that you see in the browser window.
+As stated above our access to the Web is mediated by Web browsers, which are responsible for:
+
+1. Requesting resources to Web servers through Uniform Resource Locators (URL, e.g. [https://www.ircam.fr](https://www.ircam.fr)).
+2. Downloading the files associated to the URLs.
+3. Interpreting these files to display the interface with which the user interacts with in the Web browser window.
+
 
 Aside resources such as images, videos or soundfile, the browser generally download and interpret file that contain code which is interpreted and executed by the Web browser. The programming languages that Web browsers are able to understand are three in number: _HTML_, _CSS_ and _JavaScript_.
 
@@ -50,7 +55,7 @@ The _**HTML**_ for _Hypertext Markup Language_ is, as its name indicates, a mark
 
 which will be interpreted by the browser as the following:
 
-<iframe style="width: 100%; height: 130px; border: none;" src="../assets/general-principles/html-example.htm"></iframe>
+<iframe style="height: 130px;" src="../assets/general-principles/html-example.htm"></iframe>
 
 The _**CSS**_ for _Cascading Style Sheets_ is a language that allows to describe how the _HTML_ document is presented. Or in other terms to make it a bit more beautiful than what you have seen above.
 
@@ -74,7 +79,7 @@ a {
 
 The presentation of the page, which is defined by the same HTML structure and content, will now appear as:
 
-<iframe style="width: 100%; height: 110px; border: none;" src="../assets/general-principles/css-example.htm"></iframe>
+<iframe style="height: 110px;" src="../assets/general-principles/css-example.htm"></iframe>
 
 Finally, _**JavaScript**_ provide a full featured programming language which allows to add interactivity to your Web page. For example, it allows you react to some user events, e.g. click on a button, get some information from a remote Web server without refreshing the page, or for what interest us in these tutorials, to make audio synthesis using the [Web Audi API](https://www.w3.org/TR/webaudio/). 
 
@@ -103,7 +108,7 @@ button.addEventListener('click', async () => {
 </script>
 ```
 
-<iframe style="width: 100%; height: 40px; border: none;" src="../assets/general-principles/js-example.htm"></iframe>
+<iframe style="height: 40px;" src="../assets/general-principles/js-example.htm"></iframe>
 
 ::: tip
 To stop the sound, just reload the Web page with `Cmd+R` on Mac or `Ctrl + R` on windows. 

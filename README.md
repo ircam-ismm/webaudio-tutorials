@@ -14,7 +14,7 @@
 - [ ] Develop a simple web page using HTML, CSS and JavaScript
     + [ ] Re-organising the project 
 
-### Basics
+### Web Audio Basics
 
 - [ ] General principles of the Web Audio API
 - [ ] Develop an audio file playback engine 
@@ -32,6 +32,7 @@
 
 - [ ] Using a package manager and a bundler
 - [ ] Going embedded with the node-web-audio-api
+- [ ] Extending native AudioNodes
 
 ## Todos
 

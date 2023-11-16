@@ -186,3 +186,9 @@ body {
   }
 }
 
+
+iframe {
+  width: 100%;
+  border: 1px solid #ababab;
+  background-color: white;
+}

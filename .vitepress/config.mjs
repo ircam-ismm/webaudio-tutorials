@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Web Audio Tutorials",
-  description: "Set of of tutorials about Web Audio",
+  description: "Tutorials about the Web Audio API",
 
   // https://vitepress.vuejs.org/config/app-configs#markdown
   markdown: {
@@ -18,12 +18,12 @@ export default defineConfig({
     ],
 
     sidebar: [
+      { text: 'Introduction', link: '/introduction.md' },
       {
-        text: 'Introduction',
+        text: 'First steps',
         items: [
-          // { text: 'The Web as an artistic platform', link: './introduction/web-as-an-artistic-platform.md' },
-          { text: 'General principles', link: '/introduction/general-principles.md' },
-          { text: 'Setting up an environment', link: '/introduction/setting-up-environment.md' },
+          { text: 'General principles', link: '/first-steps/general-principles.md' },
+          { text: 'Setting up an environment', link: '/first-steps/setting-up-environment.md' },
         ],
       },
       // {
@@ -36,7 +36,7 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+      { icon: 'github', link: 'https://github.com/ircam-ismm/webaudio-tutorials' }
     ]
   }
 })
