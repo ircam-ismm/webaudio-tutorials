@@ -11,6 +11,13 @@ export default defineConfig({
     lineNumbers: false,
   },
 
+  // https://vitepress.dev/reference/site-config#ignoredeadlinks
+  ignoreDeadLinks: [
+    // ignore all localhost links
+    /^https?:\/\/localhost/,
+    /^https?:\/\/127.0.0.1/,
+  ],
+
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -18,11 +25,11 @@ export default defineConfig({
     ],
 
     sidebar: [
-      { text: 'Introduction', link: '/introduction.md' },
+      { text: 'Introduction', link: '/' },
       {
         text: 'First steps',
         items: [
-          { text: 'General principles', link: '/first-steps/general-principles.md' },
+          { text: 'Generalities', link: '/first-steps/generalities.md' },
           { text: 'Setting up an environment', link: '/first-steps/setting-up-environment.md' },
           { text: 'Create a simple website', link: '/first-steps/simple-website.md' },
         ],
