@@ -22,6 +22,7 @@ jobs:
       - name: Build
         run: npm run build
 
+      # need read / write permissions cf. Settings > Action > workflow permissions
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:

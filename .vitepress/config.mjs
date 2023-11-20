@@ -11,6 +11,8 @@ export default defineConfig({
     lineNumbers: false,
   },
 
+  base: '/webaudio-tutorials/',
+
   // https://vitepress.dev/reference/site-config#ignoredeadlinks
   ignoreDeadLinks: [
     // ignore all localhost links
