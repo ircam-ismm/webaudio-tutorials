@@ -5,13 +5,13 @@ export default defineConfig({
   title: "Web Audio Tutorials",
   description: "Tutorials about the Web Audio API",
 
+  srcExclude: ['README.md', 'TODOS.md'],
+  base: '/webaudio-tutorials/',
   // https://vitepress.vuejs.org/config/app-configs#markdown
   markdown: {
     theme: 'monokai',
     lineNumbers: false,
   },
-
-  base: '/webaudio-tutorials/',
 
   // https://vitepress.dev/reference/site-config#ignoredeadlinks
   ignoreDeadLinks: [
