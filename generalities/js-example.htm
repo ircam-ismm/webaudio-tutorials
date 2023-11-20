@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <style>
+  body {
+      font-family: arial;
+  }
+  h1 {
+      font-size: 20px;
+      color: steelblue;
+  }
+
+  a {
+      font-style: italic;
+      color: #454545;
+  }
+  </style>
+</head>
+<body>
+  <button>Click Me!</button>
+  <script>
+    // get a reference to the HTML button define above
+    const button = document.querySelector('button');
+    let audioContext = null;
+    // listen for a click from the user
+    button.addEventListener('click', async () => {
+      // creates the audio context on first click
+      if (!audioContext) {
+        audioContext = new AudioContext;
+        await audioContext.resume();
+      }
+
+      // create an oscillator with (almost) random frequency
+      const osc = audioContext.createOscillator();
+      osc.connect(audioContext.destination);
+      osc.frequency.value = 100 * (Math.floor(Math.random() * 20)) + 1;
+      osc.start();
+    });
+  </script>
+</body>
+</html>
+
+
