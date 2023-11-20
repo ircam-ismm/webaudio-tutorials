@@ -1,79 +1,81 @@
 # Setting Up an Environment
 
-In this tutorial, we will just install and configure a few things that will allow you to have all the necessary tools to develop simple Web pages in good conditions.
+In this tutorial, we will install and configure a few things to have all the necessary tools to develop simple Web pages in good conditions.
 
-The set of tools we propose are not mandatory and many alternatives exists for each of them. If you already have a setup you like and are confortable with, just skip this page and proceed with your existing setup.
+The set of tools we propose here are not mandatory and many alternatives exists for each of them. If you already have a setup you like and are confortable with, just skip this page and proceed with your existing setup.
 
 ## Text Editor
 
-First, the most important tool to write is to have a proper text editor. There are numerous free editors, each of them with their specific strengths and drawbacks (just keep in mind that the _best_ tool is generally the one you know well):
+A very important tool to write code is a proper text editor. There are numerous free text editors, each of them with their specific qualities and drawbacks (just keep in mind that the _best_ tool is very often the one you know well...).
 
-Here are two of them that are quite popular:
+Here are two text editors that are quite popular nowadays:
 
-- VSCode - [download](https://code.visualstudio.com/) - _probably the most popular one in web dev nowadays_
+- VSCode - [download](https://code.visualstudio.com/) - _probably the most popular one these days_
 - Sublime Text 3 - [download](https://sublimetext.com/3)
 
 ## Node.js
 
-Second let's install the [Node.js](https://nodejs.org/) environment. Node.js is a cross-platform JavaScript runtime environment that is mostly used to develop servers or command-line tools. We won't make a extensive use of Node.js in these tutorials, but mostly use it to install and run the simple Web server we will need for developing our Web pages.
+Once done, let's continue with installing the [Node.js](https://nodejs.org/) environment. Node.js is a cross-platform _JavaScript_ runtime environment that is often used to develop servers or command-line tools. We won't make a extensive use of Node.js in these series, but only use it to install and run the simple Web server we will need for developing our Web pages.
 
 1. Open [https://nodejs.org](https://nodejs.org) in your favorite browser (which shall not be Safari).
-2. Download the LTS (Long Term Support) version (at time of writting it is version 20.9.0).
-3. Open the archive and follow the instructions chosing all default options...
+2. Download the _Long Term Support_ (LTS) version (at time of writting, the version 20.9.0).
+3. Open the archive and follow the instructions, chosing all default options...
 
-To make sure eveything is installed, open a `Terminal` prompt
--  `Applications/Utilities/Terminal.app` on Mac
--  @todo - windows
+To make sure eveything is installed, open a `Terminal` prompt, i.e. `Applications/Utilities/Terminal.app` on Mac.
 
-And type the following command to see the version of the installed Node.js:
+Type the following command to see the version of the installed Node.js:
 
-```
+```sh
 node -v
 ```
 
 Press "Enter" to execute the command and you should see:
 
-```
+```sh
 v12.16.1
 ```
 
-Then type the following command to see the version of the installed Node Package Manager (i.e. `npm`):
+Then, type the following command to see the version of the installed Node Package Manager (aka `npm`, which is automatically installed with Node.js):
 
-```
+```sh
 npm -v
 ```
 
 Press "Enter" to execute the command and you should see:
 
-```
+```sh
 v12.16.1
 ```
 
 ![node-check](../assets/setting-up-environment/node-check.png)
 
 ::: info
-Note that, depending on when you follow this tutorial, the actual versions you see in the terminal might change. This should not cause any issue with the rest of these tutorials
+Note that, depending on when you follow this tutorial, the actual versions you see in the terminal might change. This should not cause any issue with the rest of these tutorials.
 :::
 
 ## Web Server
 
-An important tool to develop Web pages is a Web server that you can launch locally on your computer. In these tutorials, we will only need the most simple Web server, i.e. one that serves a file when the Web browser requests it.
+An important tool to have when developing Web pages, is a Web server that you can launch locally on your computer. In these tutorials, we will only need the most simple Web server: a server able to serve a file from its hardrive when the Web browser requests it.
 
-Multiple options written in multiple language are available to have such server, in this tutorials we will just use [serve](https://www.npmjs.com/package/serve), a web server developed in the [Node.js](https://nodejs.org/) environment.
+A large number of options written in different programming languages are available to have such server. In this tutorials we will use [serve](https://www.npmjs.com/package/serve), a web server developed in the [Node.js](https://nodejs.org/) environment.
 
-Open a new Terminal, then type:
+Open a new `Terminal` prompt and type:
 
 ```sh
 npm install -g serve
 ```
 
-And press `Enter` to execute the command.
+Then, press `Enter` to execute the command.
 
-This command basically ask the `npm` command we installed in the previous step to install the `serve` package globally (cf. `-g`) on your computer. This package has been tested to work well in every environment you might have.
+::: info
+This command basically tells the `npm` program (we just installed in the previous step) to install the `serve` package globally (cf. `-g`) on your computer.
+:::
+
+![install-serve](../assets/setting-up-environment/install-serve.png)
 
 ## Configure your Web browser
 
-Lastly, we will just configure your browser of choice (which shall _not_ be Safari) to discard all caching when running in development.
+Lastly, we will configure your browser of choice to suspend its caching mecanisms when running in development.
 
 ### Google Chrome
 
@@ -104,4 +106,4 @@ Lastly, we will just configure your browser of choice (which shall _not_ be Safa
 
 ## Conclusion
 
-Your system is now ready to use for development! Let's continue with developing a some simple Web page to have a first hands-on with HTML, CSS and JavaScript.
+Your system is now ready to use for development! In the next tutorial, we will develop a simple Web page, which will allow us to have a first hands-on with HTML, CSS and JavaScript.
