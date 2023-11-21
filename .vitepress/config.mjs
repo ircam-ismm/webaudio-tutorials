@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Web Audio Tutorials",
-  description: "Tutorials about the Web Audio API",
+  description: "Set of tutorials on the Web Audio API",
 
   srcExclude: ['README.md', 'TODOS.md'],
   base: '/webaudio-tutorials/',

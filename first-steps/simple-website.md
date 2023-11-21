@@ -1,20 +1,20 @@
 # Create a simple website
 
-In this first hands-on tutorial, we will develop a simple website composed of two pages. While this tutorial will not concern the Web Audio API yet, it will help you to get a bit of practical familiarity with the different concepts we seen so far.
+In this first hands-on tutorial, we will develop a simple website composed of two pages. This tutorial does not yet concern the Web Audio API, but aims at giving you some practical familiarity with the different concepts and tools we seen so far.
 
 ::: info
-In these series, we will just put all tutorials inside a `webaudio-tutorials` directory, itself located on the "Desktop". If you want to put these files elsewhere feel free to do so, you will just have to adapt the path in the commands accordingly.
+In these series, the example commands will be given as if all projects ara created in a `webaudio-tutorials` directory, itself located on your `Desktop`. If you want to put these files elsewhere feel free to do so, you will just need to adapt the paths in the commands accordingly.
 :::
 
 ## Setting things up
 
-First let's create a new directory somewhere on your computer where we will put all our files. Open a `Terminal` and create a new directory using the `mkdir` (for "make directory") command:
+First, let's create a new directory where we will put all our files. To do so, open a `Terminal` and create this new directory using the `mkdir` (for "make directory") command:
 
 ```sh
 mkdir -p ~/Desktop/webaudio-tutorials/01-simple-website
 ```
 
-You should a new directory called `webaudio-tutorials` on your desktop at this point:
+You should now see a new directory called `webaudio-tutorials` on your `Desktop`:
 
 ![desktop-screenshot](../assets/simple-website/desktop-screenshot.png)
 
@@ -25,40 +25,42 @@ cd ~/Desktop/webaudio-tutorials/01-simple-website
 ```
 
 ::: tip
-You can think of `cd` as a way to navigate into your computer directories, just as you would do clicking around in the `Finder`, but within the `Terminal`
+You can think of `cd` as a way to navigate into your computer filesystem, just as you would do clicking around in the `Finder` but within the `Terminal`
 :::
 
-Let's now launch our Web server inside the directory, with the following command:
+Now that we are located in our project directory, let's launch our Web server inside it using the following command:
 
 ```sh
 serve
 ```
 
-If everything went well, your terminal look like the following, with the Web server launched in the directory you just created:
+If everything went well, your terminal should look like the following, with the Web server launched in the directory you just created:
 
 ![create-dir-and-serve](../assets/simple-website/create-dir-and-serve.png)
 
 ::: warning
-It is **_very_** important to understand and to keep in mind that exposing a directory to the network means that **_all the files_** located in this directory will be accessible by **_any_** computer connected to the same network.  
+It is **_very_** important to understand and to keep in mind that exposing a directory to the network means that **_all the files_** located in this directory will be accessible by **_any_** computer connected to the same network as your machine.  
 
-**_So, DO NOT expose any sensitive or private information in this directory_**.  
-
-This is an important thing to keep in mind whenever you deal with servers and networks, it's not specific to _soundworks_ applications.
+**_So, BE CAREFULL TO NOT EXPOSE any sensitive or private information in this directory_**.  
 :::
 
-The web server, just logged a few bit informations that we need to access it from a Web browser, in particular the IP address and port at which it can be accessed: [`http://localhost:3000`](http://localhost:3000).
+At startup, the web server logged some informations that will help you to access it from a Web browser. In particular we are interested by the "Local" address and port: [`http://localhost:3000`](http://localhost:3000).
 
-If open your Web browser of choice and write this URL into the address bar, you should see something as the following:
+If you open a Web browser and write this URL into the address bar, you should see something as the following:
 
 ![serve-empty-dir](../assets/simple-website/serve-empty-dir.png)
-Which is default page provided by the server itself showing that it has nothing to serve as the directory is empty. So now that everything is ready, let's start to write some little bits of code to create our actual website.
+Which is a default page provided by the server showing us that it has nothing to serve, as the directory is empty. 
+
+Now that everything is up and running, let's start to write some little bits of code to create our actual website.
 
 ## Creating the home page
 
-Open the directory inside your the text editor you installed in the previous tutorial. 
+Open the directory inside the text editor you installed in the previous tutorial. 
 
 ::: info
 In VSCode, "File > Open Folder", then navigate to locate the `01-simple-website directory` and click "open". VSCode will then ask you if you trust the authors of code, which is you, so click "Yes".
+
+In Sublime "File > Open", then navigate to locate the `01-simple-website directory` and click "open".
 :::
 
 Once done let's create a new file called `index.html`:
@@ -68,10 +70,10 @@ Once done let's create a new file called `index.html`:
 ![vscode-new-file-2](../assets/simple-website/vscode-new-file-2.png) 
 
 ::: tip
-The name `index.html` is the file that all Web servers will serve by default when no specific file is requested. Make sure to always have an `index.html` in your directory.
+The `index.html` name name is important as this is the file that all Web servers will serve by default (i.e. when no specific file is requested). Make sure to always have an `index.html` in your directory.
 :::
 
-Let's now write the Basic structure of an HTML document in our `index.html` file:
+Once done, let's write the basic structure of an `HTML` document in our `index.html`:
 
 ```html
 <!DOCTYPE html>
@@ -80,18 +82,30 @@ Let's now write the Basic structure of an HTML document in our `index.html` file
     <!-- meta informations about your page will go here -->
 </head>
 <body>
-    <!-- content of your page will go there -->
+    <!-- the actual content of your page will go there -->
 </body>
 </html>
 ```
 
-Once done, let's first had two 2 lines in the `<head>` tag:
+You can already notice that all HTML tags come with an opening and a closing tag, for example:
+- `<body>` is the opening tag
+- `</body>` is the closing tag
 
-```html {4-5}
+Also tags can be declared inside a another tags, here the `<head>` and `<body>` tags are inside the `<html>` tag. The HTML structure is always hierarchical, a tag opened inside another tag should aloways be closed within it, e.g.:
+
+```html
+// This is valid
+<div><p>my text</p></div>
+// This is invalid
+<div><p>my text</div></p>
+```
+
+Once done, let's first add one line of code in the `<head>` section, to define the title of the document:
+
+```html {4}
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
     <title>01-simple-website | Home</title>
 </head>
 <body>
@@ -101,22 +115,19 @@ Once done, let's first had two 2 lines in the `<head>` tag:
 ```
 
 ::: tip
-You can see that the content inside `head` has been indented (using the "Tab" key). While this is not mandatory, this is a very good habit to take to make the code more readable and understandable. Eventually this will also help you find eventual bugs more easily...
+You can see that the content inside `head` has been indented (using the "Tab" key). While this is not mandatory, it is a very good habit to take when coding. It makes the code more readable and will eventually help you find bugs more easily...
 :::
 
-The first line just tells the Web browser with which encoding the file should be interpreted. The second line, as the tag name indicates, defines the title of your document.
-
-If you reload the page on your Web browser (`Cmd + R`), you should now see the following, with the title displayed as the tab title:
+If you reload the page in your Web browser (`Cmd + R`), you should now see title you wrote displayed as the tab title:
 
 ![index-title](../assets/simple-website/index-title.png) 
 
 Let's continue with adding some content to our webpage:
 
-```html {8-19}
+```html {7-18}
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
   <title>01-simple-website | Home</title>
 </head>
 <body>
@@ -136,24 +147,23 @@ Let's continue with adding some content to our webpage:
 </html>
 ```
 
-In this snippet, we use a few HTML tags, each describing a different type of content:
+In this snippet, we use a few different HTML tags that each describe a different type of content:
 - `<h1>` defines a first level title.
 - `<p>` defines a paragraph of text.
 - `<ul>` defines an unordered list of `<li>` items.
 - `<a>` defines a link to another Web page.
 
-After reload, your page should now look like the following:
+After reload (`Cmd + R`), your page should now look like the following:
 
 ![index-1](../assets/simple-website/index-1.png) 
 ## Adding some styles
 
-Now that we have some basic content, let's change the appearence of our page using CSS. To that end let's a `<style>` tag in our header with the following CSS rules:
+Now that we have some basic content, let's change the appearence of our page using CSS. To that end, we define a `<style>` tag in the header of the document, in which you can write some CSS rules:
 
-```html {7-21}
+```html {6-20}
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>01-simple-website | Home</title>
   <style>
@@ -189,22 +199,22 @@ Now that we have some basic content, let's change the appearence of our page usi
 </html>
 ```
 
-Here, we first define some styles that will be applied to the `body` tag, changing the background-color and text font and color. Then we define a more specialized style applied to `h1` tag to change the text color. And finally some rules to change the appearence of the `a` tags, i.e. the links.
+In these CSS rules, we first define styles that will be applied to all the `body` tag (and _cascading_ to its content): change the background-color as well as text font and color. Then we define a more specialized style applied only to `h1` tags to change their text color. And finally, we define rules to change the appearence of the links, the `a` tags.
 
-When you reload the page, it should now look like the following screenshot:
+With these styles applied, yuor page should now look like the following screenshot:
 
 ![index-2](../assets/simple-website/index-2.png) 
 
 ## Adding a new page
 
-Now that our homepage is ready let's see how you can add a second page to your brand new website. 
+Now that our homepage is ready let's see how you can add a second page to your website. 
 
-Let's first add a link in the homepage to point to this new page that will contain for example you biography:
+First, add a link in the homepage to point to this new page which will contain for example your biography:
 
-```html
+```html {3}
 <body>
   <h1>Simple website</h1>
-  <a href="./bio.html">bio</a> // [!code ++]
+  <a href="./bio.html">bio</a>
   <p>Hey! Welcome to the most simple website</p>
   <p>Here is a list:</p>
   <ul>
@@ -222,17 +232,16 @@ Let's first add a link in the homepage to point to this new page that will conta
 Refresh the page and you should see the link just below the title:
 
 ![index-3](../assets/simple-website/index-3.png) 
-However if you click on the link, the server will return a 404 error page, which is expected because there is no file called `bio.html` that the server could retrieve:
+However, if you click on the link, the server will return a 404 error page. This is expected because there is no `bio.html` file that the server could retrieve:
 
 ![not-found](../assets/simple-website/not-found.png) 
 
-To fix that, let's create a file called `bio.html` in the project directory and put the following content into it:
+To fix that, create a new file called `bio.html` in the project directory, and write the following content into it:
 
 ```html
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
   <title>01-simple-website | Bio</title>
 </head>
 <body>
@@ -247,20 +256,20 @@ Refresh the page, and tada!
 
 ![bio-1](../assets/simple-website/bio-1.png) 
 
-We now have a small website composed of two pages, the home page and the bio page, and we can navigate between them through the dedicated links.
+We now have a small website composed of two pages, the "home" page and the "bio" page, and we can navigate between them through links.
 
 ## Sharing the styles
 
-Adding this second page however introducted a new problem: the styles defined in the homepage are not defined in the `bio.html` file, then the styling of the two pages differ... Which leaves us with two options:
+Adding this second page however introducted a new problem: the styles defined in the homepage are not defined in the `bio.html` file. Then the styling of the two pages differ... Which leaves us with two options:
 
-1. Copy the `<style>` defined in `index.html` into `bio.html`
-2. Find a way to share the styles in the two HTML files
+1. Copy the `<style>` tag and the CSS rules defined in `index.html` into `bio.html`
+2. Find a way to share the styles between the two HTML files
 
-The first solution would of course work, but it would also create new issues in the short term. Indeed if for some reason you want to change the style, e.g. change the title color to red, you would have to report the changes in both the pages (and even more if your site starts to grow), which would prone combursome and error prone... 
+The first solution would of course work, but it would also create new issues in relatively short term. Indeed, if for some reason you want to add or change a style, e.g. change the titles color to red, you would have to report each change in each HMTL files (and a website is often composed of more than two pages), which is very combursome and error prone... 
 
-A better solution is thus to put all the styles in a third file, that all HTML file will import, allowing to share the same styles between all your website pages.
+A better solution is thus to put all the styles in a third file which will be imported by every HTML file, thus sharing the exact same styles between all pages of the website.
 
-Let's thus create a new file called `style.css` in our directory and just copy the content of the `<style>` tag defined in `index.html`
+Let's thus create a new file called `style.css` in our directory and copy the content of the `<style>` tag defined in `index.html`:
 
 ```css
 body {
@@ -280,12 +289,10 @@ a {
 }
 ```
 
-Then let's change our `index.html` file to remove the `<style>` and import the `style.css` through a special `<link>` tag:
+Then we need to update the `index.html` file to 1. remove the `<style>` tag and 2. to import the `style.css` through a `<link>` tag:
 
 ```html
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>01-simple-website | Home</title>
   <link rel="stylesheet" type="text/css" href="./style.css" />  // [!code ++]
   <style>                                                       // [!code --]
@@ -306,23 +313,26 @@ Then let's change our `index.html` file to remove the `<style>` and import the `
 </head>
 ```
 
-Finally, let's add the same line of code in our `bio.html` file:
+::: info
+Note that the `<link>` tag has no closing counterpart (i.e. `</link>`) and rather ends with `/>`. Such tags are called "self-closing" tags.
+:::
+
+Finally, let's add the exact same line of code in the `bio.html` file:
 
 ```html
 <head>
-  <meta charset="utf-8">
   <title>01-simple-website | Bio</title>
   <link rel="stylesheet" type="text/css" href="./style.css" /> // [!code ++]
 </head>
 ```
 
-Reload to how your styles are now applied to both of your pages:
+After reload, you should see the styles applied to both the pages:
 
 ![bio-2](../assets/simple-website/bio-2.png) 
 
 ## Adding some interaction
 
-Let's now add a bit of interaction using JavaScript. First let's modify our homepage to replace the list a component with wich we can interact:
+Let's now add a bit of interaction using _JavaScript_. To that end, let's modify our homepage to replace the list with a simple component with wich we will interact:
 
 ```html {7,8}
 // index.html
@@ -337,10 +347,10 @@ Let's now add a bit of interaction using JavaScript. First let's modify our home
 ```
 
 ::: info
-The `<div>` tag only defines a zone on your page, it has no special semantic meaning but is often use to group related content together.
+The `<div>` tag defines a generic container or zone on your page, it has no special semantic meaning but is often used to group related content together.
 ::: 
 
-Let's also add some styles at the bottom of the `style.css` fiel to make it clearly visible in the page:
+Let's also add some styles at the bottom of the `style.css` file to make it clearly visible in the page:
 
 ```css
 #my-square {
@@ -350,48 +360,44 @@ Let's also add some styles at the bottom of the `style.css` fiel to make it clea
 }
 ```
 
-::: info
-The "#" character at the beginning of the CSS definition allows to select a tag according to its `id` attribute defined in the HTML, i.e. `<div id="my-square">`.
-The rules defined this way will only be applied to this specific HTML tag.
-:::
+The "#" character at the beginning of the CSS rule allow to select a tag according to its `id` attribute as defined in the HTML, here the `<div id="my-square">`.
 
-Your home page should now look like this:
+Your home page should now look like the following:
 
 ![home-square](../assets/simple-website/home-square.png) 
-Everything is now ready to add some interaction! So let's create a new file called `main.js` in your website directory, and write the following line of code inside it:
+Everything is now ready to add some incredible interaction! Let's then create a new file called `main.js` in our website directory, and write the following line of code into it:
 
 ```js
 console.log('ok');
 ```
 
-Then change the header of your `index.html` file to import the JavaScript file in a similar way as we did it for the CSS file:
+Add the follwing line of code in the `<head>` section of your `index.html`, to import the _JavaScript_ file:
 
-```html {5}
+```html {4}
 <head>
-  <meta charset="utf-8">
   <title>01-simple-website | Home</title>
   <link rel="stylesheet" type="text/css" href="./style.css" />
   <script defer src="./main.js"></script>
 </head>
 ```
 
-Now go back to your browser, open the JavaScript console (`Cmd + Alt + J` in 
-_Chrome_ or `Cmd + Alt + I` in _Firefox_) and reload the page again, you should see the log from the JavaScript code appear in the console:
+Once done, go back to your browser, open the JavaScript console (`Cmd + Alt + J` in 
+_Chrome_ or `Cmd + Alt + I` in _Firefox_) and reload the page again. You should see the log from the _JavaScript_ appear in the console:
 
 ![console](../assets/simple-website/console.png) 
 
-Everything is setup to write our incredibly interactive stuff!
+Now that everything is set up, let's write something a bit more interesting than just logging into the JavaScript console.
 
 Go back to the javascript file and set up a few variables:
 
 ```js
-// get a reference to div#my-square define in the HTML
+// get a reference to div#my-square defined in the HTML
 const mySquare = document.querySelector('#my-square');
-// create a list of color
+// create a list of different colors
 const colors = ['steelblue', 'pink', 'yellow', 'purple', 'green'];
 ```
 
-Now let's write some logic to change the color of the square when you click on it:
+Then, let's write some logic to change the color of the square when you click on it:
 
 ```js {6-16}
 // get a reference to div#my-square define in the HTML
@@ -399,9 +405,8 @@ const mySquare = document.querySelector('#my-square');
 // create a list of color
 const colors = ['steelblue', 'pink', 'yellow', 'purple', 'green'];
 
-// listen for a "click" from the user and execute a function when
-// such event happens
-mySquare.addEventListener('click', () => {
+// define a function that change the color of the square when executed
+function changeColor() {
   // pick a random color from our list
   const randomIndex = Math.floor(Math.random() * colors.length);
   const nextColor = colors[randomIndex];
@@ -409,20 +414,24 @@ mySquare.addEventListener('click', () => {
   console.log('next color is:', nextColor);
   // set the random color as the background color of our square
   mySquare.style.backgroundColor = nextColor;
-});
+}
+
+// add the browser to execute the function each time a user
+// clicks on the square
+mySquare.addEventListener('click', changeColor);
 ```
 
-You now a super impressive interactive Web page!
+Congrats! you now have an impressive interactive Web page!
 
 ![random-color](../assets/simple-website/random-color.png) 
 
-This very simple example shows you how the JavaScript acts has a glue between HTML and CSS, and can modify them dynamically according to users' action. 
+This simple example also shows you how _JavaScript_ can modify HTML and CSS dynamically in response to users' action. 
 
 ## Conclusion
 
-In this tutorial you have created simple website using some HTML, CSS, and JavaScript. In this series, we won't go much further concerning HTML and CSS as we will mainly use JavaScript and higher level tools to create the interfaces, but at least you have an idea of the different technologies and how they relates to each others.
+In this tutorial you have created simple website using HTML, CSS and JavaScript. In this series, we won't go much further concerning HTML and CSS as we will mainly use JavaScript and higher level abstractions to create the user interfaces. If you are interested there are plenty of good resources on the Web to learn these technologies, e.g. on [MDN](https://developer.mozilla.org/en-US/docs/Web/Tutorials), but least you have an idea of the different technologies and how they relates to each others.
 
-Now that you get more idea of how a web page works and of the different technologies involved, let's dive into the subject of these series with an overview of the Web Audio API.
+Now that you an idea of the different technologies involved in the development of a Web page, let's dive into the subject of these series with an overview of the Web Audio API.
 
 
 

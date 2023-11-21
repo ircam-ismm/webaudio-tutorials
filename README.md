@@ -64,6 +64,9 @@
 
 ### Credits
 
+- [ ] share credits with `soundworks.dev`
+    + [ ] review to integrate `sc-*` and `dotpi-*`
+
 ## Todos
 
 - [ ] Search bar
