@@ -427,9 +427,17 @@ Congrats! you now have an impressive interactive Web page!
 
 This simple example also shows you how _JavaScript_ can modify HTML and CSS dynamically in response to users' action. 
 
+## Shuting down the server
+
+Now that the tutorial is finished, it is time to shutdown the Web server. To that end, go back to the `Terminal` window where the server is running and just press `Ctrl + C`:
+
+![shutdown](../assets/simple-website/shutdown.png) 
+
+That's it!
+
 ## Conclusion
 
-In this tutorial you have created simple website using HTML, CSS and JavaScript. In this series, we won't go much further concerning HTML and CSS as we will mainly use JavaScript and higher level abstractions to create the user interfaces. If you are interested there are plenty of good resources on the Web to learn these technologies, e.g. on [MDN](https://developer.mozilla.org/en-US/docs/Web/Tutorials), but least you have an idea of the different technologies and how they relates to each others.
+In this tutorial you have created simple website using HTML, CSS and JavaScript. In this series, we won't go much further concerning HTML and CSS as we will mainly use JavaScript and higher level abstractions to create the user interfaces. If you are interested, there is plenty of good resources on the Web to learn these technologies further, e.g. on [MDN](https://developer.mozilla.org/en-US/docs/Web/Tutorials), but least you now have a basic idea of the different technologies involved and how they relates to each others.
 
 Now that you an idea of the different technologies involved in the development of a Web page, let's dive into the subject of these series with an overview of the Web Audio API.
 

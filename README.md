@@ -34,8 +34,8 @@
 - [x] Develop a simple web page using HTML, CSS and JavaScript
     + [x] sharing the styles
     + [x] add some interaction
-    + [ ] shutdown the server
-    + [ ] going further with HTML and CSS
+    + [x] shutdown the server
+    + [x] going further with HTML and CSS
 
 ### Web Audio Basics
 
