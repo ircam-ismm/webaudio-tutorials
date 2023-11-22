@@ -40,11 +40,11 @@
 ### Web Audio Basics
 
 - [ ] General principles of the Web Audio API
-- [ ] Create an audio file playback engine 
-- [ ] Create an amplitude modulation synthesis engine
+- [ ] Audio file playback
+- [ ] Amplitude modulation synthesis 
     + [ ] Using a GUI libraries
 - [ ] Encapsulation and creation of reusable components
-- [ ] Create of a reusable feedback delay 
+- [ ] Reusable feedback delay 
 
 ### Scheduling
 

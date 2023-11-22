@@ -31,11 +31,17 @@ export default defineConfig({
       {
         text: 'First steps',
         items: [
-          { text: 'Generalities', link: '/first-steps/generalities.md' },
+          { text: 'Generalities about the Web', link: '/first-steps/generalities.md' },
           { text: 'Setting up an environment', link: '/first-steps/setting-up-environment.md' },
           { text: 'Create a simple website', link: '/first-steps/simple-website.md' },
         ],
       },
+      {
+        text: 'Basics',
+        items: [
+          { text: 'Web Audio API - Introduction', link: '/basics/web-audio-api-introduction.md' }
+        ],
+      }
       // {
       //   text: 'Examples',
       //   items: [
