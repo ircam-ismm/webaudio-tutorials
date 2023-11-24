@@ -39,7 +39,8 @@ export default defineConfig({
       {
         text: 'Basics',
         items: [
-          { text: 'Web Audio API - Introduction', link: '/basics/web-audio-api-introduction.md' }
+          { text: 'Web Audio API - Introduction', link: '/basics/web-audio-api-introduction.md' },
+          { text: 'Oscillators and audio files', link: '/basics/oscillators-and-audio-files.md' },
         ],
       }
       // {

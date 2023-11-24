@@ -39,11 +39,12 @@
 
 ### Web Audio Basics
 
-- [ ] General principles of the Web Audio API
-- [ ] Audio file playback
+- [x] Web Audio API - Introduction
+- [ ] Oscillators and Audio files
 - [ ] Amplitude modulation synthesis 
-    + [ ] Using a GUI libraries
-- [ ] Encapsulation and creation of reusable components
+    + [ ] @ircam/create
+    + [ ] Using a GUI library
+- [ ] Encapsulation and classes
 - [ ] Reusable feedback delay 
 
 ### Scheduling

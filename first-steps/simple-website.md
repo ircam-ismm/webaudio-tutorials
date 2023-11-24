@@ -440,21 +440,3 @@ That's it!
 In this tutorial you have created simple website using HTML, CSS and JavaScript. In this series, we won't go much further concerning HTML and CSS as we will mainly use JavaScript and higher level abstractions to create the user interfaces. If you are interested, there is plenty of good resources on the Web to learn these technologies further, e.g. on [MDN](https://developer.mozilla.org/en-US/docs/Web/Tutorials), but least you now have a basic idea of the different technologies involved and how they relates to each others.
 
 Now that you an idea of the different technologies involved in the development of a Web page, let's dive into the subject of these series with an overview of the Web Audio API.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

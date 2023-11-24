@@ -2,6 +2,6 @@
 layout: doc
 ---
 
-<div class="VPHome">
-    <h1>Web Audio Tutorials</h1>
-</div>
+# Web Audio Tutorials
+
+This site aims at gathering a set of tutorial and receipes about the Web Audio API.
