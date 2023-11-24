@@ -18,7 +18,7 @@ The Web Audio API specification, which you can read online if you are adventurou
 The API (for _Application Programming Interface_), has been conceived to support a wide range of use cases, such as videos games or interactive applications, enables for example, to create modular and dynamic audio graphs, to create automations on parameters, to process an audio stream such as the one from the microphone, or for more advanced use cases, to create new audio nodes running audio processing defined by the user.
 
 ![audio-graph](../assets/web-audio-api-introduction/audio-graph.png)
-*Illustration from the [Web Audio API specification]((https://www.w3.org/TR/webaudio/))*
+*Illustration from the Web Audio API specification*
 
 As examplified above, The API defines a model of modular routing that is rather similar to the ones defined in popular computer music environments such as Max or PureData. More precisely, inside a given `AudioContext`, some `AudioNode`s can be created and connected together to form a graph whose output is the `AudioDestination` (or more simply your speakers)
 
