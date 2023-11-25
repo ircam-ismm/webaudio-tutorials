@@ -41,6 +41,7 @@ export default defineConfig({
         items: [
           { text: 'Web Audio API - Introduction', link: '/basics/web-audio-api-introduction.md' },
           { text: 'Oscillators and audio files', link: '/basics/oscillators-and-audio-files.md' },
+          { text: 'Ampliture modulation', link: '/basics/amplitude-modulation-synthesis.md' },
         ],
       }
       // {

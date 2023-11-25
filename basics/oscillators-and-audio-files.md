@@ -14,19 +14,19 @@ In this tutorial, we will learn how to use some basic building blocks of the Web
 
 Let's start with creating a new project, open a `Terminal` and write the following command to create the tutorial directory:
 
-```
+```sh
 mkdir -p ~/Desktop/webaudio-tutorials/02-oscillators-and-audio-files
 ```
 
 Press `Enter` to execute the command, the go to the directory:
 
-```
+```sh
 cd ~/Desktop/webaudio-tutorials/02-oscillators-and-audio-files
 ```
 
 And start the server
 
-```
+```sh
 serve
 ```
 
@@ -430,27 +430,27 @@ Tada! You now have a very powerful button that plays back your sound file each t
 In all this tutorial, we have used the following syntax to register listener for our buttons:
 
 ```js
-function onclick() { console.log('clicked'); }
+function onClick() { console.log('clicked'); }
 myButton.addEventListener('click', onClick);
 ```
 
 It is important to understand that, in the second line, we actually pass the reference of the function as an argument of the `addEventListener` method. 
 The function **is not executed** it at this point! This is the browser that will execute the function when the user actually clicks on the button. 
 
-::: note
+::: info
 Such functions are generally called _callbacks_ because we give them to the browser (or to another piece of code), which is in charge of executing it (or calling it back) when "something" happen at some unknown point in the future.
 :::
 
 Another way of writing this, would have been therefore to declare the function at the same time we pass it as an argument:
 
 ```js
-myButton.addEventListener('click', function onclick() { console.log('clicked'); });
+myButton.addEventListener('click', function onClick() { console.log('clicked'); });
 ```
 
-But, now our line of code starts to be a bit long and hard to read, so can just insert new lines to make it a bit more pretty:
+But, now our line of code starts to be a bit long and hard to read, so can just insert line breaks to make it a bit more pretty:
 
 ```js
-myButton.addEventListener('click', function onclick() { 
+myButton.addEventListener('click', function onClick() { 
     console.log('clicked'); 
 });
 ```

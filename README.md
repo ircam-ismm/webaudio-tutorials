@@ -40,9 +40,9 @@
 ### Web Audio Basics
 
 - [x] Web Audio API - Introduction
-- [ ] Oscillators and Audio files
+- [x] Oscillators and Audio files
 - [ ] Amplitude modulation synthesis 
-    + [ ] @ircam/create
+    + [x] @ircam/create
     + [ ] Using a GUI library
 - [ ] Encapsulation and classes
 - [ ] Reusable feedback delay 
@@ -71,4 +71,7 @@
 ## Todos
 
 - [ ] Search bar
-- [ ] Share common styles and config into own package
+- [ ] Generate pdf from markdown: https://github.com/foliojs/pdfkit/blob/master/docs/generate.js
+
+- [ ] Doc websites: share common styles and config into own package
+    + @ircam/vitepress-templates
