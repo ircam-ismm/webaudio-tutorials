@@ -45,7 +45,7 @@
 - [x] Amplitude modulation synthesis 
     + [x] @ircam/create
     + [x] Using a GUI library
-- [ ] Encapsulation and classes
+- [x] Encapsulating logic
 - [ ] Reusable feedback delay 
 
 ### Scheduling

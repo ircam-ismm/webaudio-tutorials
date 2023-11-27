@@ -1,15 +1,10 @@
-# Web Audio API - Introduction
-
-<!-- In this article, we will just present some general principles of the Web Audio API. -->
-<!-- ## Introduction -->
+# Web Audio API - An Introduction
 
 The Web Audio API, which defines a high-level JavaScript _Application Programming Interface_ (API) for processing and synthesizing audio, is specification which has reach the status of _Candidate Recommendation_ for the W3C:
 
 > A Candidate Recommendation is a document that  W3C believes has been widely reviewed and satisfies the Working Group’s technical requirements. W3C publishes a Candidate Recommendation to gather implementation experience.
 
 This means that while not completely accepted as Web standard, the Web Audio API has already gone quite far into the long process of W3C standardization. In practical terms, the Web Audio API can be considered stable and [can be used in most recent Web browsers](https://caniuse.com/audio-api), such as Google Chrome, Firefox or Safari.
-
-<!-- ## General architecture -->
 
 The Web Audio API specification, which you can read online if you are adventurous [https://www.w3.org/TR/webaudio/](https://www.w3.org/TR/webaudio/), defines the Web Audio API as follow:
 
