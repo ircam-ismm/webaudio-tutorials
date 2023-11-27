@@ -30,6 +30,7 @@
     + [x] programming languages
     + [x] mention W3C -> info block
     + [x] rename to "Generalities"
+    + [ ] move iframes into `static-assets` directory
 - [x] Setting up a development environment 
 - [x] Develop a simple web page using HTML, CSS and JavaScript
     + [x] sharing the styles
@@ -41,9 +42,9 @@
 
 - [x] Web Audio API - Introduction
 - [x] Oscillators and Audio files
-- [ ] Amplitude modulation synthesis 
+- [x] Amplitude modulation synthesis 
     + [x] @ircam/create
-    + [ ] Using a GUI library
+    + [x] Using a GUI library
 - [ ] Encapsulation and classes
 - [ ] Reusable feedback delay 
 
@@ -58,6 +59,7 @@
 ### Receipes
 
 - [ ] Mini-catart
+- [ ] AudioBus and setTargetAtTime
 - [ ] Using a package manager and a bundler
 - [ ] Going embedded with the node-web-audio-api
 - [ ] Extending native AudioNodes
