@@ -59,7 +59,7 @@ The _**HTML**_ (for _Hypertext Markup Language_) is a markup language that allow
 
 which will be interpreted by the browser as the following:
 
-<iframe style="height: 130px;" :src="withBase('/generalities/html-example.htm')"></iframe>
+<iframe style="height: 130px;" :src="withBase('/static-assets/generalities-html-example.htm')"></iframe>
 
 The _**CSS**_ (for _Cascading Style Sheets_) is a language that allows to describe how the _HTML_ document is presented to the user. Or to make it short, to make it a bit more nice and pretty than what you have seen above.
 
@@ -82,7 +82,7 @@ a {
 
 The page, which is defined by the exact same HTML structure and content, will now appear as:
 
-<iframe style="height: 110px;" :src="withBase('/generalities/css-example.htm')"></iframe>
+<iframe style="height: 110px;" :src="withBase('/static-assets/generalities-css-example.htm')"></iframe>
 
 Finally, _**JavaScript**_ provide a full featured programming language which allows to add interactivity to your Web page. For example, it allows you react to some user events (e.g. a "click" on a button), to get some information from a remote Web server without refreshing the page, or for what interests us in these tutorials, to make audio synthesis using the [Web Audi API](https://www.w3.org/TR/webaudio/). 
 
@@ -111,7 +111,7 @@ button.addEventListener('click', async () => {
 </script>
 ```
 
-<iframe style="height: 40px;" :src="withBase('/generalities/js-example.htm')"></iframe>
+<iframe style="height: 40px;" :src="withBase('/static-assets/generalities-js-example.htm')"></iframe>
 
 ::: tip
 To stop the sound, just reload the Web page with `Cmd+R` on Mac or `Ctrl + R` on windows. 
