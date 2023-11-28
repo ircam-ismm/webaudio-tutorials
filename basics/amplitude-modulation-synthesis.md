@@ -273,7 +273,7 @@ depth.connect(envelop.gain); // adds our scaled signal with audio param signal /
 
 You reload the page now, you should ear a simple tremolo at 2Hz applied to the carrier frequency at 200Hz. 
 
-<audio controls :src="withBase('/static-assets/am-tremolo-2hz.m4a')"></audio>
+<audio controls loop :src="withBase('/static-assets/am-tremolo-2hz.m4a')"></audio>
 
 Congrats, you have written your first little synthesizer!
 
