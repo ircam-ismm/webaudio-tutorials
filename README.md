@@ -45,6 +45,7 @@
 - [x] Amplitude modulation synthesis 
     + [x] @ircam/create
     + [x] Using a GUI library
+    + [ ] redo recording
 - [x] Encapsulating logic
 - [ ] Reusable feedback delay 
 
@@ -72,6 +73,7 @@
 
 ## Todos
 
+- [ ] insert iframe of the result at the beginning and end of each tutorial
 - [ ] Search bar
 - [ ] Generate pdf from markdown: https://github.com/foliojs/pdfkit/blob/master/docs/generate.js
 
