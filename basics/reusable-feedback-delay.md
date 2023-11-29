@@ -199,7 +199,7 @@ class FeedbackDelay {
 
 Ok, now that our `FeedbackDelay` expose an `input` and an `output` attribute, which are both `AudioNode`, the code should not complain anymore. Then, if you reload your page, you should see that all errors disappeared. 
 
-But all sound too... because inside our `FeedbackDelay` class the `input` and `output` are not connected together. Let's fix that with implementing our feedback delay for good.
+But all sound as well... This is because inside our `FeedbackDelay` class the `input` and `output` are not connected together. Let's fix that with implementing our feedback delay for good.
 
 ## Implement the internal audio graph
 

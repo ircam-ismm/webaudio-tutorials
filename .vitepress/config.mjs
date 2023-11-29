@@ -45,7 +45,13 @@ export default defineConfig({
           { text: 'Encapsulating logic', link: '/basics/encapsulating-logic.md' },
           { text: 'Reusable feedback delay', link: '/basics/reusable-feedback-delay.md' },
         ],
-      }
+      },
+      {
+        text: 'Scheduling',
+        items: [
+          { text: 'Timing and Scheduling', link: '/scheduling/timing-and-scheduling.md' },
+        ],
+      },
       // {
       //   text: 'Examples',
       //   items: [
