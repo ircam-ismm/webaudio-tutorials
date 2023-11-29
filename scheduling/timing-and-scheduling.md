@@ -71,7 +71,7 @@ However, such approach suffers one major limitation: we have to know every singl
 ## Principles of a lookahead scheduler
 
 ::: info
-The concepts presented in this section are mostly a digest af the article ["A Tale of two Clocks" by Chris Wilson](). We highly recommend you to read this article and come back to the tutorial afterwards.
+The concepts presented in this section are mostly a digest af the article ["A Tale of two Clocks" by Chris Wilson](https://web.dev/articles/audio-scheduling). We highly recommend you to read this article and come back to the tutorial afterwards.
 :::
 
 To workaround this limitation, one possible way is two periodically check if what have things to schedule in the near future (the "lookahead") until we check it again. As such, it becomes possible to react to external events such as a change of tempo:
