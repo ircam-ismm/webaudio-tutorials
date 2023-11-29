@@ -54,10 +54,10 @@
 
 ### Scheduling
 
-- [ ] Scheduling events: clocks and scheduling
-    + [ ] Lookahead scheduler principles
-    + [ ] Implement a simple scheduler
-- [ ] Create a granular synthesis engine
+- [x] Scheduling events: clocks and scheduling
+    + [x] Lookahead scheduler principles
+    + [x] Implement a simple scheduler
+- [ ] Create a granular synthesizer
 - [ ] Create a step sequencer
 
 ### Receipes
