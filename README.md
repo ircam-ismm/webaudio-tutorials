@@ -76,6 +76,9 @@
 
 ## MISC
 
+- [ ] favicon and navbar logo
+    `<link rel="icon" type="image/x-icon" href="./favicon.ico">`
+    https://github.com/vuejs/vitepress/issues/560
 - [ ] Search bar
 - [ ] Doc websites: share common styles and config into own package
     + @ircam/vitepress-templates

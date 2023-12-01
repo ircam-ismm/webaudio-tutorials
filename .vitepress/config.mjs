@@ -50,6 +50,7 @@ export default defineConfig({
         text: 'Scheduling',
         items: [
           { text: 'Timing and Scheduling', link: '/scheduling/timing-and-scheduling.md' },
+          { text: 'Granular Synthesis', link: '/scheduling/granular-synthesis.md' },
         ],
       },
       // {
