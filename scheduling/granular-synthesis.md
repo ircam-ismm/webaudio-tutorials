@@ -258,7 +258,7 @@ class GranularSynth {
 
 Congrats! Your granular synthesizer is now fully working
 
-## Going Further
+## Going further
 
 To improve the application, you could for example add some controls over:
 - The pitch of each grain, using the [`AudioBufferSourceNode.playbackRate`](https://developer.mozilla.org/docs/Web/API/AudioBufferSourceNode/playbackRate) rate param
