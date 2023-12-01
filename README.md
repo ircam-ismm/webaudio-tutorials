@@ -1,6 +1,10 @@
 ## General
 
 - [ ] insert iframe of the tutorial result at the beginning and end of each tutorial
+- [ ] favicon and navbar logo
+    `<link rel="icon" type="image/x-icon" href="./favicon.ico">`
+    https://github.com/vuejs/vitepress/issues/560
+- [ ] Search bar
 
 ## Home
 
@@ -77,12 +81,6 @@
 
 ## MISC
 
-- [ ] add result on top of each tutorial in iframe
-- [ ] favicon and navbar logo
-    `<link rel="icon" type="image/x-icon" href="./favicon.ico">`
-    https://github.com/vuejs/vitepress/issues/560
-- [ ] Search bar
 - [ ] Doc websites: share common styles and config into own package
     + @ircam/vitepress-templates
-    
 - [ ] Generate pdf from markdown: https://github.com/foliojs/pdfkit/blob/master/docs/generate.js
