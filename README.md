@@ -57,8 +57,9 @@
 - [x] Scheduling events: clocks and scheduling
     + [x] Lookahead scheduler principles
     + [x] Implement a simple scheduler
-- [ ] Create a granular synthesizer
-- [ ] Create a step sequencer
+- [x] Create a granular synthesizer
+    + [x] Download sample  
+- [x] Create a step sequencer
 
 ### Receipes
 
@@ -76,6 +77,7 @@
 
 ## MISC
 
+- [ ] add result on top of each tutorial in iframe
 - [ ] favicon and navbar logo
     `<link rel="icon" type="image/x-icon" href="./favicon.ico">`
     https://github.com/vuejs/vitepress/issues/560

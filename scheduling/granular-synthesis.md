@@ -1,3 +1,7 @@
+<script setup>
+import { withBase } from 'vitepress'
+</script>
+
 # Granular Synthesis
 
 In this tutorial, you will learn how to implement a granular synthesizer using the Web Audio API leveraging on the lookahead scheduling technique we seen in the previous tutorial.
@@ -44,6 +48,10 @@ Replace the default sample in `./assets/sample.wav` with another longer one, and
 const buffer = await loadAudioBuffer('./assets/sample.wav', audioContext.sampleRate); // [!code --]
 const buffer = await loadAudioBuffer('./assets/hendrix.wav', audioContext.sampleRate); // [!code ++]
 ```
+
+::: info
+The sample used in the tutorial can be downloaded <a :href="(withBase('/static-assets/granular-synthesis-samples.zip'))">here</a>
+:::
 
 ### Implement the audio engine
 

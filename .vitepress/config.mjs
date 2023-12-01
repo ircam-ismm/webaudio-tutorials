@@ -51,6 +51,7 @@ export default defineConfig({
         items: [
           { text: 'Timing and Scheduling', link: '/scheduling/timing-and-scheduling.md' },
           { text: 'Granular Synthesis', link: '/scheduling/granular-synthesis.md' },
+          { text: 'Step Sequencer', link: '/scheduling/step-sequencer.md' },
         ],
       },
       // {
