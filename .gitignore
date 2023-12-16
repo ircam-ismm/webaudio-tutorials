@@ -3,6 +3,7 @@ Thumbs.db
 
 node_modules
 build
+_resources
 
 .vitepress/dist
 .vitepress/cache
