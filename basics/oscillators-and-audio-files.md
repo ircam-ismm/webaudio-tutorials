@@ -18,7 +18,7 @@ Let's start with creating a new project, open a `Terminal` and write the followi
 mkdir -p ~/Desktop/webaudio-tutorials/02-oscillators-and-audio-files
 ```
 
-Press `Enter` to execute the command, the go to the directory:
+Press `Enter` to execute the command, then go to the directory:
 
 ```sh
 cd ~/Desktop/webaudio-tutorials/02-oscillators-and-audio-files
@@ -84,7 +84,7 @@ In this snippet, we create new instance of `AudioContext` that we store into a v
 
 By default, a new `AudioContext` is always created with a "suspended" state, which means that no audio will be produced even if asked gently. To "resume" the state, we will need to call a specific method, which much called when the user interact with the page. This restriction is primarily made to prevent Web browser to play some sound (e.g. for advertising...) each time you open a Web page.
 
-The let's first add a button in our HTML file, that we will use to active the context.
+Then let's first add a button in our HTML file, that we will use to active the context.
 
 ```html {4-6}
 <!-- index.html -->
@@ -185,12 +185,14 @@ Let's change a bit our `triggerOsc` function to modify the frequency of each of 
 ```js
 // create a new oscillator
 const osc = audioContext.createOscillator();
-// pick a random frequency between 100 and 1000 Hz
-const freq = 100 + Math.random() * 900;
-// apply this frequency to oscillator
-osc.frequency.value = freq;
+// pick a random frequency between 100 and 1000 Hz // [!code ++]
+const freq = 100 + Math.random() * 900; // [!code ++]
+// apply this frequency to oscillator // [!code ++]
+osc.frequency.value = freq; // [!code ++]
 // connect it to the audio output, i.e. the `DestinationNode`
 osc.connect(audioContext.destination);
+// start the oscillator as fast as we can
+osc.start();
 ```
 
 If you reload the page, resume the context and click on the button you will now ear the different oscillators piling up at different frequency. The sound will still get distorded at some point but at least you can ear the effect of triggering these oscillator.
@@ -215,7 +217,7 @@ env.gain.value = 0;
 osc.start();
 ```
 
-Then schedule we need to schedule automation, here we will for example make a linear ramp from 0 to 1 in 10ms and then go from 1 to 0 in ~1sec.
+Then we need to schedule automation, here we will for example make a linear ramp from 0 to 1 in 10ms and then go from 1 to 0 in ~1sec.
 
 ```js
 // create a gain node and set its gain value to 0
@@ -223,9 +225,9 @@ const env = audioContext.createGain();
 env.gain.value = 0;
 // pick the context current time in seconds
 const now = audioContext.currentTime;
-env.gain.setValueAtTime(0, nows); // create an automation point
+env.gain.setValueAtTime(0, now); // create an automation point
 env.gain.linearRampToValueAtTime(1, now + 0.01) // ramp to 1 in 10ms
-env.gain.linearRampToValueAtTime(0, now + 1) // ramp to 1 in 10ms
+env.gain.linearRampToValueAtTime(0, now + 1) // ramp to 0 in 1000ms
 ```
 
 Then let's modify how the graph is created to pipe the oscillator into the envelop before sending it to destination:
@@ -240,9 +242,9 @@ env.gain.value = 0;
 const now = audioContext.currentTime;
 env.gain.setValueAtTime(0, now); // create an automation point
 env.gain.linearRampToValueAtTime(1, now + 0.01) // ramp to 1 in 10ms
-env.gain.linearRampToValueAtTime(0, now + 1) // ramp to 1 in 10ms
-// create the graph chain: osc -> env -> output
-osc.connect(env).connect(audioContext.destination);
+env.gain.linearRampToValueAtTime(0, now + 1) // ramp to 0 in 10000ms
+// create the graph chain: osc -> env -> output // [!code ++]
+osc.connect(env).connect(audioContext.destination); // [!code ++]
 ```
 
 If you reload the page and trigger some oscillator you should ear the ramp applied to each triggered oscillators. 
@@ -263,8 +265,8 @@ Finally, let's fix the clipping issue that occur when we trigger mutliple oscill
 ```js
 env.gain.linearRampToValueAtTime(1, now + 0.01); // [!code --]
 env.gain.linearRampToValueAtTime(0, now + 1); // [!code --]  
-env.gain.linearRampToValueAtTime(0.2, now + 0.01); // [!code ++]
-env.gain.exponentialRampToValueAtTime(0.0001, now + 1); // [!code ++]  
+env.gain.linearRampToValueAtTime(0.2, now + 0.01); // ramp to 0.2 in 10 ms // [!code ++]
+env.gain.exponentialRampToValueAtTime(0.0001, now + 1); // ramp to 0.0001 in 1000ms // [!code ++]  
 ```
 
 ### Wrap up
@@ -318,7 +320,7 @@ function triggerOsc() {
   const now = audioContext.currentTime;
   env.gain.value = 0;
   env.gain.setValueAtTime(0, now); 
-  env.gain.linearRampToValueAtTime(0.1, now + 0.01); 
+  env.gain.linearRampToValueAtTime(0.2, now + 0.01); 
   env.gain.exponentialRampToValueAtTime(0.0001, now + 1);
   osc.connect(env).connect(audioContext.destination);
 
@@ -368,7 +370,7 @@ async function loadAudioBuffer(pathToFile) {
     return audioBuffer;
 }
 // load the file inside our project directory
-const buffer = loadAudioBuffer('./sample.wav');
+const buffer = await loadAudioBuffer('./sample.wav');
 console.log(buffer);
 ```
 
@@ -377,18 +379,18 @@ If you reload the page, you should all the informations about the file you loade
 ![audio-buffer](../assets/oscillators-and-audio-files/audio-buffer.png)
 
 ::: info
-Note the the buffer is properly loaded even if the `AudioContext` has not been resumed yet. This is an pretty handy feature as it allow us to load our audio file(s) when the page is loading, so everything is ready when the user starts to interact with the page.
+Note the buffer is properly loaded even if the `AudioContext` has not been resumed yet. This is a pretty handy feature as it allow us to load our audio file(s) when the page is loading, so everything is ready when the user starts to interact with the page.
 ::: 
 
 ### Playback the buffer
 
 Now that we have our `AudioBuffer` ready, let's had a button to trigger its playback into the HTML file:
 
-```html
+```htmlx
 <!-- index.html -->
 <button id="trigger-osc">
 Trigger Oscillator
-</button>
+</button> 
 <button id="trigger-sound-file">
 Trigger Sound File
 </button>
@@ -435,7 +437,7 @@ myButton.addEventListener('click', onClick);
 ```
 
 It is important to understand that, in the second line, we actually pass the reference of the function as an argument of the `addEventListener` method. 
-The function **is not executed** it at this point! This is the browser that will execute the function when the user actually clicks on the button. 
+The function **is not executed** at this point! This is the browser that will execute the function when the user actually clicks on the button. 
 
 ::: info
 Such functions are generally called _callbacks_ because we give them to the browser (or to another piece of code), which is in charge of executing it (or calling it back) when "something" happen at some unknown point in the future.
@@ -475,7 +477,7 @@ In the reset of these tutorials, we will mostly use the two last syntax which ar
 
 ### Audio sources behaviour
 
-An important you may have noticed, is that created a new instance of `OscillatorNode` and `AudioBufferSourceNode` each time you clicked on the button. This is something that is often a bit confusing at first for people which are used to other music programming environment. Indeed, in the Web Audio API paradigm, sources are **not reusable**, once they have been stopped (or stopped themselves in the case of the `AudioBufferSourceNode`), they cannot be restarted again.
+An important point you may have noticed, is that you created a new instance of `OscillatorNode` and `AudioBufferSourceNode` each time you clicked on the button. This is something that is often a bit confusing at first for people which are used to other music programming environment. Indeed, in the Web Audio API paradigm, sources are **not reusable**, once they have been stopped (or stopped themselves in the case of the `AudioBufferSourceNode`), they cannot be restarted again.
 
 In future tuturials, we will see how this feature (that may appear weird) can end up to be very practicle and powerful.
 
@@ -483,7 +485,7 @@ In future tuturials, we will see how this feature (that may appear weird) can en
 
 In this tutorial, you have learned how to use some basic building blocks of the Web Audio API. 
 
-Along the way you have learned many different things such as how to resume the audio context with a user interaction, how to load and decode a sound file from the network, how to create automations on audio parameters, and well as important concepts regarding the audio sources in the Web Audio API.
+Along the way you have learned many different things such as how to resume the audio context with a user interaction, how to load and decode a sound file from the network, how to create automations on audio parameters, as well as important concepts regarding the audio sources in the Web Audio API.
 
 In the next tutorial, we will go a bit further with the creation of an AM synthesizer.
 

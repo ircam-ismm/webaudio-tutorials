@@ -133,7 +133,9 @@ const delay = new FeedbackDelay(audioContext, {}); // [!code ++]
 ```js
 // ./lib/FeedbackDelay.js
 class FeedbackDelay {
-  constructor(audioContext, options = {}) {
+  constructor() //[!code --]
+  constructor(audioContext, options = {}) //[!code ++]
+  { 
     console.log('FeedbackDelay created!'); // [!code --]
     // store the audioContext instance inside the FeedbackDelay instance // [!code ++]
     this.audioContext = audioContext; // [!code ++]
@@ -145,7 +147,7 @@ class FeedbackDelay {
 
 ## Connecting to the audio graph
 
-So far so good, we have our `FeedbackDelay` instance created, by it is not yet inserted into our audio graph. Indeed, for now our `AudioBufferSourceNode` is directly connected to the `destination`, while we would like connect it to our delay, which itself should be connected to the destination, such as:
+So far so good, we have our `FeedbackDelay` instance created, but it is not yet inserted into our audio graph. Indeed, for now our `AudioBufferSourceNode` is directly connected to the `destination`, while we would like to connect it to our delay, which itself should be connected to the destination, such as:
 
 ![graph-outer](../assets/feedback-delay/graph-outer.png)
 
@@ -191,8 +193,8 @@ class FeedbackDelay {
     // prepare logic for handling configuration options
     this.options = Object.assign({}, options);
 
-    this.input = this.audioContext.createGain(); 
-    this.output = this.audioContext.createGain();
+    this.input = this.audioContext.createGain(); // [!code ++]
+    this.output = this.audioContext.createGain(); // [!code ++]
   }
 }
 ```

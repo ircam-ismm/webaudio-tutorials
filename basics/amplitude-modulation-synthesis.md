@@ -50,7 +50,7 @@ If you open the directory that have been created by the tool in your text editor
 └── styles.css          # The CSS file
 ```
 
-The project is very close from we have done manually so far, except that it already contains the code required to resume the audio context, to load sound files, as well as some default CSS to make it nicer to look. 
+The project is very close from what we have done manually so far, except that it already contains the code required to resume the audio context, to load sound files, as well as some default CSS to make it nicer to look. 
 
 Before digging a bit more into the code, let's just follow the "next steps" instructions given by the tool to make sure everything works as expected:
 
@@ -128,13 +128,13 @@ export default async function loadAudioBuffer(pathname, sampleRate = 48000) {
 
 Except some particularities that have removed from the snippet above, you can see that this file "exports" a function called `loadAudioBuffer` which contains more or less the same code you wrote in the last tutorial to load an audio file from the network and to decode it to an [`AudioBuffer`](https://developer.mozilla.org/docs/Web/API/AudioBuffer). 
 
-These `import` and `export` statements are the tools JavaScript gives us to organize our projets. Moreover, they also allows us to load libraries directly from the Web, cf. the first two `imprt` and thus share functionnalities between several projects. For example, the two libraries that are imported in the first two lines will help us creating the user interfaces more simply.
+These `import` and `export` statements are the tools JavaScript gives us to organize our projets. Moreover, they also allows us to load libraries directly from the Web, cf. the first two `import` and thus share functionnalities between several projects. For example, the two libraries that are imported in the first two lines will help us creating the user interfaces more simply.
 
 ## Create the audio graph
 
-Now that eveything is ready and that you have an understand of the structure of the projet, let's write our AM synthesis engine. The main principle of AM synthesis is to modulate the amplitude (i.e. the gain) of a signal, called the "carrier", with another signal "modulating" signal
+Now that eveything is ready and that you have an understanding of the structure of the project, let's write our AM synthesis engine. The main principle of AM synthesis is to modulate the amplitude (i.e. the gain) of a signal, called the "carrier", with another signal "modulating" signal
 
-::: note
+::: info
 We won't go into the details of how amplitude modulation works here, so if you are not familiar with how AM synthesis works, you can find a number of resources online such as on [Wikipedia](https://en.wikipedia.org/wiki/Amplitude_modulation)
 ::: 
 
@@ -183,7 +183,7 @@ render(html`
 
 Then let's first define some constant for our synthsizer:
 
-```js {4-5}
+```js {4-6}
 const audioContext = new AudioContext();
 await resumeAudioContext(audioContext);
 
@@ -217,7 +217,7 @@ Let's now implement the modulating branch of our synthesizer. What we want to ob
 
 ![modulating-amp](../assets/amplitude-modulation/modulating-amp.png)
 
-To achieve this using only [`OscillatorNode`](https://developer.mozilla.org/docs/Web/API/OscillatorNode) (which produces a signal between `-1` and `1`) and a [`GainNode`](https://developer.mozilla.org/docs/Web/API/GainNode) (which basically apply a multiplication on an incoming signal), we will two two steps:
+To achieve this using only [`OscillatorNode`](https://developer.mozilla.org/docs/Web/API/OscillatorNode) (which produces a signal between `-1` and `1`) and a [`GainNode`](https://developer.mozilla.org/docs/Web/API/GainNode) (which basically apply a multiplication on an incoming signal), we will need two steps:
 
 - Apply a gain of 0.5 (i.e. `amDepth / 2`) on an oscillator, producing a sin comprised between `-0.5` and `0.5`
 - Then add a constant value of `0.5` (i.e. `1 - amDepth / 2`) to this scaled signal
@@ -243,7 +243,7 @@ modulator.start();
 
 The second step, to add an offset to the scaled signal, requires us to use a interesting feature of [`AudioParam`](https://developer.mozilla.org/docs/Web/API/AudioParam)s. Indeed, the Web Audo API allows us to directly modulate an [`AudioParam`](https://developer.mozilla.org/docs/Web/API/AudioParam), for example the `gain` of our `envelop` node, with another signal. When connecting a node to a audio param, the signal of the node is "added" to the signal intrisically produced by the audio param.
 
-In other words, if we the the `gain` of our `envelop` to 0.5, the gain `AudioParam` produces a constant signal at `0.5`, which is used to multiply the input signal of the `GainNode`. But if we modulate our gain `AudioParam`, and therefore its constant signal a `0.5` with the scaled signal we just created with the `modulator` and `depth` node. The constant signal of the gain `AudioParam` and our scaled signal will just be added together, producing a sine wave comprised between `0` and `1`.
+In other words, if we set the `gain` of our `envelop` to 0.5, the gain `AudioParam` produces a constant signal at `0.5`, which is used to multiply the input signal of the `GainNode`. But if we modulate our gain `AudioParam`, and therefore its constant signal a `0.5` with the scaled signal we just created with the `modulator` and `depth` node. The constant signal of the gain `AudioParam` and our scaled signal will just be added together, producing a sine wave comprised between `0` and `1`.
 
 In the code, this just means:
 
@@ -259,7 +259,7 @@ envelop.gain.value = 1 - amDepth / 2; // set to the offset we want (i.e. 0.5) //
 carrier.connect(envelop)
 envelop.connect(audioContext.destination);
 
-// modullating branch
+// modulating branch
 const modulator = audioContext.createOscillator();
 modulator.frequency.value = amFrequency;
 
@@ -361,7 +361,7 @@ Now things start to get more interesting, as you can already explore the large n
 
 ## Going further
 
-As an exercise, we let you add the last control over the AM depth. This last control is a bit more complex as it will have to update both `envelop.gain` and `depth.gain` so that the sum of the two signal always has an max value of one (...all the necessary informations are present in the tutorial to do it properly).
+As an exercise, we let you add the last control over the AM depth. This last control is a bit more complex as it will have to update both `envelop.gain` and `depth.gain` so that the sum of the two signal always has a max value of one (...all the necessary informations are present in the tutorial to do it properly).
 
 Another interesting execise could be to implement a Frequency Modulation synthesizer, which rely on the same concepts as the one developed in this tutorial.
 
