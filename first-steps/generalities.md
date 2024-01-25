@@ -84,7 +84,7 @@ The page, which is defined by the exact same HTML structure and content, will no
 
 <iframe style="height: 110px;" :src="withBase('/static-assets/generalities-css-example.html')"></iframe>
 
-Finally, _**JavaScript**_ provide a full featured programming language which allows to add interactivity to your Web page. For example, it allows you react to some user events (e.g. a "click" on a button), to get some information from a remote Web server without refreshing the page, or for what interests us in these tutorials, to make audio synthesis using the [Web Audi API](https://www.w3.org/TR/webaudio/). 
+Finally, _**JavaScript**_ provide a full featured programming language which allows to add interactivity to your Web page. For example, it allows you react to some user events (e.g. a "click" on a button), to get some information from a remote Web server without refreshing the page, or for what interests us in these tutorials, to make audio synthesis using the [Web Audio API](https://www.w3.org/TR/webaudio/). 
 
 Here is very simple example showing JavaScript allows you to react to a user interaction to make some sound:
 
