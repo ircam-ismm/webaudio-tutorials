@@ -42,7 +42,7 @@ Additionally, all automations methods of `AudioParams` can be scheduled in a sim
 ```js
 const envelop = audioContext.createGain();
 envelop.gain.value = 0; // set the gain default value to 0
-// create a envelop that will start in 1 second and end in 3 seconds
+// create an envelop that will start in 1 second and end in 3 seconds
 const now = audioContext.currentTime;
  // create at start automation point
 envelop.setValueAtTime(0, now + 1);

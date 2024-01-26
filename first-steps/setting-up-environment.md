@@ -44,7 +44,7 @@ npm -v
 Press "Enter" to execute the command and you should see:
 
 ```sh
-v12.16.1
+10.1.0
 ```
 
 ![node-check](../assets/setting-up-environment/node-check.png)

@@ -3,7 +3,7 @@
 In this first hands-on tutorial, we will develop a simple website composed of two pages. This tutorial does not yet concern the Web Audio API, but aims at giving you some practical familiarity with the different concepts and tools we seen so far.
 
 ::: info
-In these series, the example commands will be given as if all projects ara created in a `webaudio-tutorials` directory, itself located on your `Desktop`. If you want to put these files elsewhere feel free to do so, you will just need to adapt the paths in the commands accordingly.
+In these series, the example commands will be given as if all projects are created in a `webaudio-tutorials` directory, itself located on your `Desktop`. If you want to put these files elsewhere feel free to do so, you will just need to adapt the paths in the commands accordingly.
 :::
 
 ## Setting things up
@@ -70,7 +70,7 @@ Once done let's create a new file called `index.html`:
 ![vscode-new-file-2](../assets/simple-website/vscode-new-file-2.png) 
 
 ::: tip
-The `index.html` name name is important as this is the file that all Web servers will serve by default (i.e. when no specific file is requested). Make sure to always have an `index.html` in your directory.
+The `index.html` name is important as this is the file that all Web servers will serve by default (i.e. when no specific file is requested). Make sure to always have an `index.html` in your directory.
 :::
 
 Once done, let's write the basic structure of an `HTML` document in our `index.html`:
@@ -91,11 +91,11 @@ You can already notice that all HTML tags come with an opening and a closing tag
 - `<body>` is the opening tag
 - `</body>` is the closing tag
 
-Also tags can be declared inside a another tags, here the `<head>` and `<body>` tags are inside the `<html>` tag. The HTML structure is always hierarchical, a tag opened inside another tag should aloways be closed within it, e.g.:
+Also tags can be declared inside another tag, here the `<head>` and `<body>` tags are inside the `<html>` tag. The HTML structure is always hierarchical, a tag opened inside another tag should aloways be closed within it, e.g.:
 
 ```html
 // This is valid
-<div><p>my text</p></div>
+<div><p>my text</p></div>x
 // This is invalid
 <div><p>my text</div></p>
 ```
@@ -399,7 +399,7 @@ const colors = ['steelblue', 'pink', 'yellow', 'purple', 'green'];
 
 Then, let's write some logic to change the color of the square when you click on it:
 
-```js {6-16}
+```js {6-21}
 // get a reference to div#my-square define in the HTML
 const mySquare = document.querySelector('#my-square');
 // create a list of color
