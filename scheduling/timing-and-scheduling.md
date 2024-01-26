@@ -9,7 +9,7 @@ In this tutorial we will focus on one of the most important aspects of any audio
 ### Related documentation
 
 - [`AudioContext.currentTime`](https://developer.mozilla.org/docs/Web/API/BaseAudioContext/currentTime)
-- [`A tale of two clocks`](https://web.dev/articles/audio-scheduling)
+- [`A tale of two clocks - C. Wilson`](https://web.dev/articles/audio-scheduling)
 
 ## Clocks and times
 
