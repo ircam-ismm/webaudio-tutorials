@@ -15,7 +15,7 @@ In this tutorial, you will learn how to implement a granular synthesizer using t
 
 ## General principles
 
-Granular synthesis is sound synthesis technique that consists in cutting a audio files in small pieces of sound of around 5 to 200ms called **_grains_**. These grains are then played back and layered to reconstruct a new sound. Each grain can also be manipulated independetly by modifying for example their pitch, volume, etc.
+Granular synthesis is sound synthesis technique that consists in cutting a audio files in small pieces of sound of around 5 to 200 ms called **_grains_**. These grains are then played back and layered to reconstruct a new sound. Each grain can also be manipulated independently by modifying for example their pitch, volume, etc.
 
 ![granular-synthesis](../assets/granular-synthesis/granular-synthesis.png)
 
@@ -41,7 +41,7 @@ import { Scheduler } from 'https://unpkg.com/@ircam/sc-scheduling@0.1.6';
 import 'https://unpkg.com/@ircam/sc-components@latest';
 ```
 
-Replace the default sample in `./assets/sample.wav` with another longer one, and evetually modify the `loadAudioBuffer` first argument to match you file name:
+Replace the default sample in `./assets/sample.wav` with another longer one, and eventually modify the `loadAudioBuffer` first argument to match you file name:
 
 ```js 
 // ./main.js

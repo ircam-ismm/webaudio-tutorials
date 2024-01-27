@@ -33,7 +33,7 @@ Another important set of concepts to understand when working with Web technologi
 
 A _**server**_ is a piece of software (or hardware) that responds to requests to serve specific services to its clients. There are many kind of servers, such as Web servers, Domain Name Servers (DNS), or Mail servers, that everyone uses everyday when using Internet.
 
-A _**client**_ is a program that connects to a server to access its service. For example, a **_Web browser_**, such as Firefox or Google Chrome, is a client program that connects to Web servers to access to Web informations and applications.
+A _**client**_ is a program that connects to a server to access its service. For example, a **_Web browser_**, such as Firefox or Google Chrome, is a client program that connects to Web servers to access to Web information and applications.
 
 ![web-technologies](../assets/generalities/web-technologies.png)
 
@@ -45,9 +45,9 @@ Our access to the Web is most often mediated by Web browsers, which are responsi
 2. Downloading the files associated to the URLs.
 3. Interpreting these files to display the interface in the Web browser window.
 
-Aside static resources such as images, videos or soundfiles, the Web browser can also download files that contain code that it can interpret and execute. The programming languages that Web browsers are able to understand are threefold: _HTML_, _CSS_ and _JavaScript_.
+Aside static resources such as images, videos or sound files, the Web browser can also download files that contain code that it can interpret and execute. The programming languages that Web browsers are able to understand are threefold: _HTML_, _CSS_ and _JavaScript_.
 
-The _**HTML**_ (for _Hypertext Markup Language_) is a markup language that allows to describe the structure of a document and, importantly, to create links to other documents. As show in the example above, HTML provides a number of __tags__ that allows to describe the structure of your document. For example the `<h1>` tag descibes a 1rst level title (or "head"), the `<p>` tag describes a "paragraph" and the `<a>` tag describe a link (or "anchor") to another document:
+The _**HTML**_ (for _Hypertext Markup Language_) is a markup language that allows to describe the structure of a document and, importantly, to create links to other documents. As show in the example above, HTML provides a number of __tags__ that allows to describe the structure of your document. For example the `<h1>` tag describes a 1st level title (or "head"), the `<p>` tag describes a "paragraph" and the `<a>` tag describe a link (or "anchor") to another document:
 
 ```html
 <h1>This is a title</h1>
@@ -114,8 +114,8 @@ button.addEventListener('click', async () => {
 <iframe style="height: 40px;" :src="withBase('/static-assets/generalities-js-example.html')"></iframe>
 
 ::: tip
-To stop the sound, just reload the Web page with `Cmd+R` on Mac or `Ctrl + R` on windows. 
-This is a shortcut you will need a lot while developping Web pages!
+To stop the sound, just reload the Web page with `Cmd + R` on Mac or `Ctrl + R` on windows. 
+This is a shortcut you will need a lot while developing Web pages!
 :::
 
 ## Conclusion

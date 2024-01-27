@@ -26,12 +26,12 @@ npx serve
 Then open the `04-feedback-delay` directory in your text editor
 
 ::: info
-If you are wondering what's going on here, please check the more detailled step by step guide [here](./amplitude-modulation-synthesis.html#scaffold-the-project-automatically)
+If you are wondering what's going on here, please check the more detailed step by step guide [here](./amplitude-modulation-synthesis.html#scaffold-the-project-automatically)
 :::
 
 ## Trigger source at regular interval
 
-To test our feeback delay, let's create some source triggered at regular interval. Fortunately, the default project we just created already provides us an `AudioBuffer` which will be perfect to that end.
+To test our feedback delay, let's create some source triggered at regular interval. Fortunately, the default project we just created already provides us an `AudioBuffer` which will be perfect to that end.
 
 Then, let's just modify the code so that instead of having to manually trigger the source, it is triggered automatically at a a regular interval, for example every second.
 
@@ -199,7 +199,7 @@ class FeedbackDelay {
 }
 ```
 
-Ok, now that our `FeedbackDelay` expose an `input` and an `output` attribute, which are both `AudioNode`, the code should not complain anymore. Then, if you reload your page, you should see that all errors disappeared. 
+OK, now that our `FeedbackDelay` expose an `input` and an `output` attribute, which are both `AudioNode`, the code should not complain anymore. Then, if you reload your page, you should see that all errors disappeared. 
 
 But all sound as well... This is because inside our `FeedbackDelay` class the `input` and `output` are not connected together. Let's fix that with implementing our feedback delay for good.
 
@@ -259,7 +259,7 @@ Tada! I you reload now, you will be able to ear the feedback delay line in actio
 <audio controls loop :src="withBase('/static-assets/feedback-delay-full.m4a')" />
 
 ::: info
-You can hear that the overlap between the delay line and a new triggering of a source is not very clean, while it should be as we trigger a new sound every 1s and our `delayTime` is 0.2s. This is due to how we trigger our source. Indeed using `setInterval` as we did in first step is generally not a good idea in audio applications as this timer is not precise enough. In the next tutorials we will learn how to overcome such timing issues.
+You can hear that the overlap between the delay line and a new triggering of a source is not very clean, while it should be as we trigger a new sound every 1 sec and our `delayTime` is 0.2 sec. This is due to how we trigger our source. Indeed using `setInterval` as we did in first step is generally not a good idea in audio applications as this timer is not precise enough. In the next tutorials we will learn how to overcome such timing issues.
 :::
 
 ## User interface
@@ -294,7 +294,7 @@ class FeedbackDelay {
 ```
 
 ::: tip
-As you can see, this time we used the [`setTargetAtTime`](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam/setTargetAtTime) automation method of the `AudioParam` we want to update. Indeed, using this automation method, instead of `param.value = newValue` as we did until now, will protect us from discontinuities in the computation of the audio signal, preventings all sorts of click and pops.
+As you can see, this time we used the [`setTargetAtTime`](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam/setTargetAtTime) automation method of the `AudioParam` we want to update. Indeed, using this automation method, instead of `param.value = newValue` as we did until now, will protect us from discontinuities in the computation of the audio signal, preventing all sorts of click and pops.
 ::: 
 
 Now that everything is ready in our `FeedbackDelay` class, let's just create our user interface:
@@ -335,7 +335,7 @@ And done! If you reload your page, you should now see the interface and should b
 
 In this tutorial, you have created an abstract and reusable audio effect using JavaScript classes and modules. With such pattern, you can envision reusing this effect in another project very easily by just copy / paste the file and importing it, or even start creating your own library of audio effects!
 
-In the next tutorials, we will focus on how to fix the issue we have seen with innacuracy of the `setInterval` during this tutorial. Properly understand this timing issue and how to fix them is a key element to build more advanced synthesis methods and audio applications.
+In the next tutorials, we will focus on how to fix the issue we have seen with inaccuracy of the `setInterval` during this tutorial. Properly understand this timing issue and how to fix them is a key element to build more advanced synthesis methods and audio applications.
 
 
 

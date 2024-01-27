@@ -4,7 +4,7 @@ import { withBase } from 'vitepress'
 
 # Timing and Scheduling
 
-In this tutorial we will focus on one of the most important aspects of any audio application, that is how to organize events in time. More precisely, we will review the possibilities and possible limitations of functionnalities provided by the Web Audio API, and we will learn how these limitations can be mitigated by using a lookahead scheduler.
+In this tutorial we will focus on one of the most important aspects of any audio application, that is how to organize events in time. More precisely, we will review the possibilities and possible limitations of functionalities provided by the Web Audio API, and we will learn how these limitations can be mitigated by using a lookahead scheduler.
 
 ### Related documentation
 
@@ -23,7 +23,7 @@ const now = audioContext.currentTime;
 
 The `currentTime` attribute of the `AudioContext` gives us the time in seconds since the `AudioContext` has been resumed. This clock is computed as: `number of samples / sample rate` and is therefore accurate in terms of audio time. 
 
-However, it has one major limitation: it is re-computed once at each block of processing (i.e. at block rate or `k-rate`) or every 128 samples. For example, at 44.1kHz this means that it will advance by steps of `128 / 44100` seconds or ~2.9 milliseconds. In pracitcal terms this means that accessing `audioContext.currentTime` will always give you the time of the next block that will be computed.
+However, it has one major limitation: it is re-computed once at each block of processing (i.e. at block rate or `k-rate`) or every 128 samples. For example, at 44.1kHz this means that it will advance by steps of `128 / 44100` seconds or ~2.9 milliseconds. In practical terms this means that accessing `audioContext.currentTime` will always give you the time of the next block that will be computed.
 
 In terms of scheduling, we have already seen different methods that allow us to achieve such thing. For example we can `start` and `stop` sources at a given time:
 
@@ -37,7 +37,7 @@ src.start(now + 1);
 src.stop(now + 3);
 ```
 
-Additionally, all automations methods of `AudioParams` can be scheduled in a similar way:
+Additionally, all automation methods of `AudioParams` can be scheduled in a similar way:
 
 ```js
 const envelop = audioContext.createGain();
@@ -53,16 +53,16 @@ envelop.exponentialRampToValueAtTime(0.001, now + 3);
 ```
 
 ::: tip
-The `exponentialRampToValueAtTime` will throw an `Error` if it's target value is 0, because it is undefined mathematically. A practical way of finding a good value is to remember that this correspondance betwen linear and dB values:
+The `exponentialRampToValueAtTime` will throw an `Error` if it's target value is 0, because it is undefined mathematically. A practical way of finding a good value is to remember that this correspondence between linear and dB values:
 - 1 -> 0 dB
 - 0.1 -> -20dB
 - 0.01 -> -40dB
 - 0.001 -> -60dB
 - ...
-In the example above, this means that the target we set correspond to -80 dB which low enough so that tha corresponding source can be stop without earing any discontinuity.
+In the example above, this means that the target we set correspond to -80 dB which low enough so that the corresponding source can be stop without earring any discontinuity.
 :::
 
-All these methods are indeed very practical and powerfull, as they allow us to schedule events, for example a metronome, very precisely at the sub sample level:
+All these methods are indeed very practical and powerful, as they allow us to schedule events, for example a metronome, very precisely at the sub sample level:
 
 ![fixed-scheduling](../assets/timing-and-scheduling/fixed-scheduling.png)
 
@@ -71,7 +71,7 @@ However, such approach suffers one major limitation: we have to know every singl
 ## Principles of a lookahead scheduler
 
 ::: info
-The concepts presented in this section are mostly a digest af the article ["A Tale of two Clocks" by Chris Wilson](https://web.dev/articles/audio-scheduling). We highly recommend you to read this article and come back to the tutorial afterwards.
+The concepts presented in this section are mostly a digest of the article ["A Tale of two Clocks" by Chris Wilson](https://web.dev/articles/audio-scheduling). We highly recommend you to read this article and come back to the tutorial afterwards.
 :::
 
 To workaround this limitation, one possible way is two periodically check if what have things to schedule in the near future (the "lookahead") until we check it again. As such, it becomes possible to react to external events such as a change of tempo:
@@ -90,14 +90,14 @@ function tick() {
     events.forEach(event => scheduleAudioEvent(event));
 }
 
-// Execute the `tick` fnuction every 100ms
+// Execute the `tick` function every 100 ms
 // note that the `setInterval` period (2nd argument) is defined in ms
 setInterval(tick, lookahead * 1000); 
 ```
 
-With such approach, we can maintain and modify a list of event, in which our `findEventsBetween` function will look for events, and react quite rapidly to any change in the list as only the events registered in the next 100ms are already scheduled in terms of audio rendering.
+With such approach, we can maintain and modify a list of event, in which our `findEventsBetween` function will look for events, and react quite rapidly to any change in the list as only the events registered in the next 100 ms are already scheduled in terms of audio rendering.
 
-So theoretically, we are all good! However with such naive approach, we just fall into another trap. Indeed, as we have seen in the previous tutorial, the JavaScript timing functions: `setInterval` and `setTimeout` are not accurate enougth to precisely schedule audio events. And furthermore, as we have just seen, the `audioContext.currentTime` is not continous neither... Thus this is very possible to end up with a situation such as:
+So theoretically, we are all good! However with such naive approach, we just fall into another trap. Indeed, as we have seen in the previous tutorial, the JavaScript timing functions: `setInterval` and `setTimeout` are not accurate enough to precisely schedule audio events. And furthermore, as we have just seen, the `audioContext.currentTime` is not continuous neither... Thus this is very possible to end up with a situation such as:
 
 ![late-callback](../assets/timing-and-scheduling/late-callback.png)
 
@@ -107,7 +107,7 @@ To fix this issue we thus need to decouple the rate at which the callback is cal
 
 ![period-and-lookahead](../assets/timing-and-scheduling/period-and-lookahead.png)
 
-In our speudo implementation, that would mean:
+In our pseudo code implementation, that would mean:
 
 ```js
 // define `lookahead` and `period` such as period < lookahead
@@ -171,7 +171,7 @@ class PriorityQueue {
     const element = { event, time };
     // add the data structure into the queue
     this.queue.push(element);
-    // sort the queue so that the element with hightest priority (i.e. smallest time)
+    // sort the queue so that the element with highest priority (i.e. smallest time)
     // is at the beginning of the list
     this.queue.sort((a, b) => a.time <= b.time ? -1 : 1);
   }
@@ -214,7 +214,7 @@ class LookaheadScheduler {
     this.priorityQueue.add(event, time);
   }
 
-  // This function is executed by the `setInterval` every 50ms.
+  // This function is executed by the `setInterval` every 50 ms.
   // This is where all the magic happens
   tick() {
     // get the current time of the audio context and the current head of the queue
@@ -226,7 +226,7 @@ class LookaheadScheduler {
       // the head will be processed so we can remove it from the queue
       this.priorityQueue.deleteHead();
       // pick the time and event from the head
-      // the time of the event is not `now`, it is smoewhere between now and now + lookahead
+      // the time of the event is not `now`, it is somewhere between now and now + lookahead
       const time = head.time;
       const event = head.event;
 
@@ -265,7 +265,7 @@ function metro(currentTime) {
 
 // create a new LookaheadScheduler
 const scheduler = new LookaheadScheduler();
-// add the metronome to the schduler, starting now
+// add the metronome to the scheduler, starting now
 scheduler.add(metro, audioContext.currentTime);
 ```
 
@@ -277,12 +277,12 @@ Congrats! You have implemented a very simple yet working lookahead scheduler
 
 ### Going further
 
-Of course, this scheduler is very simple and misses a lot of functionnality, but you have a basis to build upon if you which. For example you could
+Of course, this scheduler is very simple and misses a lot of functionality, but you have a basis to build upon if you which. For example you could
 
-- Implement the logic to remove a scheduled event from the queue, e.g. to stop the metronome and more advanced synthesis engie)
+- Implement the logic to remove a scheduled event from the queue, e.g. to stop the metronome and more advanced synthesis engine)
 - Stop and restart the scheduler on demand.
 
-You coud also improve the demo by:
+You could also improve the demo by:
 - Inserting the `FeedbackDelay` in the graph so that you can check that the jitter issue we add in last tutorial is now solved
 - Adding some control over the BPM of the metronome.
 
@@ -290,4 +290,4 @@ You coud also improve the demo by:
 
 In this tutorial, you have learned the why and how of lookahead schedulers. In particular why they are needed to mitigate the lack of precision of regular JavaScript timers, and how you can implement a simple version it.
 
-In the next tutorial, we will build upon this knowledge and tools to learn how to implement a rather powerfull and versatile synthesis technique: the _granular synthesis_.
+In the next tutorial, we will build upon this knowledge and tools to learn how to implement a rather powerful and versatile synthesis technique: the _granular synthesis_.

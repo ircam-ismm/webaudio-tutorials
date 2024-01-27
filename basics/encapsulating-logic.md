@@ -1,6 +1,6 @@
 # Encapsulating Logic
 
-In this tutorial, we will step aside a bit from the Web Audio API to review how we can encapsulate common logic to simplify code, share functionnalities and organize applications. Of course, this is a very large and important topic on its own, and this is not the goal of these tutorials to go deep with subjects such as [design patterns](https://www.google.com/search?q=javascript+design+patterns), etc. 
+In this tutorial, we will step aside a bit from the Web Audio API to review how we can encapsulate common logic to simplify code, share functionalities and organize applications. Of course, this is a very large and important topic on its own, and this is not the goal of these tutorials to go deep with subjects such as [design patterns](https://www.google.com/search?q=javascript+design+patterns), etc. 
 
 Instead, we will only review the most common concepts and features the language proposes and that we have already met in previous tutorials.
 
@@ -8,7 +8,7 @@ Instead, we will only review the most common concepts and features the language 
 
 The most simple way to encapsulate logic is to use functions. We have already seen and used functions in the previous tutorials, but let's just review how we can declare and use them.
 
-Let's take a contrieved example and pretend that at several points of our code we need to compute the mean of a list of numbers, e.g.:
+Let's take a contrived example and pretend that at several points of our code we need to compute the mean of a list of numbers, e.g.:
 
 ```js
 // need to compute the mean of this list of 3 elements
@@ -30,7 +30,7 @@ for (let i = 0; i < 4; i++) {
 const mean2 = sum / 4;
 ```
 
-We can see some issues with this how this code is written: many things are repeated and harcoded, which makes it fragile and hard to maintain. Indeed, what if for some reason the size of the lists changes? If instead of the mean, we finally want to retrieve the median value? If you find a bug in the mean computation and then must change your code everywhere? etc.
+We can see some issues with this how this code is written: many things are repeated and hard coded, which makes it fragile and hard to maintain. Indeed, what if for some reason the size of the lists changes? If instead of the mean, we finally want to retrieve the median value? If you find a bug in the mean computation and then must change your code everywhere? etc.
 
 To simplify that and make the code more abstract, we can just create a more generic function. With a simple function takes a list of unknown size as argument and returns the mean, we can then rewrite our code as the following:
 
@@ -54,9 +54,9 @@ const mySecondList = [1.2, 2.1, 3.6, 4.2];
 const mean2 = computeMean(mySecondList);
 ```
 
-### Function syntaxes
+### Function syntax
 
-As already seen earlier in these tutorials, functions in javascript can be written with several syntaxes:
+As already seen earlier in these tutorials, functions in JavaScript can be written with several syntax:
 
 ```js
 // Named function
@@ -138,7 +138,7 @@ hiho.celebrateBirthday();
 ```
 
 ::: info
-At this point, you can wonder why we said that `AudioNode`s, such as the `OscillatorNode` we created in previous tutorials are instance of classes, as we never created them using the `new` keyword. This is the manifestation of a common design pattern called the **_factory pattern_** which delegates to an classe instance the ability to create other class instance:
+At this point, you can wonder why we said that `AudioNode`s, such as the `OscillatorNode` we created in previous tutorials are instance of classes, as we never created them using the `new` keyword. This is the manifestation of a common design pattern called the **_factory pattern_** which delegates to a class instance the ability to create other class instance:
 
 ```js
 class AudioContext {
@@ -149,7 +149,7 @@ class AudioContext {
 }
 ```
 
-We will see in later tutorials that this is also possible to explicitely create `AudioNode`s using the `new` keyword:
+We will see in later tutorials that this is also possible to explicitly create `AudioNode`s using the `new` keyword:
 ```js
 const osc = new OscillatorNode(audioContext, options);
 ````
@@ -157,7 +157,7 @@ const osc = new OscillatorNode(audioContext, options);
 
 ## Modules
 
-The last way we have seen so far to clean our code further was to use "modules", which are even higher-level than classes. Once again, we will use a very contrieve example that will allow us to focus on the syntax and general logic, rather than on  specific functionnality and implementation detail. 
+The last way we have seen so far to clean our code further was to use "modules", which are even higher-level than classes. Once again, we will use a very contrived example that will allow us to focus on the syntax and general logic, rather than on  specific functionality and implementation detail. 
 
 Let's imagine we need to increment and decrement a counter in some part of our application, and that another part of the application needs to monitor the current value of the counter for some reason. One possibility is to create a module file, e.g. `counter.js`, which declares and exports three functions:
 

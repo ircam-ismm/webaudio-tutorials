@@ -96,7 +96,7 @@ Then let's first add a button in our HTML file, that we will use to active the c
 </body>
 ```
 
-Then in the javascript, we can listen for an 'click' event from the user on this button to resume our `AudioContext`:
+Then in the JavaScript, we can listen for an 'click' event from the user on this button to resume our `AudioContext`:
 
 ```js {4-15}
 // main.js
@@ -119,12 +119,12 @@ resumeButton.addEventListener('click', resumeContext);
 ::: tip
 The `async` and `await` keyword that you see in the declaration of the `resumeContext` function refer to what is called _asynchronous operations_. Without going into much detail, you can think of asynchronous operations as operations that have to deal with the underlying system and may take a time that is unknown, e.g. downloading a file is an asynchronous operation as the time it takes to download a file may differ depending of the weight of the file, of the quality of your internet connection, etc.
 
-The `audioContext.resume()` call is asynchronous because the browser needs to ask the system access the sound card and to open a new high priority process (or _thread_) in which the audio will be computed. The `await` keyword just means that we wait for the command to be executed before excuting the next line of code.
+The `audioContext.resume()` call is asynchronous because the browser needs to ask the system access the sound card and to open a new high priority process (or _thread_) in which the audio will be computed. The `await` keyword just means that we wait for the command to be executed before executing the next line of code.
 
 You will see a lot of asynchronous code when using JavaScript so it's important to understand this concept a bit.
 :::
 
-If you click on the button, you should see the log appear in the console confirming that the status of the `audioContext` is now "running", which means eveything is ready to produce some sounds.
+If you click on the button, you should see the log appear in the console confirming that the status of the `audioContext` is now "running", which means everything is ready to produce some sounds.
 
 ![audio-context-resume](../assets/oscillators-and-audio-files/audio-context-resume.png)
 
@@ -195,7 +195,7 @@ osc.connect(audioContext.destination);
 osc.start();
 ```
 
-If you reload the page, resume the context and click on the button you will now ear the different oscillators piling up at different frequency. The sound will still get distorded at some point but at least you can ear the effect of triggering these oscillator.
+If you reload the page, resume the context and click on the button you will now ear the different oscillators piling up at different frequency. The sound will still get distorted at some point but at least you can ear the effect of triggering these oscillator.
 
 When we added this line:
 
@@ -203,7 +203,7 @@ When we added this line:
 osc.frequency.value = freq;
 ```
 
-We actually changed an [`AudioParam`](https://developer.mozilla.org/docs/Web/API/AudioParam) called `frequency` that is linked to the oscillator. Most `AudioNode`s have such parameters that allows to modify their behavior and create automations.
+We actually changed an [`AudioParam`](https://developer.mozilla.org/docs/Web/API/AudioParam) called `frequency` that is linked to the oscillator. Most `AudioNode`s have such parameters that allows to modify their behavior and create automation.
 
 ### Adding an envelop
 
@@ -217,7 +217,7 @@ env.gain.value = 0;
 osc.start();
 ```
 
-Then we need to schedule automation, here we will for example make a linear ramp from 0 to 1 in 10ms and then go from 1 to 0 in ~1sec.
+Then we need to schedule automation, here we will for example make a linear ramp from 0 to 1 in 10 ms and then go from 1 to 0 in ~1 sec.
 
 ```js
 // create a gain node and set its gain value to 0
@@ -226,8 +226,8 @@ env.gain.value = 0;
 // pick the context current time in seconds
 const now = audioContext.currentTime;
 env.gain.setValueAtTime(0, now); // create an automation point
-env.gain.linearRampToValueAtTime(1, now + 0.01) // ramp to 1 in 10ms
-env.gain.linearRampToValueAtTime(0, now + 1) // ramp to 0 in 1000ms
+env.gain.linearRampToValueAtTime(1, now + 0.01) // ramp to 1 in 10 ms
+env.gain.linearRampToValueAtTime(0, now + 1) // ramp to 0 in 1 sec
 ```
 
 Then let's modify how the graph is created to pipe the oscillator into the envelop before sending it to destination:
@@ -241,15 +241,15 @@ env.gain.value = 0;
 // pick the context current time in seconds
 const now = audioContext.currentTime;
 env.gain.setValueAtTime(0, now); // create an automation point
-env.gain.linearRampToValueAtTime(1, now + 0.01) // ramp to 1 in 10ms
-env.gain.linearRampToValueAtTime(0, now + 1) // ramp to 0 in 10000ms
+env.gain.linearRampToValueAtTime(1, now + 0.01) // ramp to 1 in 10 ms
+env.gain.linearRampToValueAtTime(0, now + 1) // ramp to 0 in 1 sec
 // create the graph chain: osc -> env -> output // [!code ++]
 osc.connect(env).connect(audioContext.destination); // [!code ++]
 ```
 
 If you reload the page and trigger some oscillator you should ear the ramp applied to each triggered oscillators. 
 
-However, there is still an issue with our code. Indeed, our oscillators are started but they are never stopped which might lead to waste of resources if click a lot of time on the button. As we know the exact start and end time of our ramp, we can know explicitely control the oscillators so that they start at the beginning of the ramp and stop exactly when the ramp goes back to zero.
+However, there is still an issue with our code. Indeed, our oscillators are started but they are never stopped which might lead to waste of resources if click a lot of time on the button. As we know the exact start and end time of our ramp, we can know explicitly control the oscillators so that they start at the beginning of the ramp and stop exactly when the ramp goes back to zero.
 
 ```js
 // start the oscillator as fast as we can // [!code --]
@@ -260,13 +260,13 @@ osc.start(now); // [!code ++]
 osc.stop(now + 1); // [!code ++]
 ```
 
-Finally, let's fix the clipping issue that occur when we trigger mutliple oscillators in a short period of time, and make our envelop a little bit nicer:
+Finally, let's fix the clipping issue that occur when we trigger multiple oscillators in a short period of time, and make our envelop a little bit nicer:
 
 ```js
 env.gain.linearRampToValueAtTime(1, now + 0.01); // [!code --]
 env.gain.linearRampToValueAtTime(0, now + 1); // [!code --]  
 env.gain.linearRampToValueAtTime(0.2, now + 0.01); // ramp to 0.2 in 10 ms // [!code ++]
-env.gain.exponentialRampToValueAtTime(0.0001, now + 1); // ramp to 0.0001 in 1000ms // [!code ++]  
+env.gain.exponentialRampToValueAtTime(0.0001, now + 1); // ramp to 0.0001 in 1 sec // [!code ++]  
 ```
 
 ### Wrap up
@@ -374,7 +374,7 @@ const buffer = await loadAudioBuffer('./sample.wav');
 console.log(buffer);
 ```
 
-If you reload the page, you should all the informations about the file you loaded logged in the console:
+If you reload the page, you should all the information about the file you loaded logged in the console:
 
 ![audio-buffer](../assets/oscillators-and-audio-files/audio-buffer.png)
 
@@ -473,19 +473,19 @@ myButton.addEventListener('click', () => {
 });
 ```
 
-In the reset of these tutorials, we will mostly use the two last syntax which are the most common in JavaScript. So make sure you've understood this note and why these different syntaxes are (almost) all the same.
+In the reset of these tutorials, we will mostly use the two last syntax which are the most common in JavaScript. So make sure you've understood this note and why these different syntax are (almost) all the same.
 
-### Audio sources behaviour
+### Audio sources behavior
 
 An important point you may have noticed, is that you created a new instance of `OscillatorNode` and `AudioBufferSourceNode` each time you clicked on the button. This is something that is often a bit confusing at first for people which are used to other music programming environment. Indeed, in the Web Audio API paradigm, sources are **not reusable**, once they have been stopped (or stopped themselves in the case of the `AudioBufferSourceNode`), they cannot be restarted again.
 
-In future tuturials, we will see how this feature (that may appear weird) can end up to be very practicle and powerful.
+In future tutorials, we will see how this feature (that may appear weird) can end up to be very practical and powerful.
 
 ## Conclusion
 
 In this tutorial, you have learned how to use some basic building blocks of the Web Audio API. 
 
-Along the way you have learned many different things such as how to resume the audio context with a user interaction, how to load and decode a sound file from the network, how to create automations on audio parameters, as well as important concepts regarding the audio sources in the Web Audio API.
+Along the way you have learned many different things such as how to resume the audio context with a user interaction, how to load and decode a sound file from the network, how to create automation on audio parameters, as well as important concepts regarding the audio sources in the Web Audio API.
 
 In the next tutorial, we will go a bit further with the creation of an AM synthesizer.
 

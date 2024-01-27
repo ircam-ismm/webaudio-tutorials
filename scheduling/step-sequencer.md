@@ -88,7 +88,7 @@ const score = [
 ]
 ```
 
-Let's then write the code to intialize our score:
+Let's then write the code to initialize our score:
 
 ```js {4-20}
 // ./main.js
@@ -262,7 +262,7 @@ for (let i = 0; i < numTracks; i++) { // [!code ++]
   score[i] = track; // [!code ++]
 } // [!code ++]
 
-// fake score for developping the audio engine  // [!code --]
+// fake score for developing the audio engine  // [!code --]
 const score = [ // [!code --]
     [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1], // "hh" track  // [!code --]
     [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1], // "clap" track // [!code --]
@@ -274,7 +274,7 @@ const score = [ // [!code --]
 console.log(score);
 ```
 
-Thanks to this dynamic score, if you add a new sample ro change the number of steps, all the application will change dynamically without further work (which is quite nice...)
+Thanks to this dynamic score, if you add a new sample to change the number of steps, all the application will change dynamically without further work (which is quite nice...)
 
 ## Panning the tracks
 
@@ -315,6 +315,6 @@ There are several ways you can improve the application, for example you could:
 
 In this tutorial, you have learned how to build a simple step sequencer, using some pattern that will allow you to simply make you application evolve. 
 
-This is all for this serie on timing and scheduling.
+This is all for this series on timing and scheduling.
 
 

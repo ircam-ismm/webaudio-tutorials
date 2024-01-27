@@ -44,7 +44,7 @@ It is **_very_** important to understand and to keep in mind that exposing a dir
 **_So, BE CAREFULL TO NOT EXPOSE any sensitive or private information in this directory_**.  
 :::
 
-At startup, the web server logged some informations that will help you to access it from a Web browser. In particular we are interested by the "Local" address and port: [`http://localhost:3000`](http://localhost:3000).
+At startup, the web server logged some information that will help you to access it from a Web browser. In particular we are interested by the "Local" address and port: [`http://localhost:3000`](http://localhost:3000).
 
 If you open a Web browser and write this URL into the address bar, you should see something as the following:
 
@@ -91,7 +91,7 @@ You can already notice that all HTML tags come with an opening and a closing tag
 - `<body>` is the opening tag
 - `</body>` is the closing tag
 
-Also tags can be declared inside another tag, here the `<head>` and `<body>` tags are inside the `<html>` tag. The HTML structure is always hierarchical, a tag opened inside another tag should aloways be closed within it, e.g.:
+Also tags can be declared inside another tag, here the `<head>` and `<body>` tags are inside the `<html>` tag. The HTML structure is always hierarchical, a tag opened inside another tag should always be closed within it, e.g.:
 
 ```html
 // This is valid
@@ -158,7 +158,7 @@ After reload (`Cmd + R`), your page should now look like the following:
 ![index-1](../assets/simple-website/index-1.png) 
 ## Adding some styles
 
-Now that we have some basic content, let's change the appearence of our page using CSS. To that end, we define a `<style>` tag in the header of the document, in which you can write some CSS rules:
+Now that we have some basic content, let's change the appearance of our page using CSS. To that end, we define a `<style>` tag in the header of the document, in which you can write some CSS rules:
 
 ```html {6-20}
 <!DOCTYPE html>
@@ -199,9 +199,9 @@ Now that we have some basic content, let's change the appearence of our page usi
 </html>
 ```
 
-In these CSS rules, we first define styles that will be applied to all the `body` tag (and _cascading_ to its content): change the background-color as well as text font and color. Then we define a more specialized style applied only to `h1` tags to change their text color. And finally, we define rules to change the appearence of the links, the `a` tags.
+In these CSS rules, we first define styles that will be applied to all the `body` tag (and _cascading_ to its content): change the background-color as well as text font and color. Then we define a more specialized style applied only to `h1` tags to change their text color. And finally, we define rules to change the appearance of the links, the `a` tags.
 
-With these styles applied, yuor page should now look like the following screenshot:
+With these styles applied, your page should now look like the following screenshot:
 
 ![index-2](../assets/simple-website/index-2.png) 
 
@@ -260,12 +260,12 @@ We now have a small website composed of two pages, the "home" page and the "bio"
 
 ## Sharing the styles
 
-Adding this second page however introducted a new problem: the styles defined in the homepage are not defined in the `bio.html` file. Then the styling of the two pages differ... Which leaves us with two options:
+Adding this second page however introduced a new problem: the styles defined in the homepage are not defined in the `bio.html` file. Then the styling of the two pages differ... Which leaves us with two options:
 
 1. Copy the `<style>` tag and the CSS rules defined in `index.html` into `bio.html`
 2. Find a way to share the styles between the two HTML files
 
-The first solution would of course work, but it would also create new issues in relatively short term. Indeed, if for some reason you want to add or change a style, e.g. change the titles color to red, you would have to report each change in each HMTL files (and a website is often composed of more than two pages), which is very combursome and error prone... 
+The first solution would of course work, but it would also create new issues in relatively short term. Indeed, if for some reason you want to add or change a style, e.g. change the titles color to red, you would have to report each change in each HMTL files (and a website is often composed of more than two pages), which is very cumbersome and error prone... 
 
 A better solution is thus to put all the styles in a third file which will be imported by every HTML file, thus sharing the exact same styles between all pages of the website.
 
@@ -332,7 +332,7 @@ After reload, you should see the styles applied to both the pages:
 
 ## Adding some interaction
 
-Let's now add a bit of interaction using _JavaScript_. To that end, let's modify our homepage to replace the list with a simple component with wich we will interact:
+Let's now add a bit of interaction using _JavaScript_. To that end, let's modify our homepage to replace the list with a simple component with which we will interact:
 
 ```html {7,8}
 // index.html
@@ -388,7 +388,7 @@ _Chrome_ or `Cmd + Alt + I` in _Firefox_) and reload the page again. You should 
 
 Now that everything is set up, let's write something a bit more interesting than just logging into the JavaScript console.
 
-Go back to the javascript file and set up a few variables:
+Go back to the JavaScript file and set up a few variables:
 
 ```js
 // get a reference to div#my-square defined in the HTML
@@ -427,7 +427,7 @@ Congrats! you now have an impressive interactive Web page!
 
 This simple example also shows you how _JavaScript_ can modify HTML and CSS dynamically in response to users' action. 
 
-## Shuting down the server
+## Shutting down the server
 
 Now that the tutorial is finished, it is time to shutdown the Web server. To that end, go back to the `Terminal` window where the server is running and just press `Ctrl + C`:
 

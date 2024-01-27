@@ -40,13 +40,13 @@ If you open the directory that have been created by the tool in your text editor
 ```sh
 03-amplitude-modules
 ├── assets              # Directory to store assets of your project (e.g. sound files)
-│   └── sample.wev      # a test sound file  
+│   └── sample.wav      # a test sound file  
 ├── lib                 # Directory where to store some common helpers
 │   ├── load-audio-buffer.js  
 │   └── resume-audio-context.js
 ├── index.html          # The index file
-├── main.js             # Where you will put the javascript code
-├── README.md           # General infos about your application
+├── main.js             # Where you will put the JavaScript code
+├── README.md           # General info about your application
 └── styles.css          # The CSS file
 ```
 
@@ -61,7 +61,7 @@ npx serve
 
 ![serve](../assets/amplitude-modulation/serve.png)
 
-As you can see, the server has been launched into our project, just as before. If you then open [http://localhost:3000](http://localhost:3000), you should see a init page with a big button to resume the context:
+As you can see, the server has been launched into our project, just as before. If you then open [http://localhost:3000](http://localhost:3000), you should see a initialization page with a big button to resume the context:
 
 ![scaffold-screenshot-1](../assets/amplitude-modulation/scaffold-screenshot-1.png)
 
@@ -128,11 +128,11 @@ export default async function loadAudioBuffer(pathname, sampleRate = 48000) {
 
 Except some particularities that have removed from the snippet above, you can see that this file "exports" a function called `loadAudioBuffer` which contains more or less the same code you wrote in the last tutorial to load an audio file from the network and to decode it to an [`AudioBuffer`](https://developer.mozilla.org/docs/Web/API/AudioBuffer). 
 
-These `import` and `export` statements are the tools JavaScript gives us to organize our projets. Moreover, they also allows us to load libraries directly from the Web, cf. the first two `import` and thus share functionnalities between several projects. For example, the two libraries that are imported in the first two lines will help us creating the user interfaces more simply.
+These `import` and `export` statements are the tools JavaScript gives us to organize our projects. Moreover, they also allows us to load libraries directly from the Web, cf. the first two `import` and thus share functionalities between several projects. For example, the two libraries that are imported in the first two lines will help us creating the user interfaces more simply.
 
 ## Create the audio graph
 
-Now that eveything is ready and that you have an understanding of the structure of the project, let's write our AM synthesis engine. The main principle of AM synthesis is to modulate the amplitude (i.e. the gain) of a signal, called the "carrier", with another signal "modulating" signal
+Now that everything is ready and that you have an understanding of the structure of the project, let's write our AM synthesis engine. The main principle of AM synthesis is to modulate the amplitude (i.e. the gain) of a signal, called the "carrier", with another signal "modulating" signal
 
 ::: info
 We won't go into the details of how amplitude modulation works here, so if you are not familiar with how AM synthesis works, you can find a number of resources online such as on [Wikipedia](https://en.wikipedia.org/wiki/Amplitude_modulation)
@@ -181,7 +181,7 @@ render(html`
 `, document.body);
 ```
 
-Then let's first define some constant for our synthsizer:
+Then let's first define some constant for our synthesizer:
 
 ```js {4-6}
 const audioContext = new AudioContext();
@@ -241,7 +241,7 @@ carrier.start();
 modulator.start();
 ```
 
-The second step, to add an offset to the scaled signal, requires us to use a interesting feature of [`AudioParam`](https://developer.mozilla.org/docs/Web/API/AudioParam)s. Indeed, the Web Audo API allows us to directly modulate an [`AudioParam`](https://developer.mozilla.org/docs/Web/API/AudioParam), for example the `gain` of our `envelop` node, with another signal. When connecting a node to a audio param, the signal of the node is "added" to the signal intrisically produced by the audio param.
+The second step, to add an offset to the scaled signal, requires us to use a interesting feature of [`AudioParam`](https://developer.mozilla.org/docs/Web/API/AudioParam)s. Indeed, the Web Audio API allows us to directly modulate an [`AudioParam`](https://developer.mozilla.org/docs/Web/API/AudioParam), for example the `gain` of our `envelop` node, with another signal. When connecting a node to a audio param, the signal of the node is "added" to the signal intrinsically produced by the audio param.
 
 In other words, if we set the `gain` of our `envelop` to 0.5, the gain `AudioParam` produces a constant signal at `0.5`, which is used to multiply the input signal of the `GainNode`. But if we modulate our gain `AudioParam`, and therefore its constant signal a `0.5` with the scaled signal we just created with the `modulator` and `depth` node. The constant signal of the gain `AudioParam` and our scaled signal will just be added together, producing a sine wave comprised between `0` and `1`.
 
@@ -279,7 +279,7 @@ Congrats, you have written your first little synthesizer!
 
 ## Create the user interface
 
-Now that the guts of our synthsizer is ready, let's create the user interface that will allow to manipulate its different params, i.e. `amDepth`, `amFrequency`, `carrierFrequency`.
+Now that the guts of our synthesizer is ready, let's create the user interface that will allow to manipulate its different params, i.e. `amDepth`, `amFrequency`, `carrierFrequency`.
 
 To that end we will use the two libraries that are imported on the top of our file:
 
@@ -361,9 +361,9 @@ Now things start to get more interesting, as you can already explore the large n
 
 ## Going further
 
-As an exercise, we let you add the last control over the AM depth. This last control is a bit more complex as it will have to update both `envelop.gain` and `depth.gain` so that the sum of the two signal always has a max value of one (...all the necessary informations are present in the tutorial to do it properly).
+As an exercise, we let you add the last control over the AM depth. This last control is a bit more complex as it will have to update both `envelop.gain` and `depth.gain` so that the sum of the two signal always has a max value of one (...all the necessary information are present in the tutorial to do it properly).
 
-Another interesting execise could be to implement a Frequency Modulation synthesizer, which rely on the same concepts as the one developed in this tutorial.
+Another interesting exercise could be to implement a Frequency Modulation synthesizer, which rely on the same concepts as the one developed in this tutorial.
 
 ## Conclusion
 
