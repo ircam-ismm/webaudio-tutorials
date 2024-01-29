@@ -4,7 +4,7 @@ import { withBase } from 'vitepress'
 
 # Building a step sequencer
 
-In this third tutorial about scheduling, we will build a simple step sequencer. While we won't see much more new
+In this third tutorial about scheduling, we will build a simple step sequencer. While we won't see much more new (?)
 
 ### Related documentation
 
@@ -33,10 +33,12 @@ The set of samples used in the tutorial can be downloaded <a :href="(withBase('/
 
 Then let's load all these files and store them into a list of buffers:
 
-```js {5-24}
+```js {7-26}
 // ./main.js
 const audioContext = new AudioContext();
 await resumeAudioContext(audioContext);
+
+const buffer = await loadAudioBuffer('./assets/sample.wav', audioContext.sampleRate); // [!code --]
 
 const samples = [
   './assets/hh.wav',
@@ -74,7 +76,7 @@ Our score is defined as follow: for each buffer we define a list (i.e. an `Array
 [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0]
 ```
 
-The kick sample will be played at step 1, 4, 8 and 12.
+The kick sample will be played at step 1, 5, 9 and 13.
 
 Then we can pack the score for each track into a list of tracks, where the index of track score correspond to the index of the buffer in our `buffers` list:
 
@@ -274,7 +276,7 @@ const score = [ // [!code --]
 console.log(score);
 ```
 
-Thanks to this dynamic score, if you add a new sample ro change the number of steps, all the application will change dynamically without further work (which is quite nice...)
+Thanks to this dynamic score, if you add a new sample to change the number of steps, all the application will change dynamically without further work (which is quite nice...)
 
 ## Panning the tracks
 
