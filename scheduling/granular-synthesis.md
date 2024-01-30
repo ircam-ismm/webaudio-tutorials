@@ -12,6 +12,7 @@ In this tutorial, you will learn how to implement a granular synthesizer using t
 - [`AudioBufferSourceNode.start`](https://developer.mozilla.org/docs/Web/API/AudioBufferSourceNode/start)
 - [`AudioBufferSourceNode.playbackRate`](https://developer.mozilla.org/docs/Web/API/AudioBufferSourceNode/playbackRate) 
 - [`<sc-dragndrop>`](https://ircam-ismm.github.io/sc-components/sc-dragndrop)
+- [Function.prototype.bind()](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)
 
 ## General principles
 
@@ -80,7 +81,6 @@ class GranularSynth {
     // create an output gain on wich will connect all our grains
     this.output = this.audioContext.createGain();
     // bind the render method so that we don't loose the instance context
-    // cf. [Function.prototype.bind()](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)
     this.render = this.render.bind(this);
   }
 
