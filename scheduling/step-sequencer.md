@@ -4,7 +4,7 @@ import { withBase } from 'vitepress'
 
 # Building a step sequencer
 
-In this third tutorial about scheduling, we will build a simple step sequencer. While we won't see much more new (?)
+In this third tutorial about scheduling, we will build a simple step sequencer. While we won't see much more new concepts or tools here, this tutorial will show you how many of the things we have seen so far can be articulated into a single application.
 
 ### Related documentation
 
