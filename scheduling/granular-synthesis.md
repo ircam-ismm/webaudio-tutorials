@@ -79,7 +79,7 @@ class GranularSynth {
 
     // create an output gain on wich will connect all our grains
     this.output = this.audioContext.createGain();
-    // bind the render method so that we don't (?) the instance context
+    // bind the render method so that we don't loose the instance context
     this.render = this.render.bind(this);
   }
 
