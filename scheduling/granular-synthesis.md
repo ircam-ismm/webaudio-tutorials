@@ -12,12 +12,18 @@ In this tutorial, you will learn how to implement a granular synthesizer using t
 - [`AudioBufferSourceNode.start`](https://developer.mozilla.org/docs/Web/API/AudioBufferSourceNode/start)
 - [`AudioBufferSourceNode.playbackRate`](https://developer.mozilla.org/docs/Web/API/AudioBufferSourceNode/playbackRate) 
 - [`<sc-dragndrop>`](https://ircam-ismm.github.io/sc-components/sc-dragndrop)
+- [Function.prototype.bind()](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)
 
 ## General principles
 
 Granular synthesis is sound synthesis technique that consists in cutting a audio files in small pieces of sound of around 5 to 200 ms called **_grains_**. These grains are then played back and layered to reconstruct a new sound. Each grain can also be manipulated independently by modifying for example their pitch, volume, etc.
 
 ![granular-synthesis](../assets/granular-synthesis/granular-synthesis.png)
+
+::: info
+If you want to know more about granular synthesis theory, composition and digital implementation, please check this
+<a href="https://www.sfu.ca/~truax/gran.html">link</a>.
+:::
 
 ## Implement the synthesis engine
 
@@ -34,7 +40,7 @@ npx serve
 
 First, let's just import a library that will provide us with a much more robust version of the scheduler we implemented in last tutorial, while being build on the same principles:
 
-```js {2}
+```js {3}
 // ./main.js
 import { html, render } from 'https://unpkg.com/lit-html';
 import { Scheduler } from 'https://unpkg.com/@ircam/sc-scheduling@0.1.6';
@@ -58,7 +64,7 @@ The sample used in the tutorial can be downloaded <a :href="(withBase('/static-a
 Let's start with defining the new class which will be our granular engine:
 
 ```js
-const buffer = await loadAudioBuffer('./assets/sample.wav', audioContext.sampleRate);
+const buffer = await loadAudioBuffer('./assets/hendrix.wav', audioContext.sampleRate);
 
 class GranularSynth {
   constructor(audioContext, buffer) {
@@ -74,7 +80,7 @@ class GranularSynth {
 
     // create an output gain on wich will connect all our grains
     this.output = this.audioContext.createGain();
-    // bind the render method so that we don't the instance context
+    // bind the render method so that we don't loose the instance context
     this.render = this.render.bind(this);
   }
 
@@ -97,14 +103,14 @@ class GranularSynth {
 
 // create a new scheduler, in the audioContext timeline
 const scheduler = new Scheduler(() => audioContext.currentTime);
-// create out granular synth and connect it to audio destination
+// create our granular synth and connect it to audio destination
 const granular = new GranularSynth(audioContext, buffer);
 granular.output.connect(audioContext.destination);
 // register the synth into the scheduler and start it now
 scheduler.add(granular.render, audioContext.currentTime);
 ```
 
-If you reload the page and open the console, you should the start time of the grains displayed in the console:
+If you reload the page and open the console, you should see the start time of the grains displayed in the console:
 
 ![scheduler-working](../assets/granular-synthesis/scheduler-working.png)
 
@@ -241,10 +247,10 @@ class GranularSynth {
     // schedule the fadein and fadeout
     env.gain.value = 0;
     env.gain.setValueAtTime(0, currentTime); // [!code --]
-    env.gain.setValueAtTime(0, grainTime); // [!code ++]
     env.gain.linearRampToValueAtTime(1, currentTime + this.duration / 2); // [!code --]
-    env.gain.linearRampToValueAtTime(1, grainTime + this.duration / 2); // [!code ++]
     env.gain.linearRampToValueAtTime(0, currentTime + this.duration); // [!code --]
+    env.gain.setValueAtTime(0, grainTime); // [!code ++]
+    env.gain.linearRampToValueAtTime(1, grainTime + this.duration / 2); // [!code ++]
     env.gain.linearRampToValueAtTime(0, grainTime + this.duration); // [!code ++]
 
     // create the source that will play our grain
@@ -254,8 +260,8 @@ class GranularSynth {
     src.connect(env);
     // play the grain at given position and for given duration
     src.start(currentTime, this.position); // [!code --]
-    src.start(grainTime, this.position); // [!code ++]
     src.stop(currentTime + this.duration); // [!code --]
+    src.start(grainTime, this.position); // [!code ++]
     src.stop(grainTime + this.duration); // [!code ++]
 
     // ask to be called at time of next grain

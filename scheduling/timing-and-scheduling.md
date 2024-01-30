@@ -142,7 +142,7 @@ npx serve
 
 ### Priority queue
 
-A [priority queue](https://en.wikipedia.org/wiki/Priority_queue) is a data structure where each element has an associated priority and that guarantees that elements with higher priority are retrieved before elements with lower priority. In our case, when looking for the next event to be scheduled, we want to be sure that this the event which is scheduled in the closest future.
+A [priority queue](https://en.wikipedia.org/wiki/Priority_queue) is a data structure where each element has an associated priority and that guarantees that elements with higher priority are retrieved before elements with lower priority. In our case, when looking for the next event to be scheduled, we want to be sure that this is the event which is scheduled in the closest future.
 
 We won't go into how to implement such data structure in an efficient way and will just use a list of event sorted according to their associated time. What we want want to be able to do with this queue is:
 
