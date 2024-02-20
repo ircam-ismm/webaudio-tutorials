@@ -208,7 +208,7 @@ setInterval(() => {
 }, 1000);
 ```
 
-Interestingly, while `a.js` and `b.js` are both dependant from `counter.js`, they are also quite isolated from each other, `b.js` does not have to know anything about `a.js` and vice versa. Such isolation is generally interesting as it makes it safer to modify one part without any impact on the other.
+Interestingly, while `a.js` and `b.js` are both dependent from `counter.js`, they are also quite isolated from each other, `b.js` does not have to know anything about `a.js` and vice versa. Such isolation is generally interesting as it makes it safer to modify one part without any impact on the other.
 
 ::: info
 The module syntax has been standardized relatively recently in JavaScript. As such, this syntax might not work in older Web browser. Different solutions, called **_bundlers_**, exist to work around this issue (cf. [`esbuild`](https://esbuild.github.io/) or [`webpack`](https://webpack.js.org/)).

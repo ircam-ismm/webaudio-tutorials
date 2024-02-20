@@ -8,7 +8,7 @@ In this tutorial, we will build on top of the patterns we just reviewed to build
 
 ### Related Documentation
 
-- [`setInterval`](https://developer.mozilla.org/docs/Web/API/setInterval)
+- [`setInterval`](https://developer.mozilla.org/en-US/docs/Web/API/setInterval)
 - [`DelayNode`](https://developer.mozilla.org/docs/Web/API/DelayNode)
 - [`setTargetAtTime`](https://developer.mozilla.org/docs/Web/API/AudioParam/setTargetAtTime) 
 
