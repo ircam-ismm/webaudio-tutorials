@@ -1,3 +1,7 @@
+<script setup>
+import { withBase } from 'vitepress'
+</script>
+
 # Oscillators and Audio Files
 
 In this tutorial, we will learn how to use some basic building blocks of the Web Audio API.
@@ -334,6 +338,10 @@ triggerOscButton.addEventListener('click', triggerOsc);
 ## Using the `AudioBufferSourceNode`
 
 `OscillatorNode`s are really nice indeed, but let's now consider how we can play a sound file using the [`AudioBufferSourceNode`](https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode). 
+
+::: info
+The sample used in the tutorial can be downloaded <a :href="(withBase('/static-assets/oscillators-and-audio-files.zip'))">here</a>
+:::
 
 ### Load a sound file
 
