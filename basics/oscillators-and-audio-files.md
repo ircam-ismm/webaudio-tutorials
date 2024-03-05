@@ -4,11 +4,11 @@ In this tutorial, we will learn how to use some basic building blocks of the Web
 
 ### Related Documentation
 
-- [`AudioContext`](https://developer.mozilla.org/docs/Web/API/AudioContext)
-- [`OscillatorNode`](https://developer.mozilla.org/docs/Web/API/OscillatorNode)
-- [`GainNode`](https://developer.mozilla.org/docs/Web/API/GainNode)
-- [`AudioBufferSourceNode`](https://developer.mozilla.org/docs/Web/API/AudioBufferSourceNode)
-- [`AudioBuffer`](https://developer.mozilla.org/docs/Web/API/AudioBuffer)
+- [`AudioContext`](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext)
+- [`OscillatorNode`](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode)
+- [`GainNode`](https://developer.mozilla.org/en-US/docs/Web/API/GainNode)
+- [`AudioBufferSourceNode`](https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode)
+- [`AudioBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/AudioBuffer)
 
 ## Setting up the project
 
@@ -61,7 +61,7 @@ If you open a Web browser at [http://localhost:3000](http://localhost:3000), and
 
 ## Creating and resuming the `AudioContext`
 
-As described in the [previous step](./web-audio-api-introduction.md) a Web Audio graph is always created within an [`AudioContext`](https://developer.mozilla.org/docs/Web/API/AudioContext).
+As described in the [previous step](./web-audio-api-introduction.md) a Web Audio graph is always created within an [`AudioContext`](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext).
 
 So let's first create our first `AudioContext`:
 
@@ -130,7 +130,7 @@ If you click on the button, you should see the log appear in the console confirm
 
 ## Using the `OscillatorNode`
 
-Now that our context is "running", we can use it to play actual sounds with the Web Audio API. Let's start with the a simple [`OscillatorNode`](https://developer.mozilla.org/docs/Web/API/OscillatorNode)
+Now that our context is "running", we can use it to play actual sounds with the Web Audio API. Let's start with the a simple [`OscillatorNode`](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode)
 
 Let's first add another button into our HTML 
 
@@ -203,11 +203,11 @@ When we added this line:
 osc.frequency.value = freq;
 ```
 
-We actually changed an [`AudioParam`](https://developer.mozilla.org/docs/Web/API/AudioParam) called `frequency` that is linked to the oscillator. Most `AudioNode`s have such parameters that allows to modify their behavior and create automation.
+We actually changed an [`AudioParam`](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam) called `frequency` that is linked to the oscillator. Most `AudioNode`s have such parameters that allows to modify their behavior and create automation.
 
 ### Adding an envelop
 
-To dig a bit more into `AudioParam`s, let's modify our `triggerOsc` function to use a [`GainNode`](https://developer.mozilla.org/docs/Web/API/GainNode) in order to add an envelop to each of our oscillators
+To dig a bit more into `AudioParam`s, let's modify our `triggerOsc` function to use a [`GainNode`](https://developer.mozilla.org/en-US/docs/Web/API/GainNode) in order to add an envelop to each of our oscillators
 
 ```js
 // create a gain node and set its gain value to 0 // [!code ++]
@@ -333,7 +333,7 @@ triggerOscButton.addEventListener('click', triggerOsc);
 
 ## Using the `AudioBufferSourceNode`
 
-`OscillatorNode`s are really nice indeed, but let's now consider how we can play a sound file using the [`AudioBufferSourceNode`](https://developer.mozilla.org/docs/Web/API/AudioBufferSourceNode). 
+`OscillatorNode`s are really nice indeed, but let's now consider how we can play a sound file using the [`AudioBufferSourceNode`](https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode). 
 
 ### Load a sound file
 
@@ -341,7 +341,7 @@ To do so, we will first need to load a file into memory so the Web Audio API can
 
 ![sample-dir](../assets/oscillators-and-audio-files/sample-dir.png)
 
-Then add the following code into `main.js` to load a sound file from the network and decode it into an [`AudioBuffer`](https://developer.mozilla.org/docs/Web/API/AudioBuffer):
+Then add the following code into `main.js` to load a sound file from the network and decode it into an [`AudioBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/AudioBuffer):
 
 ```js {2-9}
 // main.js

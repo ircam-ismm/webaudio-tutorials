@@ -9,9 +9,9 @@ In this tutorial, we will explore another very common synthesis technique: the A
 ### Related Documentation
 
 - [@ircam/create](https://github.com/ircam-ismm/ircam-create)
-- [`OscillatorNode`](https://developer.mozilla.org/docs/Web/API/OscillatorNode)
-- [`GainNode`](https://developer.mozilla.org/docs/Web/API/GainNode)
-- [`AudioParam`](https://developer.mozilla.org/docs/Web/API/AudioParam)
+- [`OscillatorNode`](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode)
+- [`GainNode`](https://developer.mozilla.org/en-US/docs/Web/API/GainNode)
+- [`AudioParam`](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam)
 - [lit](https://lit.dev/)
 - [@ircam/sc-components](https://ircam-ismm.github.io/sc-components/)
 
@@ -126,7 +126,7 @@ export default async function loadAudioBuffer(pathname, sampleRate = 48000) {
 }
 ```
 
-Except some particularities that have been removed from the snippet above, you can see that this file "exports" a function called `loadAudioBuffer` which contains more or less the same code you wrote in the last tutorial to load an audio file from the network and to decode it to an [`AudioBuffer`](https://developer.mozilla.org/docs/Web/API/AudioBuffer). 
+Except some particularities that have been removed from the snippet above, you can see that this file "exports" a function called `loadAudioBuffer` which contains more or less the same code you wrote in the last tutorial to load an audio file from the network and to decode it to an [`AudioBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/AudioBuffer). 
 
 These `import` and `export` statements are the tools JavaScript gives us to organize our projects. Moreover, they also allows us to load libraries directly from the Web, cf. the first two `import` and thus share functionalities between several projects. For example, the two libraries that are imported in the first two lines will help us creating the user interfaces more simply.
 
@@ -138,7 +138,7 @@ Now that everything is ready and that you have an understanding of the structure
 We won't go into the details of how amplitude modulation works here, so if you are not familiar with how AM synthesis works, you can find a number of resources online such as on [Wikipedia](https://en.wikipedia.org/wiki/Amplitude_modulation)
 ::: 
 
-As we will only use [`OscillatorNode`](https://developer.mozilla.org/docs/Web/API/OscillatorNode) here, let's start with cleaning a bit our `main.js` file to remove the things we won't use:
+As we will only use [`OscillatorNode`](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode) here, let's start with cleaning a bit our `main.js` file to remove the things we won't use:
 
 ```js
 import { html, render } from 'https://unpkg.com/lit-html';
@@ -217,7 +217,7 @@ Let's now implement the modulating branch of our synthesizer. What we want to ob
 
 ![modulating-amp](../assets/amplitude-modulation/modulating-amp.png)
 
-To achieve this using only [`OscillatorNode`](https://developer.mozilla.org/docs/Web/API/OscillatorNode) (which produces a signal between `-1` and `1`) and a [`GainNode`](https://developer.mozilla.org/docs/Web/API/GainNode) (which basically apply a multiplication on an incoming signal), we will need two steps:
+To achieve this using only [`OscillatorNode`](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode) (which produces a signal between `-1` and `1`) and a [`GainNode`](https://developer.mozilla.org/en-US/docs/Web/API/GainNode) (which basically apply a multiplication on an incoming signal), we will need two steps:
 
 - Apply a gain of 0.5 (i.e. `amDepth / 2`) on an oscillator, producing a sin comprised between `-0.5` and `0.5`
 - Then add a constant value of `0.5` (i.e. `1 - amDepth / 2`) to this scaled signal
@@ -241,7 +241,7 @@ carrier.start();
 modulator.start();
 ```
 
-The second step, to add an offset to the scaled signal, requires us to use a interesting feature of [`AudioParam`](https://developer.mozilla.org/docs/Web/API/AudioParam)s. Indeed, the Web Audio API allows us to directly modulate an [`AudioParam`](https://developer.mozilla.org/docs/Web/API/AudioParam), for example the `gain` of our `envelop` node, with another signal. When connecting a node to a audio param, the signal of the node is "added" to the signal intrinsically produced by the audio param.
+The second step, to add an offset to the scaled signal, requires us to use a interesting feature of [`AudioParam`](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam)s. Indeed, the Web Audio API allows us to directly modulate an [`AudioParam`](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam), for example the `gain` of our `envelop` node, with another signal. When connecting a node to a audio param, the signal of the node is "added" to the signal intrinsically produced by the audio param.
 
 In other words, if we set the `gain` of our `envelop` to 0.5, the gain `AudioParam` produces a constant signal at `0.5`, which is used to multiply the input signal of the `GainNode`. But if we modulate our gain `AudioParam`, and therefore its constant signal a `0.5` with the scaled signal we just created with the `modulator` and `depth` node. The constant signal of the gain `AudioParam` and our scaled signal will just be added together, producing a sine wave comprised between `0` and `1`.
 

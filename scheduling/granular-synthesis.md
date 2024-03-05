@@ -9,9 +9,8 @@ In this tutorial, you will learn how to implement a granular synthesizer using t
 ### Related Documentation
 
 - [Granular Synthesis - Wikipedia](https://en.wikipedia.org/wiki/Granular_synthesis)
-- [`AudioBufferSourceNode.start`](https://developer.mozilla.org/docs/Web/API/AudioBufferSourceNode/start)
-- [`AudioBufferSourceNode.playbackRate`](https://developer.mozilla.org/docs/Web/API/AudioBufferSourceNode/playbackRate) 
-- [`<sc-dragndrop>`](https://ircam-ismm.github.io/sc-components/sc-dragndrop)
+- [`AudioBufferSourceNode.start`](https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode/start)
+- [`AudioBufferSourceNode.playbackRate`](https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode/playbackRate) 
 
 ## General principles
 
@@ -269,7 +268,7 @@ Congrats! Your granular synthesizer is now fully working
 ## Going further
 
 To improve the application, you could for example add some controls over:
-- The pitch of each grain, using the [`AudioBufferSourceNode.playbackRate`](https://developer.mozilla.org/docs/Web/API/AudioBufferSourceNode/playbackRate) rate param
+- The pitch of each grain, using the [`AudioBufferSourceNode.playbackRate`](https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode/playbackRate) rate param
 - Allow users to use their own audio file, by providing a way to drag and drop it directly into the interface, cf. [`<sc-dragndrop>`](https://ircam-ismm.github.io/sc-components/sc-dragndrop)
 
 ## Conclusion

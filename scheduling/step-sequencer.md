@@ -8,8 +8,8 @@ In this third tutorial about scheduling, we will build a simple step sequencer. 
 
 ### Related documentation
 
-- [`Array`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)
-- [`StereoPannerNode`](https://developer.mozilla.org/docs/Web/API/StereoPannerNode)
+- [`Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+- [`StereoPannerNode`](https://developer.mozilla.org/en-US/docs/Web/API/StereoPannerNode)
 - [`sc-matrix`](https://ircam-ismm.github.io/sc-components/sc-matrix)
 
 ## Loading the sound files
