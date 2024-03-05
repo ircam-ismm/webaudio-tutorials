@@ -99,9 +99,9 @@ render(html`
 `, document.body);
 ``` 
 
-As you can see, while some things may appear quite similar to what we have already done in previous tutorials, there are also a few new thing that we need to understand.
+As you can see, while some things may appear quite similar to what we have already done in previous tutorials, there are also a few new things that we need to understand.
 
-The most important are the first lines, which begins with `import`, let's just concentrate on one of the two last imports to understand what is going on there:
+The most important are the first lines, which begin with `import`, let's just concentrate on one of the two last imports to understand what is going on there:
 
 ```js {5}
 import { html, render } from 'https://unpkg.com/lit-html';
@@ -126,13 +126,13 @@ export default async function loadAudioBuffer(pathname, sampleRate = 48000) {
 }
 ```
 
-Except some particularities that have removed from the snippet above, you can see that this file "exports" a function called `loadAudioBuffer` which contains more or less the same code you wrote in the last tutorial to load an audio file from the network and to decode it to an [`AudioBuffer`](https://developer.mozilla.org/docs/Web/API/AudioBuffer). 
+Except some particularities that have been removed from the snippet above, you can see that this file "exports" a function called `loadAudioBuffer` which contains more or less the same code you wrote in the last tutorial to load an audio file from the network and to decode it to an [`AudioBuffer`](https://developer.mozilla.org/docs/Web/API/AudioBuffer). 
 
 These `import` and `export` statements are the tools JavaScript gives us to organize our projects. Moreover, they also allows us to load libraries directly from the Web, cf. the first two `import` and thus share functionalities between several projects. For example, the two libraries that are imported in the first two lines will help us creating the user interfaces more simply.
 
 ## Create the audio graph
 
-Now that everything is ready and that you have an understanding of the structure of the project, let's write our AM synthesis engine. The main principle of AM synthesis is to modulate the amplitude (i.e. the gain) of a signal, called the "carrier", with another signal "modulating" signal
+Now that everything is ready and that you have an understanding of the structure of the project, let's write our AM synthesis engine. The main principle of AM synthesis is to modulate the amplitude (i.e. the gain) of a signal, called the "carrier", with another "modulating" signal.
 
 ::: info
 We won't go into the details of how amplitude modulation works here, so if you are not familiar with how AM synthesis works, you can find a number of resources online such as on [Wikipedia](https://en.wikipedia.org/wiki/Amplitude_modulation)
@@ -222,7 +222,7 @@ To achieve this using only [`OscillatorNode`](https://developer.mozilla.org/docs
 - Apply a gain of 0.5 (i.e. `amDepth / 2`) on an oscillator, producing a sin comprised between `-0.5` and `0.5`
 - Then add a constant value of `0.5` (i.e. `1 - amDepth / 2`) to this scaled signal
 
-In terms of code, the first step is quite straight forward, ti is basically creating an oscillator and piping it into a gain:
+In terms of code, the first step is quite straight forward, it is basically creating an oscillator and piping it into a gain:
 
 ```js {3-10,14}
 envelop.connect(audioContext.destination);
@@ -300,7 +300,7 @@ are the one that created the `<h1>` tag that we can use in the browser since the
 
 ![lit-tittle](../assets/amplitude-modulation/lit-tittle.png)
 
-The second library, [`@ircam/sc-components`](https://ircam-ismm.github.io/sc-components/), is a library that provide  high-level graphical components for rapid prototyping audio application (...which interestingly seems to be perfect for us)
+The second library, [`@ircam/sc-components`](https://ircam-ismm.github.io/sc-components/), is a library that provides  high-level graphical components for rapid prototyping audio application (...which interestingly seems to be perfect for us)
 
 Let's first add some code and interface so that we can control our carrier frequency:
 
@@ -367,7 +367,7 @@ Another interesting exercise could be to implement a Frequency Modulation synthe
 
 ## Conclusion
 
-In this tutorial, you have learned how to build more complex audio graph where a signal modulate the parameter of another node (see also FM synthesis). Along the way we have used a more advanced tool to scaffold our application, and libraries to help us create interfaces in a more simple manner.
+In this tutorial, you have learned how to build more complex audio graph where a signal modulates the parameter of another node (see also FM synthesis). Along the way we have used a more advanced tool to scaffold our application, and libraries to help us create interfaces in a more simple manner.
 
 In the next tutorial, we will learn some concept of object oriented programming and encapsulation, which will help us to organize our code and to create reusable audio components.
 

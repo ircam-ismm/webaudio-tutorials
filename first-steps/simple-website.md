@@ -1,6 +1,6 @@
 # Create a Simple Website
 
-In this first hands-on tutorial, we will develop a simple website composed of two pages. This tutorial does not yet concern the Web Audio API, but aims at giving you some practical familiarity with the different concepts and tools we seen so far.
+In this first hands-on tutorial, we will develop a simple website composed of two pages. This tutorial does not yet concern the Web Audio API, but aims at giving you some practical familiarity with the different concepts and tools we have seen so far.
 
 ::: info
 In these series, the example commands will be given as if all projects are created in a `webaudio-tutorials` directory, itself located on your `Desktop`. If you want to put these files elsewhere feel free to do so, you will just need to adapt the paths in the commands accordingly.

@@ -10,7 +10,7 @@ This introducing article will just recall a few important concepts to grasp when
 
 First thing first, let's define these two words that are often used interchangeably.
 
-The _**Internet**_ defines a set communication protocols (e.g. TCP, UDP) which enables the interconnection the communication between different computers and of smaller networks of computers around the world [_inter-net(work)_].
+The _**Internet**_ defines a set communication protocols (e.g. TCP, UDP) which enables the communication between different computers and the interconnection of smaller networks of computers around the world [_inter-net(work)_].
 
 ::: info
 - **1972** - First demonstration of ARPANET, a message is sent between UCLA and Stanford
@@ -47,7 +47,7 @@ Our access to the Web is most often mediated by Web browsers, which are responsi
 
 Aside static resources such as images, videos or sound files, the Web browser can also download files that contain code that it can interpret and execute. The programming languages that Web browsers are able to understand are threefold: _HTML_, _CSS_ and _JavaScript_.
 
-The _**HTML**_ (for _Hypertext Markup Language_) is a markup language that allows to describe the structure of a document and, importantly, to create links to other documents. As show in the example above, HTML provides a number of __tags__ that allows to describe the structure of your document. For example the `<h1>` tag describes a 1st level title (or "head"), the `<p>` tag describes a "paragraph" and the `<a>` tag describe a link (or "anchor") to another document:
+The _**HTML**_ (for _Hypertext Markup Language_) is a markup language that allows to describe the structure of a document and, importantly, to create links to other documents. As show in the example above, HTML provides a number of __tags__ that allows to describe the structure of your document. For example the `<h1>` tag describes a 1st level title (or "head"), the `<p>` tag describes a "paragraph" and the `<a>` tag describes a link (or "anchor") to another document:
 
 ```html
 <h1>This is a title</h1>
@@ -86,7 +86,7 @@ The page, which is defined by the exact same HTML structure and content, will no
 
 Finally, _**JavaScript**_ provide a full featured programming language which allows to add interactivity to your Web page. For example, it allows you react to some user events (e.g. a "click" on a button), to get some information from a remote Web server without refreshing the page, or for what interests us in these tutorials, to make audio synthesis using the [Web Audio API](https://www.w3.org/TR/webaudio/). 
 
-Here is very simple example showing JavaScript allows you to react to a user interaction to make some sound:
+Here is very simple example showing how JavaScript (embedded into some HTML) allows you to react to a user interaction to make some sound:
 
 ```html
 <button>Click Me!</button>

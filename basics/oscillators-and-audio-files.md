@@ -40,16 +40,16 @@ Then open the directory in your text editor, and create an HTML file called `ind
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>02-audio-file-playback</title>
+  <title>02-oscillators-and-audio-files</title>
   <script defer type="module" src="./main.js"></script>
 </head>
 <body>
-  <h1>Audio file playback</h1>
+  <h1>Oscillator & Audio Files</h1>
 </body>
 </html>
 ```
 
-As you can see in the highlighted line, the HTML will try to import a JavaScript file called `main.js`, so let's create this file:
+As you can see in the highlighted line, the HTML will try to import a JavaScript file called `main.js`, so let's create this `main.js` file with the following content:
 
 ```js
 console.log('Hello');
@@ -82,14 +82,14 @@ We will often use this convention in these tutorials.
 
 In this snippet, we create new instance of `AudioContext` that we store into a variable called `audioContext`.
 
-By default, a new `AudioContext` is always created with a "suspended" state, which means that no audio will be produced even if asked gently. To "resume" the state, we will need to call a specific method, which much called when the user interact with the page. This restriction is primarily made to prevent Web browser to play some sound (e.g. for advertising...) each time you open a Web page.
+By default, a new `AudioContext` is always created with a "suspended" state, which means that no audio will be produced even if asked gently. To "resume" the state, we will need to call a specific method, i.e. `audioContext.resume`, which much be called when the user interact with the page. This restriction is primarily made to prevent Web browser to play some sound (e.g. for advertising...) each time you open a Web page.
 
 Then let's first add a button in our HTML file, that we will use to active the context.
 
 ```html {4-6}
 <!-- index.html -->
 <body>
-  <h1>Audio file playback</h1>
+  <h1>Oscillator & Audio Files</h1>
   <button id="resume-context">
     Resume Audio Context
   </button>
@@ -147,7 +147,7 @@ Let's first add another button into our HTML
 And grab a reference to it in the JavaScript, as we did for the `#resume-context` button:
 
 ```js {3}
-// index.js
+// main.js
 const resumeButton = document.querySelector('#resume-context');
 const triggerOscButton = document.querySelector('#trigger-osc');
 ```
@@ -195,7 +195,7 @@ osc.connect(audioContext.destination);
 osc.start();
 ```
 
-If you reload the page, resume the context and click on the button you will now ear the different oscillators piling up at different frequency. The sound will still get distorted at some point but at least you can ear the effect of triggering these oscillator.
+If you reload the page, resume the context and click on the button you will now hear the different oscillators piling up at different frequency. The sound will still get distorted at some point but at least you can hear the effect of triggering these oscillator.
 
 When we added this line:
 
@@ -207,12 +207,12 @@ We actually changed an [`AudioParam`](https://developer.mozilla.org/docs/Web/API
 
 ### Adding an envelop
 
-To dig a bit more into `AudioParam`s, let's use a [`GainNode`](https://developer.mozilla.org/docs/Web/API/GainNode) to add an envelop to each of our oscillators
+To dig a bit more into `AudioParam`s, let's modify our `triggerOsc` function to use a [`GainNode`](https://developer.mozilla.org/docs/Web/API/GainNode) in order to add an envelop to each of our oscillators
 
 ```js
-// create a gain node and set its gain value to 0
-const env = audioContext.createGain();
-env.gain.value = 0;
+// create a gain node and set its gain value to 0 // [!code ++]
+const env = audioContext.createGain(); // [!code ++]
+env.gain.value = 0; // [!code ++]
 // start the oscillator as fast as we can
 osc.start();
 ```
@@ -223,11 +223,11 @@ Then we need to schedule automation, here we will for example make a linear ramp
 // create a gain node and set its gain value to 0
 const env = audioContext.createGain();
 env.gain.value = 0;
-// pick the context current time in seconds
-const now = audioContext.currentTime;
-env.gain.setValueAtTime(0, now); // create an automation point
-env.gain.linearRampToValueAtTime(1, now + 0.01) // ramp to 1 in 10 ms
-env.gain.linearRampToValueAtTime(0, now + 1) // ramp to 0 in 1 sec
+// pick the context current time in seconds // [!code ++]
+const now = audioContext.currentTime; // [!code ++]
+env.gain.setValueAtTime(0, now); // create an automation point // [!code ++]
+env.gain.linearRampToValueAtTime(1, now + 0.01) // ramp to 1 in 10 ms // [!code ++]
+env.gain.linearRampToValueAtTime(0, now + 1) // ramp to 0 in 1 sec // [!code ++]
 ```
 
 Then let's modify how the graph is created to pipe the oscillator into the envelop before sending it to destination:
@@ -247,7 +247,7 @@ env.gain.linearRampToValueAtTime(0, now + 1) // ramp to 0 in 1 sec
 osc.connect(env).connect(audioContext.destination); // [!code ++]
 ```
 
-If you reload the page and trigger some oscillator you should ear the ramp applied to each triggered oscillators. 
+If you reload the page and trigger some oscillator you should hear the ramp applied to each triggered oscillators. 
 
 However, there is still an issue with our code. Indeed, our oscillators are started but they are never stopped which might lead to waste of resources if click a lot of time on the button. As we know the exact start and end time of our ramp, we can know explicitly control the oscillators so that they start at the beginning of the ramp and stop exactly when the ramp goes back to zero.
 
@@ -280,11 +280,11 @@ At this point, your `index.html` and `main.js` should look like the following
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>02-audio-file-playback</title>
+  <title>02-oscillators-and-audio-files</title>
   <script defer type="module" src="./main.js"></script>
 </head>
 <body>
-  <h1>Oscillators and audio files</h1>
+  <h1>Oscillator & Audio Files</h1>
   <button id="resume-context">
     Resume Audio Context
   </button>
@@ -374,7 +374,7 @@ const buffer = await loadAudioBuffer('./sample.wav');
 console.log(buffer);
 ```
 
-If you reload the page, you should all the information about the file you loaded logged in the console:
+If you reload the page and open the console, you should see the information about the file you loaded logged in the console:
 
 ![audio-buffer](../assets/oscillators-and-audio-files/audio-buffer.png)
 
@@ -386,7 +386,7 @@ Note the buffer is properly loaded even if the `AudioContext` has not been resum
 
 Now that we have our `AudioBuffer` ready, let's had a button to trigger its playback into the HTML file:
 
-```htmlx
+```html
 <!-- index.html -->
 <button id="trigger-osc">
 Trigger Oscillator
@@ -440,7 +440,7 @@ It is important to understand that, in the second line, we actually pass the ref
 The function **is not executed** at this point! This is the browser that will execute the function when the user actually clicks on the button. 
 
 ::: info
-Such functions are generally called _callbacks_ because we give them to the browser (or to another piece of code), which is in charge of executing it (or calling it back) when "something" happen at some unknown point in the future.
+Such functions are generally called _callbacks_ because we give them to the browser (or to another piece of code), which is in charge of executing it (or calling it back) when "something" happens at some unknown point in the future.
 :::
 
 Another way of writing this, would have been therefore to declare the function at the same time we pass it as an argument:
@@ -449,7 +449,7 @@ Another way of writing this, would have been therefore to declare the function a
 myButton.addEventListener('click', function onClick() { console.log('clicked'); });
 ```
 
-But, now our line of code starts to be a bit long and hard to read, so can just insert line breaks to make it a bit more pretty:
+But, now our line of code starts to be a bit long and hard to read, so we can just insert line breaks to make it a bit more pretty:
 
 ```js
 myButton.addEventListener('click', function onClick() { 

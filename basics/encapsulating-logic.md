@@ -30,9 +30,9 @@ for (let i = 0; i < 4; i++) {
 const mean2 = sum / 4;
 ```
 
-We can see some issues with this how this code is written: many things are repeated and hard coded, which makes it fragile and hard to maintain. Indeed, what if for some reason the size of the lists changes? If instead of the mean, we finally want to retrieve the median value? If you find a bug in the mean computation and then must change your code everywhere? etc.
+We can see some issues with how this code is written: many things are repeated and hard coded, which makes it fragile and hard to maintain. Indeed, what if for some reason the size of the lists changes? If instead of the mean, we finally want to retrieve the median value? If you find a bug in the mean computation and then must change your code everywhere? etc.
 
-To simplify that and make the code more abstract, we can just create a more generic function. With a simple function takes a list of unknown size as argument and returns the mean, we can then rewrite our code as the following:
+To simplify that and make the code more abstract, we can just create a more generic function. With a simple function taking a list of unknown size as argument and returning the mean, we can then rewrite our code as the following:
 
 ```js
 function computeMean(list) {
@@ -88,11 +88,11 @@ const result = [1, 2, 3, 4]
 
 ## Classes
 
-Classes are higher-level and more abstract than function. They allow to put together some data and related logic into a common abstraction. Using classes, you can create several **_instances_** of the same object at the same time and manipulate them in a generic way.
+Classes are higher-level and more abstract than functions. They allow to put together some data and related logic into a common abstraction. Using classes, you can create several **_instances_** of the same object at the same time and manipulate them in a generic way.
 
 Just as with function, we have already seen several manifestations of classes in these tutorials. Indeed, the `AudioContext` is a class, as well as all `AudioNode`s and `AudioParam`s we have used so far are instances of generic classes.
 
-Let's see how we can declare a class, which represent a person with a name and an age:
+Let's see how we can declare a class, which represents a person with a name and an age:
 
 ```js
 class Person {
@@ -117,7 +117,7 @@ class Person {
 }
 ```
 
-From this class declaration (you can think of it as a kind of blueprint), you can create several person using the `new` keyword:
+From this class declaration (you can think of it as a kind of blueprint), you can create several persons using the `new` keyword:
 
 ```js
 // create two "Person" instances
@@ -138,7 +138,7 @@ hiho.celebrateBirthday();
 ```
 
 ::: info
-At this point, you can wonder why we said that `AudioNode`s, such as the `OscillatorNode` we created in previous tutorials are instance of classes, as we never created them using the `new` keyword. This is the manifestation of a common design pattern called the **_factory pattern_** which delegates to a class instance the ability to create other class instance:
+At this point, you can wonder why we said that `AudioNode`s, such as the `OscillatorNode` we created in previous tutorials are instances of classes, as we never created them using the `new` keyword. This is the manifestation of a common design pattern called the **_factory pattern_** which delegates to a class instance the ability to create other class instances:
 
 ```js
 class AudioContext {
@@ -201,7 +201,8 @@ While a second part could refresh itself every second to display the current val
 import { getCurrent } from './counter.js';
 
 // pick the current value of the counter every second
-// and display it somehow
+// (or 1000 ms) and display it somehow
+// cf. https://developer.mozilla.org/en-US/docs/Web/API/setInterval
 setInterval(() => {
     const currentCounterValue = getCurrent();
     displaySomehow(currentCounterValue);
@@ -218,4 +219,4 @@ In these tutorial, we will stick to not using such tools and assume you work wit
 
 ## Conclusion
 
-Now that we have accomplished this short refresher on the encapsulation patterns we have seen so far, let's use them in a more hands-on manner by implementing a custom effect, a feedback delay, in such way that you will able to reuse it in several applications.
+Now that we have accomplished this short refresher on the encapsulation patterns we have seen so far, let's use them in a more hands-on manner by implementing a custom effect, a feedback delay, in such way that you will be able to reuse it in several applications.

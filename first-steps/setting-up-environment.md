@@ -15,7 +15,7 @@ Here are two text editors that are quite popular nowadays:
 
 ## Node.js
 
-Once done, let's continue with installing the [Node.js](https://nodejs.org/) environment. Node.js is a cross-platform _JavaScript_ runtime environment that is often used to develop servers or command-line tools. We won't make a extensive use of Node.js in these series, but only use it to install and run the simple Web server we will need for developing our Web pages.
+Once done, let's continue with installing the [Node.js](https://nodejs.org/) environment. Node.js is a cross-platform _JavaScript_ runtime environment that is often used to develop servers or command-line tools. We won't make an extensive use of Node.js in these series, but only use it to install and run the simple Web server we will need for developing our Web pages.
 
 1. Open [https://nodejs.org](https://nodejs.org) in your favorite browser (which shall not be Safari).
 2. Download the _Long Term Support_ (LTS) version (at time of writing, the version 20.9.0).

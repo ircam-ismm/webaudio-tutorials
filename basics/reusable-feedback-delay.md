@@ -14,7 +14,7 @@ In this tutorial, we will build on top of the patterns we just reviewed to build
 
 ## Scaffolding project
 
-First things first, let's create a new project using the `@ircam/create` command. Open a `Terminal` and write de following commands
+First things first, let's create a new project using the `@ircam/create` command. Open a `Terminal` and write the following commands:
 
 ```sh
 cd ~/Desktop/webaudio-tutorials
@@ -33,7 +33,7 @@ If you are wondering what's going on here, please check the more detailed step b
 
 To test our feedback delay, let's create some source triggered at regular interval. Fortunately, the default project we just created already provides us an `AudioBuffer` which will be perfect to that end.
 
-Then, let's just modify the code so that instead of having to manually trigger the source, it is triggered automatically at a a regular interval, for example every second.
+Then, let's just modify the code so that instead of having to manually trigger the source, it is triggered automatically at a regular interval, for example every second.
 
 ```js
 import { html, render } from 'https://unpkg.com/lit-html';
@@ -122,19 +122,13 @@ If you reload the page, you should see the log appear from the `FeedbackDelay` c
 
 Before going into the implementation of the actual audio graph of the delay, we can already see an issue with our code. Our feedback delay will very probably have to create some nodes to process the audio stream, but our `AudioContext` only lives in the `main.js` "context".
 
-Let's just fix that by passing our resumed `AudioContext` to the `FeedbackDelay` when we instantiate it. And while we are here, let's pass it also an object as second argument that will allow us to configure it later:
-
-```js
-// main.js
-const delay = new FeedbackDelay(); // [!code --]
-const delay = new FeedbackDelay(audioContext, {}); // [!code ++]
-```
+To fix this, let's modify our `FeedbackDelay` constructor so that we can pass a resumed `AudioContext` when we instantiate it. While we are here, let's also pass it an object as second argument that will allow us to configure it later:
 
 ```js
 // ./lib/FeedbackDelay.js
 class FeedbackDelay {
-  constructor() //[!code --]
-  constructor(audioContext, options = {}) //[!code ++]
+  constructor() // [!code --]
+  constructor(audioContext, options = {}) // [!code ++]
   { 
     console.log('FeedbackDelay created!'); // [!code --]
     // store the audioContext instance inside the FeedbackDelay instance // [!code ++]
@@ -143,6 +137,12 @@ class FeedbackDelay {
     this.options = Object.assign({}, options); // [!code ++]
   }
 }
+```
+
+```js
+// main.js
+const delay = new FeedbackDelay(); // [!code --]
+const delay = new FeedbackDelay(audioContext, {}); // [!code ++]
 ```
 
 ## Connecting to the audio graph
@@ -264,7 +264,9 @@ You can hear that the overlap between the delay line and a new triggering of a s
 
 ## User interface
 
-Before concluding this tutorial, let's add some graphical user interface (GUI) to control our feedback delay parameters. First, we will define new methods in our `FeedbackDelay` class to hide the internals from the main code:
+Before concluding this tutorial, let's add some graphical user interface (GUI) to control our feedback delay parameters. 
+
+First, let's add new methods to our `FeedbackDelay` class, which will allow us to simply update some of its parameters from the `main.js` code:
 
 ```js {7-23}
 // ./lib/FeedbackDelay.js

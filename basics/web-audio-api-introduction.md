@@ -1,6 +1,6 @@
 # Web Audio API - An Introduction
 
-The Web Audio API, which defines a high-level JavaScript _Application Programming Interface_ (API) for processing and synthesizing audio, is specification which has reach the status of _Candidate Recommendation_ for the W3C:
+The Web Audio API, which defines a high-level JavaScript _Application Programming Interface_ (API) for processing and synthesizing audio, is specification which has reached the status of _Candidate Recommendation_ for the W3C:
 
 > A Candidate Recommendation is a document that W3C believes has been widely reviewed and satisfies the Working Group technical requirements. W3C publishes a Candidate Recommendation to gather implementation experience.
 
@@ -19,4 +19,4 @@ As exemplified above, The API defines a model of modular routing that is rather 
 
 <!-- ## Hands-on -->
 
-Now that we seen some of the basic principles of the Web Audio API, let's continue with creating a small project that will playback an audio file using the Web Audio API.
+Now that we have seen some of the basic principles of the Web Audio API, let's continue with creating a small project that will playback an audio file using the Web Audio API.
