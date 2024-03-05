@@ -27,7 +27,7 @@ cd ~/Desktop/webaudio-tutorials/02-oscillators-and-audio-files
 And start the server
 
 ```sh
-serve
+npx serve
 ```
 
 ![create-project](../assets/oscillators-and-audio-files/create-project.png)

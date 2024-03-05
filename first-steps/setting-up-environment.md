@@ -55,23 +55,29 @@ Note that, depending on when you follow this tutorial, the actual versions you s
 
 ## Web Server
 
-An important tool to have when developing Web pages, is a Web server that you can launch locally on your computer. In these tutorials, we will only need the most simple Web server: a server able to serve a file from its hard drive when the Web browser requests it.
+An important tool to have when developing Web pages, is a Web server that you can launch locally on your computer. In these tutorials, we will only need the most simple Web server: a server able to serve a file from the hard drive when the Web browser requests it.
 
 A large number of options written in different programming languages are available to have such server. In this tutorials we will use [serve](https://www.npmjs.com/package/serve), a web server developed in the [Node.js](https://nodejs.org/) environment.
 
-Open a new `Terminal` prompt and type:
+To test it, let's open a new `Terminal` prompt and type:
 
 ```sh
-npm install -g serve
+npx serve
 ```
 
-Then, press `Enter` to execute the command.
+Then, press `Enter` to execute the command. Then the `npx` tool will propose you to install the package, press `y` then `Enter`, the tools will download the package and run the server in your current directory:
 
-::: info
-This command basically tells the `npm` program (we just installed in the previous step) to install the `serve` package globally (cf. `-g`) on your computer.
+![serve](../assets/setting-up-environment/serve.png)
+
+To close the server, press `Ctrl + C`
+
+::: warning
+During this test we just created the server into your desktop which is OK for a simple test but is **_really not_** a good idea in general.
+
+Indeed, it is **_very_** important to understand and to keep in mind that exposing a directory to the network means that **_all the files_** located in this directory will be accessible by **_any_** computer connected to the same network as your machine.  
+
+**_So, BE CAREFULL TO NOT EXPOSE any sensitive or private information in this directory_**.  
 :::
-
-![install-serve](../assets/setting-up-environment/install-serve.png)
 
 ## Configure your Web browser
 

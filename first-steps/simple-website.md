@@ -31,7 +31,7 @@ You can think of `cd` as a way to navigate into your computer filesystem, just a
 Now that we are located in our project directory, let's launch our Web server inside it using the following command:
 
 ```sh
-serve
+npx serve
 ```
 
 If everything went well, your terminal should look like the following, with the Web server launched in the directory you just created:
