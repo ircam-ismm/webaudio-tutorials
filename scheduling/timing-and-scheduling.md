@@ -45,10 +45,10 @@ envelop.gain.value = 0; // set the gain default value to 0
 // create an envelop that will start in 1 second and end in 3 seconds
 const now = audioContext.currentTime;
  // create at start automation point
-envelop.setValueAtTime(0, now + 1);
+envelop.setValueAtTime(0, now + 0);
  // ramp linearly to 1 in 20 ms
 envelop.linearRampToValueValueAtTime(1, now + 0.02);
-// ramp exponetialy to (almost) 0 at second 3 after now
+// ramp exponentially to (almost) 0 at second 3 after now
 envelop.exponentialRampToValueAtTime(0.001, now + 3);
 ```
 
@@ -59,7 +59,7 @@ The `exponentialRampToValueAtTime` will throw an `Error` if it's target value is
 - 0.01 -> -40dB
 - 0.001 -> -60dB
 - ...
-In the example above, this means that the target we set correspond to -80 dB which low enough so that the corresponding source can be stop without earring any discontinuity.
+In the example above, this means that the target we set corresponds to -80 dB which is low enough so that the corresponding source can be stopped without hearing any discontinuity.
 :::
 
 All these methods are indeed very practical and powerful, as they allow us to schedule events, for example a metronome, very precisely at the sub sample level:
@@ -95,13 +95,13 @@ function tick() {
 setInterval(tick, lookahead * 1000); 
 ```
 
-With such approach, we can maintain and modify a list of event, in which our `findEventsBetween` function will look for events, and react quite rapidly to any change in the list as only the events registered in the next 100 ms are already scheduled in terms of audio rendering.
+With such an approach, we can maintain and modify a list of events, in which our `findEventsBetween` function will look for events, and react quite rapidly to any change in the list as only the events registered in the next 100 ms are already scheduled in terms of audio rendering.
 
-So theoretically, we are all good! However with such naive approach, we just fall into another trap. Indeed, as we have seen in the previous tutorial, the JavaScript timing functions: `setInterval` and `setTimeout` are not accurate enough to precisely schedule audio events. And furthermore, as we have just seen, the `audioContext.currentTime` is not continuous neither... Thus this is very possible to end up with a situation such as:
+So theoretically, we are all good! However with such a naive approach, we just fall into another trap. Indeed, as we have seen in the previous tutorial, the JavaScript timing functions: `setInterval` and `setTimeout` are not accurate enough to precisely schedule audio events. And furthermore, as we have just seen, the `audioContext.currentTime` is not continuous neither... Thus this is very possible to end up with a situation such as:
 
 ![late-callback](../assets/timing-and-scheduling/late-callback.png)
 
-Where an events is dropped (start in red) because the callback has been called too late!
+Where an event is dropped (start in red) because the callback has been called too late!
 
 To fix this issue we thus need to decouple the rate at which the callback is called (i.e. its period) and the lookahead, making sure that the period is always lower than the lookahead. With such strategy, we can thus mitigate the accuracy of the `setInterval` and recover if the callback is not called precisely at the expected time (which **_will_** be the case):
 
@@ -144,7 +144,7 @@ npx serve
 
 A [priority queue](https://en.wikipedia.org/wiki/Priority_queue) is a data structure where each element has an associated priority and that guarantees that elements with higher priority are retrieved before elements with lower priority. In our case, when looking for the next event to be scheduled, we want to be sure that this is the event which is scheduled in the closest future.
 
-We won't go into how to implement such data structure in an efficient way and will just use a list of event sorted according to their associated time. What we want want to be able to do with this queue is:
+We won't go into how to implement such data structure in an efficient way and will just use a list of event sorted according to their associated time. What we want to be able to do with this queue is:
 
 - add an event with an associated priority (i.e. a time)
 - read the item with the highest priority (i.e. smallest time)
@@ -165,7 +165,7 @@ class PriorityQueue {
     this.queue = [];
   }
 
-  // add an event with it's associated priority into the queue
+  // add an event with its associated priority into the queue
   add(event, time) {
     // pack `event` and `time` into a single data structure
     const element = { event, time };
@@ -246,9 +246,18 @@ class LookaheadScheduler {
 }
 ```
 
-Finally let's just implement a simple metronome that we will register into the scheduler, and everything together:
+::: info 
+If you need more information about the `this.tick = this.tick.bind(this);` line of code and how it allows us to fix the issue of "losing this" which is quite common in JavaScript, you can refer to online explanations and tutorials, e.g. [https://javascript.info/bind](https://javascript.info/bind) or [https://www.javascripttutorial.net/javascript-bind/](https://www.javascripttutorial.net/javascript-bind/).
+:::
 
-```js
+Finally let's just implement a simple metronome that we will register into the scheduler:
+
+```js {6-23}
+// ./main.js
+class LookaheadScheduler {
+  // ...
+}
+
 const BPM = 60;
 
 function metro(currentTime) {
@@ -269,7 +278,7 @@ const scheduler = new LookaheadScheduler();
 scheduler.add(metro, audioContext.currentTime);
 ```
 
-If you reload the page, you should now ear a very nice metronome at 60 BPM:
+If you reload the page, you should now hear a very nice metronome at 60 BPM:
 
 <audio controls loop :src="withBase('/static-assets/metronome-with-scheduler.m4a')" />
 
@@ -277,17 +286,17 @@ Congrats! You have implemented a very simple yet working lookahead scheduler
 
 ### Going further
 
-Of course, this scheduler is very simple and misses a lot of functionality, but you have a basis to build upon if you which. For example you could
+Of course, this scheduler is very simple and misses a lot of functionalities, but you have a basis to build upon if you wish. For example you could
 
 - Implement the logic to remove a scheduled event from the queue, e.g. to stop the metronome and more advanced synthesis engine)
 - Stop and restart the scheduler on demand.
 
 You could also improve the demo by:
-- Inserting the `FeedbackDelay` in the graph so that you can check that the jitter issue we add in last tutorial is now solved
+- Inserting the `FeedbackDelay` in the graph so that you can check that the jitter issue we add in the last tutorial is now solved
 - Adding some control over the BPM of the metronome.
 
 ## Conclusion
 
-In this tutorial, you have learned the why and how of lookahead schedulers. In particular why they are needed to mitigate the lack of precision of regular JavaScript timers, and how you can implement a simple version it.
+In this tutorial, you have learned the why and how of lookahead schedulers. In particular why they are needed to mitigate the lack of precision of regular JavaScript timers, and how you can implement a simple version of it.
 
 In the next tutorial, we will build upon this knowledge and tools to learn how to implement a rather powerful and versatile synthesis technique: the _granular synthesis_.

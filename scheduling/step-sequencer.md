@@ -70,7 +70,7 @@ When you reload the page, you should now see the list of the loaded audio buffer
 
 Now that our buffers are loaded and ready to use, let's create a data structure that will contain the "score" of our step sequencer. 
 
-Our score is defined as follow: for each buffer we define a list (i.e. an `Array`) of values with length equal to the number of steps (e.g. 16) we want, for a given step if the value is `0` the sound wont be played, and if it is `1` the sound is played. For example, if the score of the kick track is:
+Our score is defined as follow: for each buffer we define a list (i.e. an `Array`) of values with length equal to the number of steps (e.g. 16) we want, for a given step if the value is `0` the sound won't be played, and if it is `1` the sound is played. For example, if the score of the kick track is:
 
 ```js
 [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0]
@@ -221,7 +221,7 @@ for (let i = 0; i < numTracks; i++) {
 }
 ```
 
-If you reload now, you should now ear this quite nice drum:
+If you reload now, you should now hear this rather nice drum:
 
 <audio controls loop :src="withBase('/static-assets/step-sequencer.wav')" />
 

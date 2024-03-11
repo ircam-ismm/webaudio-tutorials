@@ -4,7 +4,7 @@ import { withBase } from 'vitepress'
 
 # Granular Synthesis
 
-In this tutorial, you will learn how to implement a granular synthesizer using the Web Audio API leveraging on the lookahead scheduling technique we seen in the previous tutorial.
+In this tutorial, you will learn how to implement a granular synthesizer using the Web Audio API leveraging on the lookahead scheduling technique we have seen in the previous tutorial.
 
 ### Related Documentation
 
@@ -14,7 +14,7 @@ In this tutorial, you will learn how to implement a granular synthesizer using t
 
 ## General principles
 
-Granular synthesis is sound synthesis technique that consists in cutting a audio files in small pieces of sound of around 5 to 200 ms called **_grains_**. These grains are then played back and layered to reconstruct a new sound. Each grain can also be manipulated independently by modifying for example their pitch, volume, etc.
+Granular synthesis is a sound synthesis technique that consists in cutting a audio files in small pieces of sound of around 5 to 200 ms called **_grains_**. These grains are then played back and layered to reconstruct a new sound. Each grain can also be manipulated independently by modifying for example their pitch, volume, etc.
 
 ![granular-synthesis](../assets/granular-synthesis/granular-synthesis.png)
 
@@ -103,7 +103,7 @@ granular.output.connect(audioContext.destination);
 scheduler.add(granular.render, audioContext.currentTime);
 ```
 
-If you reload the page and open the console, you should the start time of the grains displayed in the console:
+If you reload the page and open the console, you should see the start time of the grains logged into the console:
 
 ![scheduler-working](../assets/granular-synthesis/scheduler-working.png)
 
@@ -151,7 +151,7 @@ class GranularSynth {
 
 The code is finally quite simple as we just create an audio buffer source node, pipe it into gain with a simple envelop automation, which is itself connected to the output node of the synth. At the end of the render method, we just update the position of the next grain so that the source file is played back at a portion of its normal speed. 
 
-When you reload the page you should now ear you GranularSynth in action!
+When you reload the page you should now hear your GranularSynth in action!
 
 ## Adding controls
 
