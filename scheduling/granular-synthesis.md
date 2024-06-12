@@ -24,7 +24,7 @@ Granular synthesis is a sound synthesis technique that consists in cutting a aud
 
 ```sh
 cd ~/Desktop/webaudio-tutorials
-npx @ircam/create@latest 06-granular-synthesis
+npx @ircam/create@latest 06-granular-synthesis  --template=nobuild
 cd 06-granular-synthesis
 npx serve
 ```

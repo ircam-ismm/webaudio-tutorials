@@ -18,7 +18,7 @@ First things first, let's create a new project using the `@ircam/create` command
 
 ```sh
 cd ~/Desktop/webaudio-tutorials
-npx @ircam/create@latest 04-feedback-delay
+npx @ircam/create@latest 04-feedback-delay  --template=nobuild
 cd 04-feedback-delay
 npx serve
 ```

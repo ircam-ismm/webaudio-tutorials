@@ -135,7 +135,7 @@ So let's first scaffold a new project:
 
 ```sh
 cd ~/Desktop/webaudio-tutorials
-npx @ircam/create@latest 05-lookahead-scheduler
+npx @ircam/create@latest 05-lookahead-scheduler --template=nobuild
 cd 05-lookahead-scheduler
 npx serve
 ```

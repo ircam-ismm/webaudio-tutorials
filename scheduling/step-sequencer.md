@@ -18,7 +18,7 @@ Let's first scaffold and launch a new application:
 
 ```sh
 cd ~/Desktop/webaudio-tutorials
-npx @ircam/create@latest 07-step-sequencer
+npx @ircam/create@latest 07-step-sequencer  --template=nobuild
 cd 07-step-sequencer
 npx serve
 ```

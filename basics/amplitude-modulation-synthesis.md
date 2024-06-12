@@ -28,7 +28,7 @@ cd Desktop/webaudio-tutorials
 Then run the following command to scaffold the project:
 
 ```sh
-npx @ircam/create@latest 03-amplitude-modulation
+npx @ircam/create@latest 03-amplitude-modulation --template=nobuild
 ```
 
 The `npx` will tell you that you need to install something, just press "Enter" to continue:
