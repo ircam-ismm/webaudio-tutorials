@@ -13,5 +13,8 @@
   "devDependencies": {
     "postcss": "^8.4.31",
     "vitepress": "^1.0.0-rc.44"
+  },
+  "dependencies": {
+    "@datagouv/vitepress-plugin-matomo": "^1.0.5"
   }
 }
