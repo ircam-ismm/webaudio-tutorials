@@ -453,14 +453,13 @@ The message tell us two helpful things:
 - The sort and some detail about the error we introduced: `Uncaught ReferenceError: i is not defined`, which mean we try to use a variable (i.e. `i`) that has never been defined in the code.
 - The location of the error: `(index):54`, meaning the error is located in the `index.html` file at line `54` (note that the line may differ in your own code).
 
-Let's then just revert back our "mistake" to fix the issue:
+Let's then just revert back our "mistake" to fix the issue and finish this tutorial with a working projet:
 
 ```js
   const index = Math.floor(random);
   const nextColor = colors[index]; // [!code ++]
   const nextColor = colors[i]; // [!code --]
 ```
-
 
 ## Shutting down the server
 
