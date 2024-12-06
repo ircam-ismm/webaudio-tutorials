@@ -295,20 +295,20 @@ Then we need to update the `index.html` file to 1. remove the `<style>` tag and 
 <head>
   <title>01-simple-website | Home</title>
   <link rel="stylesheet" type="text/css" href="./style.css" />  // [!code ++]
-  <style>                                                       // [!code --]
-    body {                                                      // [!code --]
-      font-family: arial;                                       // [!code --]
-      padding: 20px;                                            // [!code --]
-      background-color: #121212;                                // [!code --]
-      color: white;                                             // [!code --]
-    }                                                           // [!code --]
-    h1 {                                                        // [!code --]
-      color: steelblue;                                         // [!code --]
-    }                                                           // [!code --]
-    a {                                                         // [!code --]
-      color: grey;                                              // [!code --]
-      font-style: italic;                                       // [!code --]
-    }                                                           // [!code --]
+  <style>                                                       /* [!code --] */
+    body {                                                      /* [!code --] */
+      font-family: arial;                                       /* [!code --] */
+      padding: 20px;                                            /* [!code --] */
+      background-color: #121212;                                /* [!code --] */
+      color: white;                                             /* [!code --] */
+    }                                                           /* [!code --] */
+    h1 {                                                        /* [!code --] */
+      color: steelblue;                                         /* [!code --] */
+    }                                                           /* [!code --] */
+    a {                                                         /* [!code --] */
+      color: grey;                                              /* [!code --] */
+      font-style: italic;                                       /* [!code --] */
+    }                                                           /* [!code --] */
   </style>                                                      // [!code --]
 </head>
 ```

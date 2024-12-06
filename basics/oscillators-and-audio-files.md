@@ -75,7 +75,7 @@ const audioContext = new AudioContext();
 ```
 
 ::: tip
-The first line in the snippet above, i.e. `// main.js` is not meant to be added to the code, but just to remind you in which file the snippet is located. 
+The first line in the snippet above, i.e. `// main.js` is not meant to be added to the code, but just to remind you in which file the snippet is located.
 The way the line will be written will differ according to the language of the file but will always correspond to a comment in this language, e.g.:
 - In JavaScript you will see something like: `// main.js`
 - In HTML you will see something like: `<!-- index.html -->`
@@ -136,7 +136,7 @@ If you click on the button, you should see the log appear in the console confirm
 
 Now that our context is "running", we can use it to play actual sounds with the Web Audio API. Let's start with the a simple [`OscillatorNode`](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode)
 
-Let's first add another button into our HTML 
+Let's first add another button into our HTML
 
 ```html {5-7}
 <!-- index.html -->
@@ -156,7 +156,7 @@ const resumeButton = document.querySelector('#resume-context');
 const triggerOscButton = document.querySelector('#trigger-osc');
 ```
 
-Then, we can create and start a new `OscillatorNode` each time the user clicks on the button. 
+Then, we can create and start a new `OscillatorNode` each time the user clicks on the button.
 
 ```js {4-15}
 // main.js
@@ -251,7 +251,7 @@ env.gain.linearRampToValueAtTime(0, now + 1) // ramp to 0 in 1 sec
 osc.connect(env).connect(audioContext.destination); // [!code ++]
 ```
 
-If you reload the page and trigger some oscillator you should hear the ramp applied to each triggered oscillators. 
+If you reload the page and trigger some oscillator you should hear the ramp applied to each triggered oscillators.
 
 However, there is still an issue with our code. Indeed, our oscillators are started but they are never stopped which might lead to waste of resources if click a lot of time on the button. As we know the exact start and end time of our ramp, we can know explicitly control the oscillators so that they start at the beginning of the ramp and stop exactly when the ramp goes back to zero.
 
@@ -268,9 +268,9 @@ Finally, let's fix the clipping issue that occur when we trigger multiple oscill
 
 ```js
 env.gain.linearRampToValueAtTime(1, now + 0.01); // [!code --]
-env.gain.linearRampToValueAtTime(0, now + 1); // [!code --]  
+env.gain.linearRampToValueAtTime(0, now + 1); // [!code --]
 env.gain.linearRampToValueAtTime(0.2, now + 0.01); // ramp to 0.2 in 10 ms // [!code ++]
-env.gain.exponentialRampToValueAtTime(0.0001, now + 1); // ramp to 0.0001 in 1 sec // [!code ++]  
+env.gain.exponentialRampToValueAtTime(0.0001, now + 1); // ramp to 0.0001 in 1 sec // [!code ++]
 ```
 
 ### Wrap up
@@ -300,6 +300,7 @@ At this point, your `index.html` and `main.js` should look like the following
 ```
 
 ```js
+// main.js
 const audioContext = new AudioContext();
 
 // grab a JavaScript representation to the HTML button with id "resume-context"
@@ -323,8 +324,8 @@ function triggerOsc() {
   const env = audioContext.createGain();
   const now = audioContext.currentTime;
   env.gain.value = 0;
-  env.gain.setValueAtTime(0, now); 
-  env.gain.linearRampToValueAtTime(0.2, now + 0.01); 
+  env.gain.setValueAtTime(0, now);
+  env.gain.linearRampToValueAtTime(0.2, now + 0.01);
   env.gain.exponentialRampToValueAtTime(0.0001, now + 1);
   osc.connect(env).connect(audioContext.destination);
 
@@ -337,7 +338,7 @@ triggerOscButton.addEventListener('click', triggerOsc);
 
 ## Using the `AudioBufferSourceNode`
 
-`OscillatorNode`s are really nice indeed, but let's now consider how we can play a sound file using the [`AudioBufferSourceNode`](https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode). 
+`OscillatorNode`s are really nice indeed, but let's now consider how we can play a sound file using the [`AudioBufferSourceNode`](https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode).
 
 ::: info
 The sample used in the tutorial can be downloaded <a :href="(withBase('/static-assets/oscillators-and-audio-files.zip'))">here</a>
@@ -388,7 +389,7 @@ If you reload the page and open the console, you should see the information abou
 
 ::: info
 Note the buffer is properly loaded even if the `AudioContext` has not been resumed yet. This is a pretty handy feature as it allow us to load our audio file(s) when the page is loading, so everything is ready when the user starts to interact with the page.
-::: 
+:::
 
 ### Playback the buffer
 
@@ -398,7 +399,7 @@ Now that we have our `AudioBuffer` ready, let's had a button to trigger its play
 <!-- index.html -->
 <button id="trigger-osc">
 Trigger Oscillator
-</button> 
+</button>
 <button id="trigger-sound-file">
 Trigger Sound File
 </button>
@@ -444,8 +445,8 @@ function onClick() { console.log('clicked'); }
 myButton.addEventListener('click', onClick);
 ```
 
-It is important to understand that, in the second line, we actually pass the reference of the function as an argument of the `addEventListener` method. 
-The function **is not executed** at this point! This is the browser that will execute the function when the user actually clicks on the button. 
+It is important to understand that, in the second line, we actually pass the reference of the function as an argument of the `addEventListener` method.
+The function **is not executed** at this point! This is the browser that will execute the function when the user actually clicks on the button.
 
 ::: info
 Such functions are generally called _callbacks_ because we give them to the browser (or to another piece of code), which is in charge of executing it (or calling it back) when "something" happens at some unknown point in the future.
@@ -460,24 +461,24 @@ myButton.addEventListener('click', function onClick() { console.log('clicked'); 
 But, now our line of code starts to be a bit long and hard to read, so we can just insert line breaks to make it a bit more pretty:
 
 ```js
-myButton.addEventListener('click', function onClick() { 
-    console.log('clicked'); 
+myButton.addEventListener('click', function onClick() {
+    console.log('clicked');
 });
 ```
 
 But, at this point, we can then wonder why need to give a name to this function, as we are only interested to pass as argument of `addEventListener`. Indeed, we will never have to call this function manually, as it is the responsibility of the browser. So, we can just remove the function name and pass an _anonymous function_:
 
 ```js
-myButton.addEventListener('click', function() { 
-    console.log('clicked'); 
+myButton.addEventListener('click', function() {
+    console.log('clicked');
 });
 ```
 
 Finally, yet another way of writing this would be to use the _arrow function_ syntax:
 
 ```js
-myButton.addEventListener('click', () => { 
-    console.log('clicked'); 
+myButton.addEventListener('click', () => {
+    console.log('clicked');
 });
 ```
 
@@ -491,7 +492,7 @@ In future tutorials, we will see how this feature (that may appear weird) can en
 
 ## Conclusion
 
-In this tutorial, you have learned how to use some basic building blocks of the Web Audio API. 
+In this tutorial, you have learned how to use some basic building blocks of the Web Audio API.
 
 Along the way you have learned many different things such as how to resume the audio context with a user interaction, how to load and decode a sound file from the network, how to create automation on audio parameters, as well as important concepts regarding the audio sources in the Web Audio API.
 
