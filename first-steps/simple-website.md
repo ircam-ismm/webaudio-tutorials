@@ -39,9 +39,9 @@ If everything went well, your terminal should look like the following, with the 
 ![create-dir-and-serve](../assets/simple-website/create-dir-and-serve.png)
 
 ::: warning
-It is **_very_** important to understand and to keep in mind that exposing a directory to the network means that **_all the files_** located in this directory will be accessible by **_any_** computer connected to the same network as your machine.  
+It is **_very_** important to understand and to keep in mind that exposing a directory to the network means that **_all the files_** located in this directory will be accessible by **_any_** computer connected to the same network as your machine.
 
-**_So, BE CAREFULL TO NOT EXPOSE any sensitive or private information in this directory_**.  
+**_So, BE CAREFULL TO NOT EXPOSE any sensitive or private information in this directory_**.
 :::
 
 At startup, the web server logged some information that will help you to access it from a Web browser. In particular we are interested by the "Local" address and port: [`http://localhost:3000`](http://localhost:3000).
@@ -49,13 +49,13 @@ At startup, the web server logged some information that will help you to access 
 If you open a Web browser and write this URL into the address bar, you should see something as the following:
 
 ![serve-empty-dir](../assets/simple-website/serve-empty-dir.png)
-Which is a default page provided by the server showing us that it has nothing to serve, as the directory is empty. 
+Which is a default page provided by the server showing us that it has nothing to serve, as the directory is empty.
 
 Now that everything is up and running, let's start to write some little bits of code to create our actual website.
 
 ## Creating the home page
 
-Open the directory inside the text editor you installed in the previous tutorial. 
+Open the directory inside the text editor you installed in the previous tutorial.
 
 ::: info
 In VSCode, "File > Open Folder", then navigate to locate the `01-simple-website directory` and click "open". VSCode will then ask you if you trust the authors of code, which is you, so click "Yes".
@@ -67,7 +67,7 @@ Once done let's create a new file called `index.html`:
 
 ![vscode-new-file-1](../assets/simple-website/vscode-new-file-1.png)
 
-![vscode-new-file-2](../assets/simple-website/vscode-new-file-2.png) 
+![vscode-new-file-2](../assets/simple-website/vscode-new-file-2.png)
 
 ::: tip
 The `index.html` name is important as this is the file that all Web servers will serve by default (i.e. when no specific file is requested). Make sure to always have an `index.html` in your directory.
@@ -120,7 +120,7 @@ You can see that the content inside `head` has been indented (using the "Tab" ke
 
 If you reload the page in your Web browser (`Cmd + R`), you should now see title you wrote displayed as the tab title:
 
-![index-title](../assets/simple-website/index-title.png) 
+![index-title](../assets/simple-website/index-title.png)
 
 Let's continue with adding some content to our webpage:
 
@@ -155,7 +155,7 @@ In this snippet, we use a few different HTML tags that each describe a different
 
 After reload (`Cmd + R`), your page should now look like the following:
 
-![index-1](../assets/simple-website/index-1.png) 
+![index-1](../assets/simple-website/index-1.png)
 ## Adding some styles
 
 Now that we have some basic content, let's change the appearance of our page using CSS. To that end, we define a `<style>` tag in the header of the document, in which you can write some CSS rules:
@@ -203,11 +203,11 @@ In these CSS rules, we first define styles that will be applied to all the `body
 
 With these styles applied, your page should now look like the following screenshot:
 
-![index-2](../assets/simple-website/index-2.png) 
+![index-2](../assets/simple-website/index-2.png)
 
 ## Adding a new page
 
-Now that our homepage is ready let's see how you can add a second page to your website. 
+Now that our homepage is ready let's see how you can add a second page to your website.
 
 First, add a link in the homepage to point to this new page which will contain for example your biography:
 
@@ -231,10 +231,10 @@ First, add a link in the homepage to point to this new page which will contain f
 
 Refresh the page and you should see the link just below the title:
 
-![index-3](../assets/simple-website/index-3.png) 
+![index-3](../assets/simple-website/index-3.png)
 However, if you click on the link, the server will return a 404 error page. This is expected because there is no `bio.html` file that the server could retrieve:
 
-![not-found](../assets/simple-website/not-found.png) 
+![not-found](../assets/simple-website/not-found.png)
 
 To fix that, create a new file called `bio.html` in the project directory, and write the following content into it:
 
@@ -252,9 +252,9 @@ To fix that, create a new file called `bio.html` in the project directory, and w
 </html>
 ```
 
-Refresh the page, and tada! 
+Refresh the page, and tada!
 
-![bio-1](../assets/simple-website/bio-1.png) 
+![bio-1](../assets/simple-website/bio-1.png)
 
 We now have a small website composed of two pages, the "home" page and the "bio" page, and we can navigate between them through links.
 
@@ -265,7 +265,7 @@ Adding this second page however introduced a new problem: the styles defined in 
 1. Copy the `<style>` tag and the CSS rules defined in `index.html` into `bio.html`
 2. Find a way to share the styles between the two HTML files
 
-The first solution would of course work, but it would also create new issues in relatively short term. Indeed, if for some reason you want to add or change a style, e.g. change the titles color to red, you would have to report each change in each HMTL files (and a website is often composed of more than two pages), which is very cumbersome and error prone... 
+The first solution would of course work, but it would also create new issues in relatively short term. Indeed, if for some reason you want to add or change a style, e.g. change the titles color to red, you would have to report each change in each HMTL files (and a website is often composed of more than two pages), which is very cumbersome and error prone...
 
 A better solution is thus to put all the styles in a third file which will be imported by every HTML file, thus sharing the exact same styles between all pages of the website.
 
@@ -328,7 +328,7 @@ Finally, let's add the exact same line of code in the `bio.html` file:
 
 After reload, you should see the styles applied to both the pages:
 
-![bio-2](../assets/simple-website/bio-2.png) 
+![bio-2](../assets/simple-website/bio-2.png)
 
 ## Adding some interaction
 
@@ -348,7 +348,7 @@ Let's now add a bit of interaction using _JavaScript_. To that end, let's modify
 
 ::: info
 The `<div>` tag defines a generic container or zone on your page, it has no special semantic meaning but is often used to group related content together.
-::: 
+:::
 
 Let's also add some styles at the bottom of the `style.css` file to make it clearly visible in the page:
 
@@ -364,7 +364,7 @@ The "#" character at the beginning of the CSS rule allow to select a tag accordi
 
 Your home page should now look like the following:
 
-![home-square](../assets/simple-website/home-square.png) 
+![home-square](../assets/simple-website/home-square.png)
 Everything is now ready to add some incredible interaction! Let's then create a new file called `main.js` in our website directory, and write the following line of code into it:
 
 ```js
@@ -381,10 +381,10 @@ Add the follwing line of code in the `<head>` section of your `index.html`, to i
 </head>
 ```
 
-Once done, go back to your browser, open the JavaScript console (`Cmd + Alt + J` in 
+Once done, go back to your browser, open the JavaScript console (`Cmd + Alt + J` in
 _Chrome_ or `Cmd + Alt + I` in _Firefox_) and reload the page again. You should see the log from the _JavaScript_ appear in the console:
 
-![console](../assets/simple-website/console.png) 
+![console](../assets/simple-website/console.png)
 
 Now that everything is set up, let's write something a bit more interesting than just logging into the JavaScript console.
 
@@ -402,36 +402,71 @@ Then, let's write some logic to change the color of the square when you click on
 ```js {6-21}
 // get a reference to div#my-square define in the HTML
 const mySquare = document.querySelector('#my-square');
-// create a list of color
+// declare a list of different colors
 const colors = ['steelblue', 'pink', 'yellow', 'purple', 'green'];
 
 // define a function that change the color of the square when executed
 function changeColor() {
   // pick a random color from our list
-  const randomIndex = Math.floor(Math.random() * colors.length);
-  const nextColor = colors[randomIndex];
+  const random = Math.random() * colors.length; // float [0; colors.length[
+  const index = Math.floor(random); // integer [0; colors.length[
+  const nextColor = colors[index];
 
   console.log('next color is:', nextColor);
   // set the random color as the background color of our square
   mySquare.style.backgroundColor = nextColor;
 }
 
-// add the browser to execute the function each time a user
-// clicks on the square
+// ask the browser to execute the function each time the user clicks on the square
 mySquare.addEventListener('click', changeColor);
 ```
 
 Congrats! you now have an impressive interactive Web page!
 
-![random-color](../assets/simple-website/random-color.png) 
+![random-color](../assets/simple-website/random-color.png)
 
-This simple example also shows you how _JavaScript_ can modify HTML and CSS dynamically in response to users' action. 
+This simple example also shows you how _JavaScript_ can modify HTML and CSS dynamically in response to users' action.
+
+## Reading errors in the console
+
+Let's now just introduce a small (deliberate) typo in our code to learn how to use the console to help debugging:
+
+```js
+function changeColor() {
+  // pick a random color from our list
+  const random = Math.random() * colors.length; // float [0; colors.length[
+  const index = Math.floor(random); // integer [0; colors.length[
+  const nextColor = colors[index]; // [!code --]
+  const nextColor = colors[i]; // [!code ++]
+
+  console.log('next color is:', nextColor);
+  // set the random color as the background color of our square
+  mySquare.style.backgroundColor = nextColor;
+}
+```
+
+Let's now refresh our Web page once again and click on our interactive square, now you should see the following error in the console:
+
+![error](../assets/simple-website/error.png)
+
+The message tell us two helpful things:
+- The sort and some detail about the error we introduced: `Uncaught ReferenceError: i is not defined`, which mean we try to use a variable (i.e. `i`) that has never been defined in the code.
+- The location of the error: `(index):54`, meaning the error is located in the `index.html` file at line `54` (note that the line may differ in your own code).
+
+Let's then just revert back our "mistake" to fix the issue:
+
+```js
+  const index = Math.floor(random);
+  const nextColor = colors[index]; // [!code ++]
+  const nextColor = colors[i]; // [!code --]
+```
+
 
 ## Shutting down the server
 
 Now that the tutorial is finished, it is time to shutdown the Web server. To that end, go back to the `Terminal` window where the server is running and just press `Ctrl + C`:
 
-![shutdown](../assets/simple-website/shutdown.png) 
+![shutdown](../assets/simple-website/shutdown.png)
 
 That's it!
 
