@@ -41,7 +41,7 @@ export default defineConfig({
         items: [
           { text: 'Web Audio API - Introduction', link: '/basics/web-audio-api-introduction.md' },
           { text: 'Oscillators and audio files', link: '/basics/oscillators-and-audio-files.md' },
-          { text: 'Ampliture modulation', link: '/basics/amplitude-modulation-synthesis.md' },
+          { text: 'Amplitude modulation', link: '/basics/amplitude-modulation-synthesis.md' },
           { text: 'Encapsulating logic', link: '/basics/encapsulating-logic.md' },
           { text: 'Reusable feedback delay', link: '/basics/reusable-feedback-delay.md' },
         ],

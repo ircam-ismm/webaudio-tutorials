@@ -40,9 +40,9 @@ If you open the directory that have been created by the tool in your text editor
 ```sh
 03-amplitude-modules
 ├── assets              # Directory to store assets of your project (e.g. sound files)
-│   └── sample.wav      # a test sound file  
+│   └── sample.wav      # a test sound file
 ├── lib                 # Directory where to store some common helpers
-│   ├── load-audio-buffer.js  
+│   ├── load-audio-buffer.js
 │   └── resume-audio-context.js
 ├── index.html          # The index file
 ├── main.js             # Where you will put the JavaScript code
@@ -50,7 +50,7 @@ If you open the directory that have been created by the tool in your text editor
 └── styles.css          # The CSS file
 ```
 
-The project is very close from what we have done manually so far, except that it already contains the code required to resume the audio context, to load sound files, as well as some default CSS to make it nicer to look. 
+The project is very close from what we have done manually so far, except that it already contains the code required to resume the audio context, to load sound files, as well as some default CSS to make it nicer to look.
 
 Before digging a bit more into the code, let's just follow the "next steps" instructions given by the tool to make sure everything works as expected:
 
@@ -97,7 +97,7 @@ render(html`
     }}
   ></sc-bang>
 `, document.body);
-``` 
+```
 
 As you can see, while some things may appear quite similar to what we have already done in previous tutorials, there are also a few new things that we need to understand.
 
@@ -126,7 +126,7 @@ export default async function loadAudioBuffer(pathname, sampleRate = 48000) {
 }
 ```
 
-Except some particularities that have been removed from the snippet above, you can see that this file "exports" a function called `loadAudioBuffer` which contains more or less the same code you wrote in the last tutorial to load an audio file from the network and to decode it to an [`AudioBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/AudioBuffer). 
+Except some particularities that have been removed from the snippet above, you can see that this file "exports" a function called `loadAudioBuffer` which contains more or less the same code you wrote in the last tutorial to load an audio file from the network and to decode it to an [`AudioBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/AudioBuffer).
 
 These `import` and `export` statements are the tools JavaScript gives us to organize our projects. Moreover, they also allows us to load libraries directly from the Web, cf. the first two `import` and thus share functionalities between several projects. For example, the two libraries that are imported in the first two lines will help us creating the user interfaces more simply.
 
@@ -136,7 +136,7 @@ Now that everything is ready and that you have an understanding of the structure
 
 ::: info
 We won't go into the details of how amplitude modulation works here, so if you are not familiar with how AM synthesis works, you can find a number of resources online such as on [Wikipedia](https://en.wikipedia.org/wiki/Amplitude_modulation)
-::: 
+:::
 
 As we will only use [`OscillatorNode`](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode) here, let's start with cleaning a bit our `main.js` file to remove the things we won't use:
 
@@ -213,7 +213,7 @@ carrier.start();
 
 If you reload the page now, you should ear a simple sine oscillator at 200Hz.
 
-Let's now implement the modulating branch of our synthesizer. What we want to obtain here is a amplitude signal which has the form of a sine wave at 2Hz (i.e. our `amFrequency` value), and comprised between 0 and 1 (i.e. `amDepth` value).
+Let's now implement the modulating branch of our synthesizer. What we want to obtain here is a amplitude signal which has the form of a sine wave at 2Hz (the `amFrequency` value), and comprised between 0 and 1 (the `amDepth` value).
 
 ![modulating-amp](../assets/amplitude-modulation/modulating-amp.png)
 
@@ -221,6 +221,10 @@ To achieve this using only [`OscillatorNode`](https://developer.mozilla.org/en-U
 
 - Apply a gain of 0.5 (i.e. `amDepth / 2`) on an oscillator, producing a sin comprised between `-0.5` and `0.5`
 - Then add a constant value of `0.5` (i.e. `1 - amDepth / 2`) to this scaled signal
+
+In terms of audio graph, this will be achieved by connecting the scaled signal to the `gain` property of a `GainNode` (which is an instance of [`AudioParam`](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam)), which will add the modulating signal to the `gain` intrisic value, as show in the graph below:
+
+![modulating-amp](../assets/amplitude-modulation/modulation-graph.png)
 
 In terms of code, the first step is quite straight forward, it is basically creating an oscillator and piping it into a gain:
 
@@ -247,7 +251,7 @@ In other words, if we set the `gain` of our `envelop` to 0.5, the gain `AudioPar
 
 In the code, this just means:
 
-```js 
+```js
 // carrier signal
 const carrier = audioContext.createOscillator();
 carrier.frequency.value = carrierFrequency;
@@ -271,7 +275,7 @@ depth.connect(envelop.gain); // adds our scaled signal with audio param signal /
 ```
 
 
-You reload the page now, you should ear a simple tremolo at 2Hz applied to the carrier frequency at 200Hz. 
+You reload the page now, you should ear a simple tremolo at 2Hz applied to the carrier frequency at 200Hz.
 
 <audio controls loop :src="withBase('/static-assets/am-tremolo-2hz.m4a')"></audio>
 
