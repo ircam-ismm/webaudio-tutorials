@@ -54,6 +54,17 @@ export default defineConfig({
           { text: 'Step Sequencer', link: '/scheduling/step-sequencer.md' },
         ],
       },
+      {
+        text: 'Ecosystem',
+        items: [
+          { text: '@ircam/sc-components', link: 'https://ircam-ismm.github.io/sc-components/' },
+          { text: '@ircam/sc-scheduling', link: 'https://www.npmjs.com/package/@ircam/sc-scheduling' },
+          { text: '@ircam/sc-loader', link: 'https://www.npmjs.com/package/@ircam/sc-loader' },
+          { text: '@ircam/sc-utils', link: 'https://www.npmjs.com/package/@ircam/sc-utils' },
+          { text: 'node-web-audio-api', link: 'https://www.npmjs.com/package/node-web-audio-api' },
+          { text: 'soundworks', link: 'https://soundworks.dev' },
+        ],
+      },
       // {
       //   text: 'Examples',
       //   items: [
