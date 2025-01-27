@@ -70,7 +70,7 @@ When you reload the page, you should now see the list of the loaded audio buffer
 
 Now that our buffers are loaded and ready to use, let's create a data structure that will contain the "score" of our step sequencer. 
 
-Our score is defined as follow: for each buffer we define a list (i.e. an `Array`) of values with length equal to the number of steps (e.g. 16) we want, for a given step if the value is `0` the sound won't be played, and if it is `1` the sound is played. For example, if the score of the kick track is:
+Our score is defined as follows: for each buffer we define a list (i.e. an `Array`) of values with length equal to the number of steps (e.g. 16) we want, for a given step if the value is `0` the sound won't be played, and if it is `1` the sound is played. For example, if the score of the kick track is:
 
 ```js
 [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0]
@@ -115,13 +115,13 @@ for (let i = 0; i < numTracks; i++) {
 console.log(score);
 ```
 
-When reloading the page you should now see the score logged into the console:
+When reloading the page, you should now see the score logged into the console:
 
 ![empty-score](../assets/step-sequencer/empty-score.png)
 
 ## Building the track player
 
-To develop our audio player, let's start with importing the scheduler and to temporarily replacing our score with a static one. This will allow us to develop our audio engine without having to create a graphical user interface (GUI) to interact with the score.
+To develop our audio player, let's start with importing the scheduler and temporarily replacing our score with a static one. This will allow us to develop our audio engine without having to create a graphical user interface (GUI) to interact with the score.
 
 ```js {3,8-30}
 // ./main.js
