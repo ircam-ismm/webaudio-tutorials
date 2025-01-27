@@ -74,7 +74,7 @@ However, such approach suffers one major limitation: we have to know every singl
 The concepts presented in this section are mostly a digest of the article ["A Tale of two Clocks" by Chris Wilson](https://web.dev/articles/audio-scheduling). We highly recommend you to read this article and come back to the tutorial afterwards.
 :::
 
-To workaround this limitation, one possible way is two periodically check if what have things to schedule in the near future (the "lookahead") until we check it again. As such, it becomes possible to react to external events such as a change of tempo:
+To workaround this limitation, one possible way is to periodically check if we have things to schedule in the near future (the "lookahead") until we check it again. As such, it becomes possible to react to external events such as a change of tempo:
 
 ![naive-lookahead](../assets/timing-and-scheduling/naive-lookahead.png)
 
@@ -101,7 +101,7 @@ So theoretically, we are all good! However with such a naive approach, we just f
 
 ![late-callback](../assets/timing-and-scheduling/late-callback.png)
 
-Where an event is dropped (start in red) because the callback has been called too late!
+Where an event is dropped (star in red) because the callback has been called too late!
 
 To fix this issue we thus need to decouple the rate at which the callback is called (i.e. its period) and the lookahead, making sure that the period is always lower than the lookahead. With such strategy, we can thus mitigate the accuracy of the `setInterval` and recover if the callback is not called precisely at the expected time (which **_will_** be the case):
 
@@ -282,13 +282,13 @@ If you reload the page, you should now hear a very nice metronome at 60 BPM:
 
 <audio controls loop :src="withBase('/static-assets/metronome-with-scheduler.m4a')" />
 
-Congrats! You have implemented a very simple yet working lookahead scheduler
+Congrats! You have implemented a very simple yet working lookahead scheduler.
 
 ### Going further
 
 Of course, this scheduler is very simple and misses a lot of functionalities, but you have a basis to build upon if you wish. For example you could
 
-- Implement the logic to remove a scheduled event from the queue, e.g. to stop the metronome and more advanced synthesis engine)
+- Implement the logic to remove a scheduled event from the queue, e.g. to stop the metronome and more advanced synthesis engine
 - Stop and restart the scheduler on demand.
 
 You could also improve the demo by:
