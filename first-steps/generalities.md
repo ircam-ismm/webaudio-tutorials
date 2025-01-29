@@ -10,7 +10,7 @@ This introducing article will just recall a few important concepts to grasp when
 
 First thing first, let's define these two words that are often used interchangeably.
 
-The _**Internet**_ defines a set communication protocols (e.g. TCP, UDP) which enables the communication between different computers and the interconnection of smaller networks of computers around the world [_inter-net(work)_].
+The _**Internet**_ defines a set of communication protocols (e.g. TCP, UDP) which enables the communication between different computers and the interconnection of smaller networks of computers around the world [_inter-net(work)_].
 
 ::: info
 - **1972** - First demonstration of ARPANET, a message is sent between UCLA and Stanford
