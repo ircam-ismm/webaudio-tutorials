@@ -86,7 +86,7 @@ We will often use this convention in these tutorials.
 
 In this snippet, we create new instance of `AudioContext` that we store into a variable called `audioContext`.
 
-By default, a new `AudioContext` is always created with a "suspended" state, which means that no audio will be produced even if asked gently. To "resume" the state, we will need to call a specific method, i.e. `audioContext.resume`, which much be called when the user interact with the page. This restriction is primarily made to prevent Web browser to play some sound (e.g. for advertising...) each time you open a Web page.
+By default, a new `AudioContext` is always created with a "suspended" state, which means that no audio will be produced even if asked gently. To "resume" the state, we will need to call a specific method, i.e. `audioContext.resume`, which must be called when the user interacts with the page. This restriction is primarily made to prevent Web browser to play some sound (e.g. for advertising...) each time you open a Web page.
 
 Then let's first add a button in our HTML file, that we will use to active the context.
 
