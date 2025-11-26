@@ -65,13 +65,6 @@ export default defineConfig({
           { text: 'soundworks', link: 'https://soundworks.dev' },
         ],
       },
-      // {
-      //   text: 'Examples',
-      //   items: [
-      //     { text: 'Markdown Examples', link: '/markdown-examples' },
-      //     { text: 'Runtime API Examples', link: '/api-examples' }
-      //   ]
-      // }
     ],
 
     socialLinks: [
