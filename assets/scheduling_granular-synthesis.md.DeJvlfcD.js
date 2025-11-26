@@ -22,11 +22,9 @@ import{c as a,m as s,a as l,p as e,a3 as n,o,g as p}from"./chunks/framework.Wgqp
 <span class="line"></span>
 <span class="line"><span style="color:#88846F;">    // create an output gain on wich will connect all our grains</span></span>
 <span class="line"><span style="color:#FD971F;">    this</span><span style="color:#F8F8F2;">.output </span><span style="color:#F92672;">=</span><span style="color:#FD971F;"> this</span><span style="color:#F8F8F2;">.audioContext.</span><span style="color:#A6E22E;">createGain</span><span style="color:#F8F8F2;">();</span></span>
-<span class="line"><span style="color:#88846F;">    // bind the render method so that we don&#39;t the instance context</span></span>
-<span class="line"><span style="color:#FD971F;">    this</span><span style="color:#F8F8F2;">.render </span><span style="color:#F92672;">=</span><span style="color:#FD971F;"> this</span><span style="color:#F8F8F2;">.render.</span><span style="color:#A6E22E;">bind</span><span style="color:#F8F8F2;">(</span><span style="color:#FD971F;">this</span><span style="color:#F8F8F2;">);</span></span>
 <span class="line"><span style="color:#F8F8F2;">  }</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#A6E22E;">  render</span><span style="color:#F8F8F2;">(</span><span style="color:#FD971F;font-style:italic;">currentTime</span><span style="color:#F8F8F2;">) {</span></span>
+<span class="line"><span style="color:#A6E22E;">  render</span><span style="color:#F92672;"> =</span><span style="color:#F8F8F2;"> (</span><span style="color:#FD971F;font-style:italic;">currentTime</span><span style="color:#F8F8F2;">) </span><span style="color:#66D9EF;font-style:italic;">=&gt;</span><span style="color:#F8F8F2;"> {</span></span>
 <span class="line"><span style="color:#F8F8F2;">    console.</span><span style="color:#A6E22E;">log</span><span style="color:#F8F8F2;">(currentTime);</span></span>
 <span class="line"><span style="color:#88846F;">    // ask to be called at time of next grain</span></span>
 <span class="line"><span style="color:#F92672;">    return</span><span style="color:#F8F8F2;"> currentTime </span><span style="color:#F92672;">+</span><span style="color:#FD971F;"> this</span><span style="color:#F8F8F2;">.period;</span></span>
@@ -48,7 +46,7 @@ import{c as a,m as s,a as l,p as e,a3 as n,o,g as p}from"./chunks/framework.Wgqp
 <span class="line"><span style="color:#88846F;">    // ...</span></span>
 <span class="line"><span style="color:#F8F8F2;">  }</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#A6E22E;">  render</span><span style="color:#F8F8F2;">(</span><span style="color:#FD971F;font-style:italic;">currentTime</span><span style="color:#F8F8F2;">) {</span></span>
+<span class="line"><span style="color:#A6E22E;">  render</span><span style="color:#F92672;"> =</span><span style="color:#F8F8F2;"> (</span><span style="color:#FD971F;font-style:italic;">currentTime</span><span style="color:#F8F8F2;">) </span><span style="color:#66D9EF;font-style:italic;">=&gt;</span><span style="color:#F8F8F2;"> {</span></span>
 <span class="line"><span style="color:#88846F;">    // create our evenvelop gain</span></span>
 <span class="line"><span style="color:#66D9EF;font-style:italic;">    const</span><span style="color:#F8F8F2;"> env </span><span style="color:#F92672;">=</span><span style="color:#FD971F;"> this</span><span style="color:#F8F8F2;">.audioContext.</span><span style="color:#A6E22E;">createGain</span><span style="color:#F8F8F2;">();</span></span>
 <span class="line"><span style="color:#88846F;">    // connect it to output</span></span>
@@ -117,7 +115,7 @@ import{c as a,m as s,a as l,p as e,a3 as n,o,g as p}from"./chunks/framework.Wgqp
 <span class="line"><span style="color:#88846F;">    // ...</span></span>
 <span class="line"><span style="color:#F8F8F2;">  }</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#A6E22E;">  render</span><span style="color:#F8F8F2;">(</span><span style="color:#FD971F;font-style:italic;">currentTime</span><span style="color:#F8F8F2;">) {</span></span>
+<span class="line"><span style="color:#A6E22E;">  render</span><span style="color:#F92672;"> =</span><span style="color:#F8F8F2;"> (</span><span style="color:#FD971F;font-style:italic;">currentTime</span><span style="color:#F8F8F2;">) </span><span style="color:#66D9EF;font-style:italic;">=&gt;</span><span style="color:#F8F8F2;"> {</span></span>
 <span class="line"><span style="color:#88846F;">    // ...</span></span>
 <span class="line"></span>
 <span class="line diff remove"><span style="color:#88846F;">    // increment position so that we read the file at speed divided by 4</span></span>
