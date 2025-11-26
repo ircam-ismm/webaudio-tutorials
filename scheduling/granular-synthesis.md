@@ -73,11 +73,9 @@ class GranularSynth {
 
     // create an output gain on wich will connect all our grains
     this.output = this.audioContext.createGain();
-    // bind the render method so that we don't the instance context
-    this.render = this.render.bind(this);
   }
 
-  render(currentTime) {
+  render = (currentTime) => {
     console.log(currentTime);
     // ask to be called at time of next grain
     return currentTime + this.period;
@@ -116,7 +114,7 @@ class GranularSynth {
     // ...
   }
 
-  render(currentTime) {
+  render = (currentTime) => {
     // create our evenvelop gain
     const env = this.audioContext.createGain();
     // connect it to output
@@ -203,7 +201,7 @@ class GranularSynth {
     // ...
   }
 
-  render(currentTime) {
+  render = (currentTime) => {
     // ...
 
     // increment position so that we read the file at speed divided by 4 // [!code --]
